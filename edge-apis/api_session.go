@@ -10,8 +10,8 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 	"github.com/golang-jwt/jwt/v5"
-	"github.com/openziti/edge-api/rest_model"
-	"github.com/openziti/foundation/v2/stringz"
+	"github.com/hanzozt/edge-api/rest_model"
+	"github.com/hanzozt/foundation/v2/stringz"
 	"github.com/zitadel/oidc/v3/pkg/oidc"
 	"golang.org/x/oauth2"
 )
@@ -131,7 +131,7 @@ func UnmarshalApiSession(data []byte) (ApiSession, error) {
 var _ ApiSession = (*ApiSessionLegacy)(nil)
 var _ ApiSession = (*ApiSessionOidc)(nil)
 
-// ApiSessionLegacy represents OpenZiti's original authentication API Session Detail, supplied in the `zt-session` header.
+// ApiSessionLegacy represents Hanzo ZT's original authentication API Session Detail, supplied in the `zt-session` header.
 // It has been supplanted by OIDC authentication represented by ApiSessionOidc.
 type ApiSessionLegacy struct {
 	Detail         *rest_model.CurrentAPISessionDetail

@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/michaelquigley/pfxlog"
-	"github.com/openziti/edge-api/rest_util"
+	"github.com/hanzozt/edge-api/rest_util"
 )
 
 // Components provides the foundational HTTP client infrastructure for OpenAPI clients,

@@ -7,10 +7,10 @@ import (
 	"time"
 
 	"github.com/michaelquigley/pfxlog"
-	"github.com/openziti/channel/v4"
-	"github.com/openziti/sdk-golang/edgexg"
-	"github.com/openziti/sdk-golang/xgress"
-	"github.com/openziti/sdk-golang/ziti/edge"
+	"github.com/hanzozt/channel/v4"
+	"github.com/hanzozt/sdk-golang/edgexg"
+	"github.com/hanzozt/sdk-golang/xgress"
+	"github.com/hanzozt/sdk-golang/ziti/edge"
 	"github.com/sirupsen/logrus"
 )
 

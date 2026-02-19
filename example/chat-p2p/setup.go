@@ -18,8 +18,8 @@ package main
 
 import (
 	_ "embed"
-	"github.com/openziti/runzmd"
-	"github.com/openziti/runzmd/actionz"
+	"github.com/hanzozt/runzmd"
+	"github.com/hanzozt/runzmd/actionz"
 	"github.com/spf13/cobra"
 	"time"
 )

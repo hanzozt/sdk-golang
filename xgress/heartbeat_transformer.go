@@ -18,7 +18,7 @@ package xgress
 
 import (
 	"encoding/binary"
-	"github.com/openziti/channel/v4"
+	"github.com/hanzozt/channel/v4"
 	"time"
 )
 

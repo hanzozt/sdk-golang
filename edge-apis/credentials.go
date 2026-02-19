@@ -10,10 +10,10 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
 	"github.com/michaelquigley/pfxlog"
-	"github.com/openziti/edge-api/rest_model"
-	"github.com/openziti/identity"
-	"github.com/openziti/sdk-golang/ziti/edge/network"
-	"github.com/openziti/sdk-golang/ziti/sdkinfo"
+	"github.com/hanzozt/edge-api/rest_model"
+	"github.com/hanzozt/identity"
+	"github.com/hanzozt/sdk-golang/ziti/edge/network"
+	"github.com/hanzozt/sdk-golang/ziti/sdkinfo"
 )
 
 type AuthMethod string
@@ -26,7 +26,7 @@ const (
 )
 
 // Credentials represents the minimal information needed across all authentication mechanisms to authenticate an identity
-// to an OpenZiti network.
+// to an Hanzo ZT network.
 type Credentials interface {
 	// Payload constructs the objects that represent the JSON authentication payload for this set of credentials.
 	Payload() *rest_model.Authenticate

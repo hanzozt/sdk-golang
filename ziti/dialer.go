@@ -3,7 +3,7 @@ package ziti
 import (
 	"context"
 	"fmt"
-	"github.com/openziti/edge-api/rest_model"
+	"github.com/hanzozt/edge-api/rest_model"
 	"math"
 	"net"
 	"strconv"

@@ -19,8 +19,8 @@
 package edge
 
 import (
-	"github.com/openziti/transport/v2"
-	"github.com/openziti/transport/v2/wss"
+	"github.com/hanzozt/transport/v2"
+	"github.com/hanzozt/transport/v2/wss"
 )
 
 func AddAddressParsers() {

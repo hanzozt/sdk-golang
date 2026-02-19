@@ -128,7 +128,7 @@ func (s *Storage) ClientCredentialsTokenRequest(ctx context.Context, clientID st
 		Scopes:  scopes,
 		Audience: []string{
 			clientID,
-			"openziti",
+			"hanzozt",
 		},
 		IssuedAt:  oidc.Time(time.Now()),
 		ExpiresAt: oidc.Time(time.Now().Add(30 * time.Minute)),

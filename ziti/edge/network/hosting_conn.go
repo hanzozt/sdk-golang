@@ -24,13 +24,13 @@ import (
 	"time"
 
 	"github.com/michaelquigley/pfxlog"
-	"github.com/openziti/channel/v4"
-	"github.com/openziti/edge-api/rest_model"
-	"github.com/openziti/foundation/v2/concurrenz"
-	"github.com/openziti/sdk-golang/pb/edge_client_pb"
-	"github.com/openziti/sdk-golang/xgress"
-	"github.com/openziti/sdk-golang/ziti/edge"
-	"github.com/openziti/secretstream/kx"
+	"github.com/hanzozt/channel/v4"
+	"github.com/hanzozt/edge-api/rest_model"
+	"github.com/hanzozt/foundation/v2/concurrenz"
+	"github.com/hanzozt/sdk-golang/pb/edge_client_pb"
+	"github.com/hanzozt/sdk-golang/xgress"
+	"github.com/hanzozt/sdk-golang/ziti/edge"
+	"github.com/hanzozt/secretstream/kx"
 	"github.com/sirupsen/logrus"
 )
 

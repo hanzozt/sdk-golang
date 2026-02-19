@@ -1,23 +1,23 @@
-![Ziggy using the sdk-golang](https://raw.githubusercontent.com/openziti/branding/main/images/banners/Go.jpg)
+![Ziggy using the sdk-golang](https://raw.githubusercontent.com/hanzozt/branding/main/images/banners/Go.jpg)
 
 # Ziti SDK for Golang
 
-The OpenZiti SDK for GoLang allows developers to create their own custom OpenZiti network endpoint clients and
-management tools. OpenZiti is a modern, programmable network overlay with associated edge components, for
+The Hanzo ZT SDK for GoLang allows developers to create their own custom Hanzo ZT network endpoint clients and
+management tools. Hanzo ZT is a modern, programmable network overlay with associated edge components, for
 application-embedded, zero trust network connectivity, written by developers for developers. The SDK harnesses that
-power via APIs that allow developers to imagine and develop solutions beyond what OpenZiti handles by default.
+power via APIs that allow developers to imagine and develop solutions beyond what Hanzo ZT handles by default.
 
 This SDK does the following:
 
-- enable network endpoint clients allow a device to [dial (access) or bind (host)](#dialbind-a-service) OpenZiti Services
-- provides [authentication](https://openziti.io/docs/learn/core-concepts/security/authentication/auth) interfaces for
+- enable network endpoint clients allow a device to [dial (access) or bind (host)](#dialbind-a-service) Hanzo ZT Services
+- provides [authentication](https://hanzozt.dev/docs/learn/core-concepts/security/authentication/auth) interfaces for
   [x509 certificates, username/password, external IdPs (JWT)](#example-code-configuration) flows
 - collects and submits security posture collection/submission
-  for [Posture Checks](https://openziti.io/docs/learn/core-concepts/security/authorization/posture-checks)
+  for [Posture Checks](https://hanzozt.dev/docs/learn/core-concepts/security/authorization/posture-checks)
 - allows Golang applications to bind or dial services via [`net.Listener` and`net.Dialer`](#dialbind-a-service) interfaces
-- enables [raw access](#accessing-the-managementclient-api) to the [Ziti Edge Management API](https://openziti.io/docs/reference/developer/api) for custom
-  management tooling of all OpenZiti network identities, policies, and more
-- enables [raw access](#accessing-the-managementclient-api) to the [Ziti Edge Client API](https://openziti.io/docs/reference/developer/api) for custom client
+- enables [raw access](#accessing-the-managementclient-api) to the [Ziti Edge Management API](https://hanzozt.dev/docs/reference/developer/api) for custom
+  management tooling of all Hanzo ZT network identities, policies, and more
+- enables [raw access](#accessing-the-managementclient-api) to the [Ziti Edge Client API](https://hanzozt.dev/docs/reference/developer/api) for custom client
   tooling
 
 ## Table of Contents
@@ -38,39 +38,39 @@ to be aware of.
 
 - [`ziti`](ziti) - the main SDK package that will be included in your project
 - [`edge-apis`](edge-apis) - provides low-level abstractions for authenticating and accessing
-  the [Ziti Edge Client and Management APIs]((https://openziti.io/docs/reference/developer/api))
+  the [Ziti Edge Client and Management APIs]((https://hanzozt.dev/docs/reference/developer/api))
 - [`example`](example) - various example applications that illustrate different uses of the SDK. Each example contains its own
   README.md.
-    - [`chat`](example/chat) - a bare-bones example of a client and server for a chat program over an OpenZiti Service
+    - [`chat`](example/chat) - a bare-bones example of a client and server for a chat program over an Hanzo ZT Service
     - [`chat-p2p`](example/chat-p2p) - highlights `addressable terminators` which allows clients to dial specific
       services hosts if there are multiple hosts
-    - [`curlz`](example/curlz) - wrapping existing network tooling (curl) to work over OpenZiti
-    - [`grpc-example`](example/grpc-example) - using GRPC over OpenZiti
+    - [`curlz`](example/curlz) - wrapping existing network tooling (curl) to work over Hanzo ZT
+    - [`grpc-example`](example/grpc-example) - using GRPC over Hanzo ZT
     - [`http-client`](example/http-client) - a HTTP client accessing a web server over HTTP
     - [`jwtchat`](example/jwtchat) - highlights
-      using [external JWTs](https://openziti.io/docs/learn/core-concepts/security/authentication/external-jwt-signers) (
+      using [external JWTs](https://hanzozt.dev/docs/learn/core-concepts/security/authentication/external-jwt-signers) (
       from OIDC/oAuth/etc.) to authenticate with OpenZIti
     - [`reflect`](example/reflect) - a low level network "echo" client and server example
     - [`simple-server`](example/simple-server) - a bare-bones HTTP server side only example
-    - [`udp-offload`](example/udp-offload) - an example demonstrating how to work with an OpenZiti client and a UDP server
-    - [`zcat`](example/zcat) - wrapping existing network tooling (netcat) to work over OpenZiti
-    - [`zping`](example/zping) - wrapping existing network tooling (ping) to work over OpenZiti
+    - [`udp-offload`](example/udp-offload) - an example demonstrating how to work with an Hanzo ZT client and a UDP server
+    - [`zcat`](example/zcat) - wrapping existing network tooling (netcat) to work over Hanzo ZT
+    - [`zping`](example/zping) - wrapping existing network tooling (ping) to work over Hanzo ZT
 
 ## Writing Your Own Endpoint Client
 
-An "endpoint client" in OpenZiti's language is
-an [identity](https://openziti.io/docs/learn/core-concepts/identities/overview) that is dialing (accessing)
-or binding (hosting) a [service](https://openziti.io/docs/learn/core-concepts/services/overview). Dialing contacts
+An "endpoint client" in Hanzo ZT's language is
+an [identity](https://hanzozt.dev/docs/learn/core-concepts/identities/overview) that is dialing (accessing)
+or binding (hosting) a [service](https://hanzozt.dev/docs/learn/core-concepts/services/overview). Dialing contacts
 either another identity hosting a service, which may be another client endpoint, or it may be handled by an Edge Router
-depending on its [termination](https://openziti.io/docs/learn/core-concepts/services/overview#service-termination)
+depending on its [termination](https://hanzozt.dev/docs/learn/core-concepts/services/overview#service-termination)
 configuration. This SDK supports binding and dialing, which means it can host or access services depending on what it is
-[instructed to do](#dialbind-a-service) and the [policies](https://openziti.io/docs/learn/core-concepts/security/authorization/policies/overview) 
+[instructed to do](#dialbind-a-service) and the [policies](https://hanzozt.dev/docs/learn/core-concepts/security/authorization/policies/overview) 
 affecting the software's identity and service(s).
 
 To test a client endpoint you will need the following outside your normal Golang development environment:
 
-1. An OpenZiti Network with controller with at least one Edge Router 
-   (See [Quick Starts](https://openziti.io/docs/learn/quickstarts/))
+1. An Hanzo ZT Network with controller with at least one Edge Router 
+   (See [Quick Starts](https://hanzozt.dev/docs/learn/quickstarts/))
 2. A service to dial (access) and bind (host) 
    (See [Allowing Dial/Bind Access To A Service](#allowing-dialbind-access-to-a-service))
 3. An identity for your client to test with 
@@ -104,8 +104,8 @@ through a file support x509 authentication only while creating custom `Config` i
 methods (x509, Username/Password, JWT, etc.).
 
 The easiest way to create a configuration is by using
-the [`ziti edge enroll`](https://openziti.io/docs/learn/core-concepts/identities/enrolling) capabilities that will
-generate an identity file that provides the location of the OpenZiti controller, the configuration types the client is
+the [`ziti edge enroll`](https://hanzozt.dev/docs/learn/core-concepts/identities/enrolling) capabilities that will
+generate an identity file that provides the location of the Hanzo ZT controller, the configuration types the client is
 interested in, and the x509 certificate and private key to use.
 
 #### Example: File Configuration
@@ -158,12 +158,12 @@ if err != nil {
 The main activity performed with a [`Context`](ziti/contexts.go) is to dial or bind a service. In order for a dial or
 bind to be successful, the following must be true:
 
-1. The identity must have the proper dial or bind service policy to the service via [Service Policies](https://openziti.io/docs/learn/core-concepts/security/authorization/policies/overview#service-policies)
-2. The identity must have the proper dial or bind services over at least one Edge Router via [Edge Router Policies](https://openziti.io/docs/learn/core-concepts/security/authorization/policies/overview#edge-router-policies)
-3. The service must be allowed to be dialed or bound on at least one Edge Router via [Service Edge Router Policies](https://openziti.io/docs/learn/core-concepts/security/authorization/policies/overview#service-policies))
+1. The identity must have the proper dial or bind service policy to the service via [Service Policies](https://hanzozt.dev/docs/learn/core-concepts/security/authorization/policies/overview#service-policies)
+2. The identity must have the proper dial or bind services over at least one Edge Router via [Edge Router Policies](https://hanzozt.dev/docs/learn/core-concepts/security/authorization/policies/overview#edge-router-policies)
+3. The service must be allowed to be dialed or bound on at least one Edge Router via [Service Edge Router Policies](https://hanzozt.dev/docs/learn/core-concepts/security/authorization/policies/overview#service-policies))
 
 The easiest way to satisfy #2 and #3 are the make use of the `#all` 
-[role attribute](https://openziti.io/docs/learn/core-concepts/security/authorization/policies/overview#roles-and-role-attributes) 
+[role attribute](https://hanzozt.dev/docs/learn/core-concepts/security/authorization/policies/overview#roles-and-role-attributes) 
 when creating the policies. Edge Router policies and Service Edge Router Policies are useful for geographic connection 
 management. For smaller networks, test networks, and networks without geographic network entry are not concerns they
 add complexity without inherent benefit. Using the `#all` role attributes makes all service accessible and valid 
@@ -184,7 +184,7 @@ dial/bind targets on all Edge Routers.
 ```
 
 _Note: While policies can be created targeting specific users, services, or routers, using `#attribute` style assignments
-allows you to grant access based on groupings. (See [Roles and Role Attributes](https://openziti.io/docs/learn/core-concepts/security/authorization/policies/overview#roles-and-role-attributes))_
+allows you to grant access based on groupings. (See [Roles and Role Attributes](https://hanzozt.dev/docs/learn/core-concepts/security/authorization/policies/overview#roles-and-role-attributes))_
 
 #### Example: Dial
 
@@ -243,7 +243,7 @@ func handleConn(conn net.Conn){
 ### Creating & Enrolling an Identity
 
 For more detail on how to create and enroll identities see the
-[identities](https://openziti.io/docs/learn/core-concepts/identities/overview) section in the OpenZiti documentation.
+[identities](https://hanzozt.dev/docs/learn/core-concepts/identities/overview) section in the Hanzo ZT documentation.
 
 1. Login to the controller `ziti edge login https://ctrl-api/edge/client/v1 -u <username> -p <password>`
 2. Create a new identity `ziti edge create identity device myTestClient -o client.enroll.jwt`
@@ -256,8 +256,8 @@ The output file, `client.json` in this file, is used as that target in the SDK c
 ### Allowing Dial/Bind Access to a Service
 
 For more detail on policies see the
-[policies](https://openziti.io/docs/learn/core-concepts/security/authorization/policies/overview) section in the
-OpenZiti documentation.
+[policies](https://hanzozt.dev/docs/learn/core-concepts/security/authorization/policies/overview) section in the
+Hanzo ZT documentation.
 
 1. Login if not already logged in `ziti edge login https://ctrl-api/edge/client/v1 -u <username> -p <password>`
 2. Create a new service ` ziti edge create service myChat`
@@ -267,13 +267,13 @@ OpenZiti documentation.
     2. `ziti edge create service-edge-router-policy chatOverAll --edge-router-roles "#all" --service-roles "@myChat"`
 
 _Note: While policies can be created targeting specific users, services, or routers, using `#attribute` style assignments
-allows you to grant access based on groupings. (See [Roles and Role Attributes](https://openziti.io/docs/learn/core-concepts/security/authorization/policies/overview#roles-and-role-attributes))_
+allows you to grant access based on groupings. (See [Roles and Role Attributes](https://hanzozt.dev/docs/learn/core-concepts/security/authorization/policies/overview#roles-and-role-attributes))_
 
 
 ## Accessing the Management/Client API
 
 The Edge Management and Client APIs are defined by an OpenAPI 2.0 specification and have a client that is generated
-and maintained in [another GitHub repository](https://github.com/openziti/edge-api). Accessing this repository directly
+and maintained in [another GitHub repository](https://github.com/hanzozt/edge-api). Accessing this repository directly
 should not be necessary. This SDK provides a wrapper around the generated clients found in [`edge-apis`](edge-apis).
 
 #### Example: Creating an Edge Management API Client
@@ -299,7 +299,7 @@ managementClient := edge_apis.NewManagementApiClient(apiUrl, credentials.GetCaPo
 //"configTypes" are string identifiers of configuration that can be requested by clients. Developers may
 //specify their own in order to provide distributed identity and/or service specific configurations.
 //
-//See: https://openziti.io/docs/learn/core-concepts/config-store/overview
+//See: https://hanzozt.dev/docs/learn/core-concepts/config-store/overview
 //Example: configTypes = []string{"myCustomAppConfigType"}
 var configTypes []string
 
@@ -328,8 +328,8 @@ client := edge_apis.NewClientApiClient(apiUrl, credentials.GetCaPool()),
 
 //"configTypes" are string identifiers of configuration that can be requested by clients. Developers may
 //specify their own in order to provide distributed identity and/or service specific configurations. The
-//OpenZiti tunnelers use this capability to configure interception of network connections.
-//See: https://openziti.io/docs/learn/core-concepts/config-store/overview
+//Hanzo ZT tunnelers use this capability to configure interception of network connections.
+//See: https://hanzozt.dev/docs/learn/core-concepts/config-store/overview
 //Example: configTypes = []string{"myCustomAppConfigType"}
 var configTypes []string
 

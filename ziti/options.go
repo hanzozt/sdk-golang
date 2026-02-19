@@ -1,7 +1,7 @@
 package ziti
 
 import (
-	"github.com/openziti/edge-api/rest_model"
+	"github.com/hanzozt/edge-api/rest_model"
 	"time"
 )
 

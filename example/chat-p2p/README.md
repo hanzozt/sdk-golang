@@ -10,7 +10,7 @@ be a lot of work to create a service for each SSH host. Instead, you could make 
 available under the same service, as long as you had a way to reach the host you wanted when you
 used the service.
 
-Terminators in OpenZiti represent a way to find or establish a connection from a router to a
+Terminators in Hanzo ZT represent a way to find or establish a connection from a router to a
 process hosting the service. When establishing a terminator, the hosting process can specify
 an instance identifier. This then allows clients to pick which hosting process to connect to.
 

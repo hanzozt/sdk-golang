@@ -23,7 +23,7 @@ jobs:
           go-version: stable
 
       - name: Install Ziti CI
-        uses: openziti/ziti-ci@v1
+        uses: hanzozt/ziti-ci@v1
 
       - name: Build and Test
         run: |

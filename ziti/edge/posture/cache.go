@@ -24,10 +24,10 @@ import (
 
 	"github.com/go-openapi/runtime"
 	"github.com/michaelquigley/pfxlog"
-	"github.com/openziti/edge-api/rest_model"
-	"github.com/openziti/foundation/v2/stringz"
-	"github.com/openziti/sdk-golang/edge-apis"
-	"github.com/openziti/sdk-golang/ziti/edge"
+	"github.com/hanzozt/edge-api/rest_model"
+	"github.com/hanzozt/foundation/v2/stringz"
+	"github.com/hanzozt/sdk-golang/edge-apis"
+	"github.com/hanzozt/sdk-golang/ziti/edge"
 	cmap "github.com/orcaman/concurrent-map/v2"
 )
 

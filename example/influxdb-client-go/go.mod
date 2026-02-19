@@ -1,12 +1,12 @@
-module github.com/openziti/sdk-golang/example/influx-client-go
+module github.com/hanzozt/sdk-golang/example/influx-client-go
 
 go 1.24.10
 
-replace github.com/openziti/sdk-golang => ../../
+replace github.com/hanzozt/sdk-golang => ../../
 
 require (
 	github.com/influxdata/influxdb-client-go/v2 v2.12.3
-	github.com/openziti/sdk-golang v0.24.1
+	github.com/hanzozt/sdk-golang v0.24.1
 	github.com/sirupsen/logrus v1.9.4
 )
 
@@ -103,13 +103,13 @@ require (
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/muhlemmer/gu v0.3.1 // indirect
 	github.com/oklog/ulid v1.3.1 // indirect
-	github.com/openziti/channel/v4 v4.3.2 // indirect
-	github.com/openziti/edge-api v0.26.52 // indirect
-	github.com/openziti/foundation/v2 v2.0.86 // indirect
-	github.com/openziti/identity v1.0.124 // indirect
-	github.com/openziti/metrics v1.4.3 // indirect
-	github.com/openziti/secretstream v0.1.47 // indirect
-	github.com/openziti/transport/v2 v2.0.208 // indirect
+	github.com/hanzozt/channel/v4 v4.3.2 // indirect
+	github.com/hanzozt/edge-api v0.26.52 // indirect
+	github.com/hanzozt/foundation/v2 v2.0.86 // indirect
+	github.com/hanzozt/identity v1.0.124 // indirect
+	github.com/hanzozt/metrics v1.4.3 // indirect
+	github.com/hanzozt/secretstream v0.1.47 // indirect
+	github.com/hanzozt/transport/v2 v2.0.208 // indirect
 	github.com/orcaman/concurrent-map/v2 v2.0.1 // indirect
 	github.com/parallaxsecond/parsec-client-go v0.0.0-20221025095442-f0a77d263cf9 // indirect
 	github.com/pelletier/go-toml/v2 v2.1.0 // indirect

@@ -19,9 +19,9 @@ package main
 import (
 	"fmt"
 	"github.com/michaelquigley/pfxlog"
-	"github.com/openziti/foundation/v2/info"
-	"github.com/openziti/sdk-golang/ziti"
-	"github.com/openziti/transport/v2"
+	"github.com/hanzozt/foundation/v2/info"
+	"github.com/hanzozt/sdk-golang/ziti"
+	"github.com/hanzozt/transport/v2"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 	"io"
@@ -32,7 +32,7 @@ import (
 )
 
 func init() {
-	pfxlog.GlobalInit(logrus.InfoLevel, pfxlog.DefaultOptions().SetTrimPrefix("github.com/openziti/"))
+	pfxlog.GlobalInit(logrus.InfoLevel, pfxlog.DefaultOptions().SetTrimPrefix("github.com/hanzozt/"))
 }
 
 var verbose bool

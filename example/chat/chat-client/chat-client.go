@@ -18,7 +18,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/openziti/sdk-golang/ziti"
+	"github.com/hanzozt/sdk-golang/ziti"
 	"io"
 	"os"
 )

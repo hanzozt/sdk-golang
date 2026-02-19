@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	"flag"
-	"github.com/openziti/sdk-golang/ziti"
+	"github.com/hanzozt/sdk-golang/ziti"
 	"log"
 	"net"
 	"time"

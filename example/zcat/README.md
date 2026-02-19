@@ -1,31 +1,31 @@
 # Overview
 This example illustrates how to embed zero trust connectivity into a Netcat like application. There are two parts, part
  1 shows how to use zcat with a broadcast style messaging service. Part two shows how to use 
- [addressable terminators](https://github.com/openziti/fabric/wiki/Addressable-Terminators) to direct messages to 
+ [addressable terminators](https://github.com/hanzozt/fabric/wiki/Addressable-Terminators) to direct messages to 
  specific endpoints.
 
 This example demonstrates:
 * Dialing a service
 * Binding a service
-* Using [addressable terminators](https://github.com/openziti/fabric/wiki/Addressable-Terminators)
+* Using [addressable terminators](https://github.com/hanzozt/fabric/wiki/Addressable-Terminators)
 
 ## Requirements
-* an OpenZiti network. If you do not have one, you can use one of the [quickstarts](https://netfoundry.io/docs/openziti/learn/quickstarts/) to set one up.
-* OpenZiti CLI to create services and identities on the OpenZiti Network
+* an Hanzo ZT network. If you do not have one, you can use one of the [quickstarts](https://netfoundry.io/docs/hanzozt/learn/quickstarts/) to set one up.
+* Hanzo ZT CLI to create services and identities on the Hanzo ZT Network
 * The [netcat](https://netcat.sourceforge.net/) CLI tool
 
 ## Build the examples
 Refer to the [example README](../README.md) to build the SDK examples
 
 ## Part 1 Setup: zcat to a non-zitified endpoint
-These steps will configure the service using the OpenZiti CLI. At the end of these steps you will have created:
+These steps will configure the service using the Hanzo ZT CLI. At the end of these steps you will have created:
 * a service called `zcat`
 * an identity to dial the service
 * the service config to connect the service to the overlay
 * the service policies required to authorize the identities for bind and dial
 
 Steps:
-1. Log into OpenZiti. The host:port and username/password will vary depending on your network.
+1. Log into Hanzo ZT. The host:port and username/password will vary depending on your network.
 
        ziti edge login localhost:1280 -u admin -p admin
 1. Give your edge router an attribute to be used in this example
@@ -94,14 +94,14 @@ echo Removing service
 ziti edge delete service zcat
 ```
 ## Part 2 Setup: zcat to a zitified endpoint
-These steps will configure the service using the OpenZiti CLI. At the end of these steps you will have created:
+These steps will configure the service using the Hanzo ZT CLI. At the end of these steps you will have created:
 * a service called `zcat.addressable`
 * two identities, one to dial the service and one to bind to the service
 * the service config to connect the service to the overlay
 * the service policies required to authorize the identities for bind and dial
 
 Steps:
-1. Log into OpenZiti. The host:port and username/password will vary depending on your network.
+1. Log into Hanzo ZT. The host:port and username/password will vary depending on your network.
 
        ziti edge login localhost:1280 -u admin -p admin
 1. If you didn't perform "Part 1" of this exercise, give your edge router an attribute to be used in this example
@@ -130,7 +130,7 @@ Steps:
        echo Run policy advisor to check
        ziti edge policy-advisor services
 1. Enroll the example.user identity in your local tunneler
-   1. Refer to [enrolling documentation](https://netfoundry.io/docs/openziti/learn/core-concepts/identities/enrolling/) for details
+   1. Refer to [enrolling documentation](https://netfoundry.io/docs/hanzozt/learn/core-concepts/identities/enrolling/) for details
 
 1. Run a netcat listener
 

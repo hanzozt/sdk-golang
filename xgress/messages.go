@@ -19,9 +19,9 @@ package xgress
 import (
 	"encoding/binary"
 	"fmt"
-	"github.com/openziti/channel/v4"
-	"github.com/openziti/foundation/v2/info"
-	"github.com/openziti/foundation/v2/uuidz"
+	"github.com/hanzozt/channel/v4"
+	"github.com/hanzozt/foundation/v2/info"
+	"github.com/hanzozt/foundation/v2/uuidz"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 	"math"

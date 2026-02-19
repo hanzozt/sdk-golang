@@ -11,10 +11,10 @@ import (
 	"time"
 
 	"github.com/dgrijalva/jwt-go"
-	"github.com/openziti/edge-api/rest_model"
-	"github.com/openziti/edge-api/rest_util"
-	nfx509 "github.com/openziti/foundation/v2/x509"
-	"github.com/openziti/sdk-golang/ziti"
+	"github.com/hanzozt/edge-api/rest_model"
+	"github.com/hanzozt/edge-api/rest_util"
+	nfx509 "github.com/hanzozt/foundation/v2/x509"
+	"github.com/hanzozt/sdk-golang/ziti"
 	"gopkg.in/square/go-jose.v2/json"
 )
 
@@ -27,22 +27,22 @@ func die[T interface{}](res T, err error) T {
 
 func main() {
 	cfg := flag.String("config", "", "path to config file")
-	openzitiURL := flag.String("ziti", "https://localhost:1280", "URL of the OpenZiti service")
+	hanzoztURL := flag.String("ziti", "https://localhost:1280", "URL of the Hanzo ZT service")
 	flag.Parse()
 
 	var config *ziti.Config
 	if cfg == nil || *cfg == "" {
 		config = &ziti.Config{
-			ZtAPI: *openzitiURL,
+			ZtAPI: *hanzoztURL,
 		}
 		// warning: this call is insecure and should not be used in production
-		ca := die(rest_util.GetControllerWellKnownCas(*openzitiURL))
+		ca := die(rest_util.GetControllerWellKnownCas(*hanzoztURL))
 		var buf bytes.Buffer
 		_ = nfx509.MarshalToPem(ca, &buf)
 		config.ID.CA = buf.String()
 	} else {
-		if openzitiURL == nil || *openzitiURL == "" {
-			log.Fatal("OpenZiti URL must be specified")
+		if hanzoztURL == nil || *hanzoztURL == "" {
+			log.Fatal("Hanzo ZT URL must be specified")
 		}
 		config = die(ziti.NewConfigFromFile(*cfg))
 	}

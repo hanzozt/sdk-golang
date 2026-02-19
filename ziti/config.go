@@ -23,10 +23,10 @@ import (
 	"net/url"
 	"os"
 
-	"github.com/openziti/edge-api/rest_util"
-	"github.com/openziti/identity"
-	apis "github.com/openziti/sdk-golang/edge-apis"
-	"github.com/openziti/transport/v2"
+	"github.com/hanzozt/edge-api/rest_util"
+	"github.com/hanzozt/identity"
+	apis "github.com/hanzozt/sdk-golang/edge-apis"
+	"github.com/hanzozt/transport/v2"
 	"github.com/pkg/errors"
 )
 

@@ -5,8 +5,8 @@ import (
 	"flag"
 	"fmt"
 	"github.com/Jeffail/gabs"
-	edge_apis "github.com/openziti/sdk-golang/edge-apis"
-	"github.com/openziti/sdk-golang/ziti"
+	edge_apis "github.com/hanzozt/sdk-golang/edge-apis"
+	"github.com/hanzozt/sdk-golang/ziti"
 	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
 	"gopkg.in/resty.v1"
@@ -15,7 +15,7 @@ import (
 )
 
 func main() {
-	openzitiURL := flag.String("openziti-url", "https://localhost:1280", "URL of the OpenZiti service")
+	hanzoztURL := flag.String("hanzozt-url", "https://localhost:1280", "URL of the Hanzo ZT service")
 	idpTokenUrl := flag.String("idp-token-url", "http://localhost:9998/oauth/token", "URL of the Identity Provider")
 	clientID := flag.String("client-id", "cid2", "Client ID for authentication")
 	clientSecret := flag.String("client-secret", "cid2secret", "Client Secret for authentication")
@@ -26,7 +26,7 @@ func main() {
 	flag.Parse()
 
 	// Print values
-	fmt.Println("OpenZiti URL\t:", *openzitiURL)
+	fmt.Println("Hanzo ZT URL\t:", *hanzoztURL)
 	fmt.Println("IDP URL\t\t:", *idpTokenUrl)
 	fmt.Println("Client ID\t:", *clientID)
 	fmt.Println("Client Secret\t:", *clientSecret)
@@ -42,7 +42,7 @@ func main() {
 		panic(err)
 	}
 
-	caPool, err := ziti.GetControllerWellKnownCaPool(*openzitiURL)
+	caPool, err := ziti.GetControllerWellKnownCaPool(*hanzoztURL)
 
 	if err != nil {
 		panic(err)
@@ -52,7 +52,7 @@ func main() {
 	authenticator.CaPool = caPool
 
 	cfg := &ziti.Config{
-		ZtAPI: *openzitiURL + "/edge/client/v1",
+		ZtAPI: *hanzoztURL + "/edge/client/v1",
 		Credentials: authenticator,
 	}
 	ctx, err := ziti.NewContext(cfg)

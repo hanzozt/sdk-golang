@@ -10,7 +10,7 @@ import (
 	openapiclient "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 	"github.com/michaelquigley/pfxlog"
-	"github.com/openziti/edge-api/rest_model"
+	"github.com/hanzozt/edge-api/rest_model"
 )
 
 const (
@@ -35,7 +35,7 @@ type AuthEnabledApi interface {
 	RefreshApiSession(apiSession ApiSession, httpClient *http.Client) (ApiSession, error)
 }
 
-// BaseClient provides shared authentication and session management for OpenZiti API clients.
+// BaseClient provides shared authentication and session management for Hanzo ZT API clients.
 // It handles credential-based authentication, TLS configuration, session storage, and controller failover.
 type BaseClient[A ApiType] struct {
 	API            *A

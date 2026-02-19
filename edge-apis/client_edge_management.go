@@ -8,14 +8,14 @@ import (
 	"net/url"
 	"sync"
 
-	"github.com/openziti/edge-api/rest_management_api_client"
-	manAuth "github.com/openziti/edge-api/rest_management_api_client/authentication"
-	manControllers "github.com/openziti/edge-api/rest_management_api_client/controllers"
-	manCurApiSession "github.com/openziti/edge-api/rest_management_api_client/current_api_session"
-	manInfo "github.com/openziti/edge-api/rest_management_api_client/informational"
-	"github.com/openziti/edge-api/rest_model"
-	"github.com/openziti/edge-api/rest_util"
-	"github.com/openziti/foundation/v2/stringz"
+	"github.com/hanzozt/edge-api/rest_management_api_client"
+	manAuth "github.com/hanzozt/edge-api/rest_management_api_client/authentication"
+	manControllers "github.com/hanzozt/edge-api/rest_management_api_client/controllers"
+	manCurApiSession "github.com/hanzozt/edge-api/rest_management_api_client/current_api_session"
+	manInfo "github.com/hanzozt/edge-api/rest_management_api_client/informational"
+	"github.com/hanzozt/edge-api/rest_model"
+	"github.com/hanzozt/edge-api/rest_util"
+	"github.com/hanzozt/foundation/v2/stringz"
 	"github.com/zitadel/oidc/v3/pkg/oidc"
 )
 
@@ -32,7 +32,7 @@ type ManagementApiClient struct {
 // the certificate pool from the Credentials will be used from that point forward. Credentials implementations
 // based on an identity.Identity are likely to provide a certificate pool.
 //
-// For OpenZiti instances not using publicly signed certificates, `ziti.GetControllerWellKnownCaPool()` can be used
+// For Hanzo ZT instances not using publicly signed certificates, `ziti.GetControllerWellKnownCaPool()` can be used
 // to obtain and verify the target controllers CAs. Tools should allow users to verify and accept new controllers
 // that have not been verified from an outside secret (such as an enrollment token).
 func NewManagementApiClient(apiUrls []*url.URL, caPool *x509.CertPool, totpCallback func(chan string)) *ManagementApiClient {

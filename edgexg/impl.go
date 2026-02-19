@@ -1,6 +1,6 @@
 package edgexg
 
-import "github.com/openziti/sdk-golang/ziti/edge"
+import "github.com/hanzozt/sdk-golang/ziti/edge"
 
 const (
 	PayloadFlagsHeader uint8 = 0x10

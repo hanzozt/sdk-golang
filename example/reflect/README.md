@@ -7,21 +7,21 @@ This example demonstrates:
 * Bidirectional communication over the Open Ziti network overlay
 
 ## Requirements
-* an OpenZiti network. If you do not have one, the [quickstarts](https://netfoundry.io/docs/openziti/learn/quickstarts/) works well
-* OpenZiti cli or Zac to create services and identities on the OpenZiti network 
+* an Hanzo ZT network. If you do not have one, the [quickstarts](https://netfoundry.io/docs/hanzozt/learn/quickstarts/) works well
+* Hanzo ZT cli or Zac to create services and identities on the Hanzo ZT network 
 
 ## Build the examples
 Refer to the [example README](../README.md) to build the SDK examples
 
-## Setup using the OpenZiti CLI
-These steps will configure the reflect service using the OpenZiti CLI. At the end of these steps you will have created:
+## Setup using the Hanzo ZT CLI
+These steps will configure the reflect service using the Hanzo ZT CLI. At the end of these steps you will have created:
 * a service called `reflectService`
 * an identity to host (bind) the service
 * an identity to connect to (dial) the service
 * the service policies required to run the application
 
 Steps:
-1. Log into OpenZiti. The host:port and username/password will vary depending on your network.
+1. Log into Hanzo ZT. The host:port and username/password will vary depending on your network.
 
        ziti edge login localhost:1280 -u admin -p admin
 2. Run this script to create everything you need.

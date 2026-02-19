@@ -28,7 +28,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/openziti/sdk-golang/ziti"
+	"github.com/hanzozt/sdk-golang/ziti"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 )

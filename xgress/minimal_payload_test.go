@@ -6,8 +6,8 @@ import (
 	"errors"
 	"fmt"
 	"github.com/michaelquigley/pfxlog"
-	"github.com/openziti/channel/v4"
-	"github.com/openziti/metrics"
+	"github.com/hanzozt/channel/v4"
+	"github.com/hanzozt/metrics"
 	cmap "github.com/orcaman/concurrent-map/v2"
 	metrics2 "github.com/rcrowley/go-metrics"
 	"github.com/sirupsen/logrus"
@@ -263,9 +263,9 @@ func (m mockFaulter) ReportForwardingFault(circuitId string, ctrlId string) {
 }
 
 func Test_MinimalPayloadMarshalling(t *testing.T) {
-	logOptions := pfxlog.DefaultOptions().SetTrimPrefix("github.com/openziti/").NoColor()
+	logOptions := pfxlog.DefaultOptions().SetTrimPrefix("github.com/hanzozt/").NoColor()
 	pfxlog.GlobalInit(logrus.InfoLevel, logOptions)
-	pfxlog.SetFormatter(pfxlog.NewFormatter(pfxlog.DefaultOptions().SetTrimPrefix("github.com/openziti/").StartingToday()))
+	pfxlog.SetFormatter(pfxlog.NewFormatter(pfxlog.DefaultOptions().SetTrimPrefix("github.com/hanzozt/").StartingToday()))
 
 	metricsRegistry := metrics.NewRegistry("test", nil)
 
@@ -323,9 +323,9 @@ func Test_MinimalPayloadMarshalling(t *testing.T) {
 }
 
 func Test_PayloadSize(t *testing.T) {
-	logOptions := pfxlog.DefaultOptions().SetTrimPrefix("github.com/openziti/").NoColor()
+	logOptions := pfxlog.DefaultOptions().SetTrimPrefix("github.com/hanzozt/").NoColor()
 	pfxlog.GlobalInit(logrus.InfoLevel, logOptions)
-	pfxlog.SetFormatter(pfxlog.NewFormatter(pfxlog.DefaultOptions().SetTrimPrefix("github.com/openziti/").StartingToday()))
+	pfxlog.SetFormatter(pfxlog.NewFormatter(pfxlog.DefaultOptions().SetTrimPrefix("github.com/hanzozt/").StartingToday()))
 
 	metricsRegistry := metrics.NewRegistry("test", nil)
 

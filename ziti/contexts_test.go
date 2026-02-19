@@ -29,8 +29,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/openziti/identity"
-	edgeapis "github.com/openziti/sdk-golang/edge-apis"
+	"github.com/hanzozt/identity"
+	edgeapis "github.com/hanzozt/sdk-golang/edge-apis"
 	"github.com/stretchr/testify/require"
 )
 

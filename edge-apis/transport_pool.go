@@ -38,7 +38,7 @@ type ApiClientTransport struct {
 }
 
 // ClientTransportPool manages multiple runtime.ClientTransport instances representing
-// different controller endpoints in a high-availability OpenZiti network. It provides
+// different controller endpoints in a high-availability Hanzo ZT network. It provides
 // automatic failover capabilities when individual controllers become unavailable.
 type ClientTransportPool interface {
 	runtime.ClientTransport

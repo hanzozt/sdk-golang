@@ -1,21 +1,21 @@
 # Overview
 This example illustrates how to embed zero trust connectivity into your server-side code. The server now listens on the 
-OpenZiti overlay network and not on the layer 3, IP-based network.
+Hanzo ZT overlay network and not on the layer 3, IP-based network.
 
 This example demonstrates:
 * Binding a service and listening for HTTP connections
 * Accessing the service via a tunneler
 
 ## Requirements
-* an OpenZiti network. If you do not have one, you can use one of the [quickstarts](https://netfoundry.io/docs/openziti/learn/quickstarts/) to set one up.
-* OpenZiti CLI to create services and identities on the OpenZiti Network
-* Have the appropriate [Ziti Desktop Edge](https://netfoundry.io/docs/openziti/reference/tunnelers/) for your operating system
+* an Hanzo ZT network. If you do not have one, you can use one of the [quickstarts](https://netfoundry.io/docs/hanzozt/learn/quickstarts/) to set one up.
+* Hanzo ZT CLI to create services and identities on the Hanzo ZT Network
+* Have the appropriate [Ziti Desktop Edge](https://netfoundry.io/docs/hanzozt/reference/tunnelers/) for your operating system
 
 ## Build the examples
 Refer to the [example README](../README.md) to build the SDK examples
 
-## Setup using the OpenZiti CLI
-These steps will configure the service using the OpenZiti CLI. At the end of these steps you will have created:
+## Setup using the Hanzo ZT CLI
+These steps will configure the service using the Hanzo ZT CLI. At the end of these steps you will have created:
 * a service called `simpleService`
 * an identity to host (bind) the service
 * an identity to connect to (dial) the service
@@ -23,7 +23,7 @@ These steps will configure the service using the OpenZiti CLI. At the end of the
 * the service policies required to authorize the identities for bind and dial
 
 Steps:
-1. Log into OpenZiti. The host:port and username/password will vary depending on your network.
+1. Log into Hanzo ZT. The host:port and username/password will vary depending on your network.
 
        ziti edge login localhost:1280 -u admin -p admin
 1. Run this script to create everything you need.
@@ -53,7 +53,7 @@ Steps:
        ./simple-server simple-server.json simpleService
 
 1. Enroll the `simple-client` client identity
-   1. Refer to [enrolling documentation](https://netfoundry.io/docs/openziti/learn/core-concepts/identities/enrolling/) for details
+   1. Refer to [enrolling documentation](https://netfoundry.io/docs/hanzozt/learn/core-concepts/identities/enrolling/) for details
 
 1. Issue cURL commands to see the server side responses in action. There are two servers spun up by the `simple-server` 
    binary. One server is a simple HTTP server which is running on the local machine. The second server is a zitified 

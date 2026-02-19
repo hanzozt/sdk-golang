@@ -9,8 +9,8 @@ This example demonstrates:
 
 ## Requirements
 
-* an OpenZiti network. If you do not have one, you can use one of the [quickstarts](https://netfoundry.io/docs/openziti/learn/quickstarts/) to set one up.
-* OpenZiti CLI to create services and identities on the OpenZiti Network
+* an Hanzo ZT network. If you do not have one, you can use one of the [quickstarts](https://netfoundry.io/docs/hanzozt/learn/quickstarts/) to set one up.
+* Hanzo ZT CLI to create services and identities on the Hanzo ZT Network
 
 ## Build the examples
 
@@ -18,7 +18,7 @@ Refer to the [example README](../README.md) to build the SDK examples
 
 ## Part 1: Set up a cURLz to a non-zitified endpoint
 
-These steps will configure the service using the OpenZiti CLI. In this example, the traffic starts on the overlay zero
+These steps will configure the service using the Hanzo ZT CLI. In this example, the traffic starts on the overlay zero
 trust network and then is offloaded onto the underlay network.
 
 ### Part 1 Architecture Overview
@@ -34,7 +34,7 @@ At the end of these steps you will have created:
 
 Steps:
 
-1. Log into OpenZiti. The host:port and username/password will vary depending on your network.
+1. Log into Hanzo ZT. The host:port and username/password will vary depending on your network.
 
        ```bash
        ziti edge login localhost:1280 -u admin -p admin

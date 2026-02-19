@@ -8,9 +8,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/openziti/channel/v4"
-	"github.com/openziti/foundation/v2/sequencer"
-	"github.com/openziti/sdk-golang/ziti/edge"
+	"github.com/hanzozt/channel/v4"
+	"github.com/hanzozt/foundation/v2/sequencer"
+	"github.com/hanzozt/sdk-golang/ziti/edge"
 	"github.com/stretchr/testify/require"
 )
 

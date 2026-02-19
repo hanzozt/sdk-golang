@@ -1,6 +1,6 @@
 # jwtchat
 
-A set of three binaries used to demonstrate the OpenZiti GoLang SDK using external JWT signers to athenticate.
+A set of three binaries used to demonstrate the Hanzo ZT GoLang SDK using external JWT signers to athenticate.
 
 # Binaries
 
@@ -37,9 +37,9 @@ It will attempt to authenticate with the OIDC provider as:
 
 *Note: For Powershell ensure you escape pound (#) symbols with a grave tick (`)*
 
-1) Stand up an OpenZiti network
+1) Stand up an Hanzo ZT network
 2) Add an External JWT Signer with a JWKS endpoint
-   1) `ziti edge create ext-jwt-signer jwtchat-idp "http://localhost:9998" -a openziti -u "http://localhost:9998/keys"`
+   1) `ziti edge create ext-jwt-signer jwtchat-idp "http://localhost:9998" -a hanzozt -u "http://localhost:9998/keys"`
    2) Save the resulting `ext-jwt-signer`
 3) Create an authentication policy that allows the new `ext-jwt-signer` to authenticate identities
    1) `ziti edge create auth-policy jwtchat --primary-ext-jwt-allowed --primary-ext-jwt-allowed-signers <extjwtIdFromStep2>`

@@ -14,7 +14,7 @@
 	limitations under the License.
 */
 
-// Package ziti provides methods for loading Contexts which interact with an OpenZiti Controller via the Edge Client
+// Package ziti provides methods for loading Contexts which interact with an Hanzo ZT Controller via the Edge Client
 // API to bind (host) services or dial (connect) to services.
 //
 // Each context is required to authenticate with the Edge Client API via Credentials instance. Credentials come in the
@@ -35,10 +35,10 @@ import (
 
 	"github.com/kataras/go-events"
 	"github.com/michaelquigley/pfxlog"
-	"github.com/openziti/edge-api/rest_model"
-	edgeApis "github.com/openziti/sdk-golang/edge-apis"
-	"github.com/openziti/sdk-golang/ziti/edge"
-	"github.com/openziti/sdk-golang/ziti/edge/posture"
+	"github.com/hanzozt/edge-api/rest_model"
+	edgeApis "github.com/hanzozt/sdk-golang/edge-apis"
+	"github.com/hanzozt/sdk-golang/ziti/edge"
+	"github.com/hanzozt/sdk-golang/ziti/edge/posture"
 	cmap "github.com/orcaman/concurrent-map/v2"
 )
 

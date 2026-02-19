@@ -32,10 +32,10 @@ import (
 	"time"
 
 	"github.com/michaelquigley/pfxlog"
-	"github.com/openziti/channel/v4"
-	"github.com/openziti/foundation/v2/concurrenz"
-	"github.com/openziti/foundation/v2/debugz"
-	"github.com/openziti/foundation/v2/info"
+	"github.com/hanzozt/channel/v4"
+	"github.com/hanzozt/foundation/v2/concurrenz"
+	"github.com/hanzozt/foundation/v2/debugz"
+	"github.com/hanzozt/foundation/v2/info"
 	"github.com/sirupsen/logrus"
 )
 

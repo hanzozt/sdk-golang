@@ -1,9 +1,9 @@
 # zping  
 
-`zping` provides equivalent functionality for an OpenZiti overlay network as the similarly named underlay function 
+`zping` provides equivalent functionality for an Hanzo ZT overlay network as the similarly named underlay function 
 `ping`. Being a zero trust overlay network, classic underlay tooling like `ping` won't function properly.
 
-`zping` provides end to end latency measurements between any two identities in an OpenZiti network. Like `icmp`, `zping`
+`zping` provides end to end latency measurements between any two identities in an Hanzo ZT network. Like `icmp`, `zping`
 will provide the following metrics upon completion of the ping session:
 
 * min
@@ -19,7 +19,7 @@ Refer to the [example README](../README.md) to build the SDK examples
 ## Setup and Configure the Example
 
 This README will use the `ziti edge quickstart` command for its example. You'll need the `ziti` CLI on your path to run
-the commands shown. If you have an OpenZiti overlay network already, some commands will not be necessary. The 
+the commands shown. If you have an Hanzo ZT overlay network already, some commands will not be necessary. The 
 commands all use bash and expect you're running on a version of *nix as `/tmp` is referenced. Adapt accordingly if 
 you're using Windows. The example expects the binary to be put into the build directory as specified by the "Build 
 the Example" section above.

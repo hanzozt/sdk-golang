@@ -2,18 +2,18 @@
 
 ## Issues Fixed and Dependency Updates
 
-* github.com/openziti/sdk-golang: [v1.4.0 -> v1.4.1](https://github.com/openziti/sdk-golang/compare/v1.4.0...v1.4.1)
-    * [Issue #860](https://github.com/openziti/sdk-golang/issues/860) - Make the dialing identity's id and name available on dialed connections
+* github.com/hanzozt/sdk-golang: [v1.4.0 -> v1.4.1](https://github.com/hanzozt/sdk-golang/compare/v1.4.0...v1.4.1)
+    * [Issue #860](https://github.com/hanzozt/sdk-golang/issues/860) - Make the dialing identity's id and name available on dialed connections
 
-* github.com/openziti/channel/v4: [v4.2.50 -> v4.3.2](https://github.com/openziti/channel/compare/v4.2.50...v4.3.2)
-    * [Issue #225](https://github.com/openziti/channel/issues/225) - Add ChannelCreated to the UnderlayHandler API to allow handlers to be initialized with the channel before binding
-    * [Issue #224](https://github.com/openziti/channel/issues/224) - Update the underlay dispatcher to allow unknown underlay types to fall through to the default
-    * [Issue #222](https://github.com/openziti/channel/issues/222) - Allow injecting the underlay type into messages
+* github.com/hanzozt/channel/v4: [v4.2.50 -> v4.3.2](https://github.com/hanzozt/channel/compare/v4.2.50...v4.3.2)
+    * [Issue #225](https://github.com/hanzozt/channel/issues/225) - Add ChannelCreated to the UnderlayHandler API to allow handlers to be initialized with the channel before binding
+    * [Issue #224](https://github.com/hanzozt/channel/issues/224) - Update the underlay dispatcher to allow unknown underlay types to fall through to the default
+    * [Issue #222](https://github.com/hanzozt/channel/issues/222) - Allow injecting the underlay type into messages
 
-* github.com/openziti/foundation/v2: [v2.0.84 -> v2.0.86](https://github.com/openziti/foundation/compare/v2.0.84...v2.0.86)
-* github.com/openziti/identity: [v1.0.122 -> v1.0.124](https://github.com/openziti/identity/compare/v1.0.122...v1.0.124)
-* github.com/openziti/secretstream: [v0.1.46 -> v0.1.47](https://github.com/openziti/secretstream/compare/v0.1.46...v0.1.47)
-* github.com/openziti/transport/v2: [v2.0.205 -> v2.0.208](https://github.com/openziti/transport/compare/v2.0.205...v2.0.208)
+* github.com/hanzozt/foundation/v2: [v2.0.84 -> v2.0.86](https://github.com/hanzozt/foundation/compare/v2.0.84...v2.0.86)
+* github.com/hanzozt/identity: [v1.0.122 -> v1.0.124](https://github.com/hanzozt/identity/compare/v1.0.122...v1.0.124)
+* github.com/hanzozt/secretstream: [v0.1.46 -> v0.1.47](https://github.com/hanzozt/secretstream/compare/v0.1.46...v0.1.47)
+* github.com/hanzozt/transport/v2: [v2.0.205 -> v2.0.208](https://github.com/hanzozt/transport/compare/v2.0.205...v2.0.208)
 * github.com/zitadel/oidc/v3: v3.45.3 -> v3.45.4
 * golang.org/x/oauth2: v0.34.0 -> v0.35.0
 * golang.org/x/sys: v0.40.0 -> v0.41.0
@@ -34,27 +34,27 @@ The externally facing APIs have not changed and router/controller compatibility 
 
 ## Issues Fixed and Dependency Updates
 
-* github.com/openziti/sdk-golang: [v1.3.1 -> v1.4.0](https://github.com/openziti/sdk-golang/compare/v1.3.1...v1.4.0)
-    * [Issue #857](https://github.com/openziti/sdk-golang/issues/857) - Use new error code and retry hints to correctly react to terminator errors
-    * [Issue #847](https://github.com/openziti/sdk-golang/issues/847) - Ensure the initial version check succeeds, to ensure we don't legacy sessions on ha or oidc-enabled controllers
+* github.com/hanzozt/sdk-golang: [v1.3.1 -> v1.4.0](https://github.com/hanzozt/sdk-golang/compare/v1.3.1...v1.4.0)
+    * [Issue #857](https://github.com/hanzozt/sdk-golang/issues/857) - Use new error code and retry hints to correctly react to terminator errors
+    * [Issue #847](https://github.com/hanzozt/sdk-golang/issues/847) - Ensure the initial version check succeeds, to ensure we don't legacy sessions on ha or oidc-enabled controllers
 
 * github.com/go-openapi/runtime: v0.29.0 -> v0.29.2
 * github.com/go-openapi/strfmt: v0.24.0 -> v0.25.0
 * github.com/go-resty/resty/v2: v2.16.5 -> v2.17.1
 * github.com/golang-jwt/jwt/v5: v5.3.0 -> v5.3.1
-* github.com/openziti/channel/v4: [v4.2.41 -> v4.2.50](https://github.com/openziti/channel/compare/v4.2.41...v4.2.50)
-* github.com/openziti/edge-api: [v0.26.51 -> v0.26.52](https://github.com/openziti/edge-api/compare/v0.26.51...v0.26.52)
-    * [Issue #164](https://github.com/openziti/edge-api/issues/164) - Add permissions list to identity
+* github.com/hanzozt/channel/v4: [v4.2.41 -> v4.2.50](https://github.com/hanzozt/channel/compare/v4.2.41...v4.2.50)
+* github.com/hanzozt/edge-api: [v0.26.51 -> v0.26.52](https://github.com/hanzozt/edge-api/compare/v0.26.51...v0.26.52)
+    * [Issue #164](https://github.com/hanzozt/edge-api/issues/164) - Add permissions list to identity
 
-* github.com/openziti/foundation/v2: [v2.0.79 -> v2.0.84](https://github.com/openziti/foundation/compare/v2.0.79...v2.0.84)
-    * [Issue #464](https://github.com/openziti/foundation/issues/464) - Add support for -pre in versions
+* github.com/hanzozt/foundation/v2: [v2.0.79 -> v2.0.84](https://github.com/hanzozt/foundation/compare/v2.0.79...v2.0.84)
+    * [Issue #464](https://github.com/hanzozt/foundation/issues/464) - Add support for -pre in versions
 
-* github.com/openziti/identity: [v1.0.118 -> v1.0.122](https://github.com/openziti/identity/compare/v1.0.118...v1.0.122)
-* github.com/openziti/metrics: [v1.4.2 -> v1.4.3](https://github.com/openziti/metrics/compare/v1.4.2...v1.4.3)
-    * [Issue #56](https://github.com/openziti/metrics/issues/56) - underlying resources of reference counted meters are not cleaned up when reference count hits zero
+* github.com/hanzozt/identity: [v1.0.118 -> v1.0.122](https://github.com/hanzozt/identity/compare/v1.0.118...v1.0.122)
+* github.com/hanzozt/metrics: [v1.4.2 -> v1.4.3](https://github.com/hanzozt/metrics/compare/v1.4.2...v1.4.3)
+    * [Issue #56](https://github.com/hanzozt/metrics/issues/56) - underlying resources of reference counted meters are not cleaned up when reference count hits zero
 
-* github.com/openziti/secretstream: [v0.1.42 -> v0.1.46](https://github.com/openziti/secretstream/compare/v0.1.42...v0.1.46)
-* github.com/openziti/transport/v2: [v2.0.198 -> v2.0.205](https://github.com/openziti/transport/compare/v2.0.198...v2.0.205)
+* github.com/hanzozt/secretstream: [v0.1.42 -> v0.1.46](https://github.com/hanzozt/secretstream/compare/v0.1.42...v0.1.46)
+* github.com/hanzozt/transport/v2: [v2.0.198 -> v2.0.205](https://github.com/hanzozt/transport/compare/v2.0.198...v2.0.205)
 * github.com/sirupsen/logrus: v1.9.3 -> v1.9.4
 * github.com/zitadel/oidc/v3: v3.45.0 -> v3.45.3
 * golang.org/x/oauth2: v0.31.0 -> v0.34.0
@@ -87,27 +87,27 @@ The externally facing APIs have not changed and router/controller compatibility 
 
 ## API Session Resumption
 
-The OpenZiti Go SDK supports a `edge_apis` GoLang module. That module now supports API session resumption, enabling 
+The Hanzo ZT Go SDK supports a `edge_apis` GoLang module. That module now supports API session resumption, enabling 
 API Sessions to be (un)marshalled to storage between runs. Useful for API-driven development like CLIs where operation
 is intemitent or over multiple application runs.
 
 ## Issues Fixed and Dependency Updates
 
-* github.com/openziti/sdk-golang: ReEntry Support
+* github.com/hanzozt/sdk-golang: ReEntry Support
 
 # Release notes 1.2.11
 
 ## Issues Fixed and Dependency Updates
 
-* github.com/openziti/sdk-golang: [v1.2.10 -> v1.2.11](https://github.com/openziti/sdk-golang/compare/v1.2.10...v1.2.11)
-    * [Issue #824](https://github.com/openziti/sdk-golang/pull/824) - release notes and hard errors on no TOTP handler breaks partial auth events
+* github.com/hanzozt/sdk-golang: [v1.2.10 -> v1.2.11](https://github.com/hanzozt/sdk-golang/compare/v1.2.10...v1.2.11)
+    * [Issue #824](https://github.com/hanzozt/sdk-golang/pull/824) - release notes and hard errors on no TOTP handler breaks partial auth events
 
-* github.com/openziti/channel/v4: [v4.2.37 -> v4.2.41](https://github.com/openziti/channel/compare/v4.2.37...v4.2.41)
-* github.com/openziti/edge-api: [v0.26.50 -> v0.26.51](https://github.com/openziti/edge-api/compare/v0.26.50...v0.26.51)
-* github.com/openziti/foundation/v2: [v2.0.77 -> v2.0.79](https://github.com/openziti/foundation/compare/v2.0.77...v2.0.79)
-* github.com/openziti/identity: [v1.0.116 -> v1.0.118](https://github.com/openziti/identity/compare/v1.0.116...v1.0.118)
-* github.com/openziti/secretstream: [v0.1.39 -> v0.1.42](https://github.com/openziti/secretstream/compare/v0.1.39...v0.1.42)
-* github.com/openziti/transport/v2: [v2.0.194 -> v2.0.198](https://github.com/openziti/transport/compare/v2.0.194...v2.0.198)
+* github.com/hanzozt/channel/v4: [v4.2.37 -> v4.2.41](https://github.com/hanzozt/channel/compare/v4.2.37...v4.2.41)
+* github.com/hanzozt/edge-api: [v0.26.50 -> v0.26.51](https://github.com/hanzozt/edge-api/compare/v0.26.50...v0.26.51)
+* github.com/hanzozt/foundation/v2: [v2.0.77 -> v2.0.79](https://github.com/hanzozt/foundation/compare/v2.0.77...v2.0.79)
+* github.com/hanzozt/identity: [v1.0.116 -> v1.0.118](https://github.com/hanzozt/identity/compare/v1.0.116...v1.0.118)
+* github.com/hanzozt/secretstream: [v0.1.39 -> v0.1.42](https://github.com/hanzozt/secretstream/compare/v0.1.39...v0.1.42)
+* github.com/hanzozt/transport/v2: [v2.0.194 -> v2.0.198](https://github.com/hanzozt/transport/compare/v2.0.194...v2.0.198)
 * golang.org/x/sys: v0.36.0 -> v0.37.0
 * golang.org/x/crypto: v0.42.0 -> v0.43.0
 * golang.org/x/net: v0.44.0 -> v0.45.0
@@ -122,44 +122,44 @@ is intemitent or over multiple application runs.
 
 ## HA Posture Check Support
 
-Upcoming releases of the OpenZiti controller and routers will support posture checks that are enforced at the router
+Upcoming releases of the Hanzo ZT controller and routers will support posture checks that are enforced at the router
 level. This release adds support for that workflow when it is available.
 
 
 ## Issues Fixed and Dependency Updates
 
-* github.com/openziti/sdk-golang: [v1.2.9 -> v1.2.10](https://github.com/openziti/sdk-golang/compare/v1.2.9...v1.2.10)
+* github.com/hanzozt/sdk-golang: [v1.2.9 -> v1.2.10](https://github.com/hanzozt/sdk-golang/compare/v1.2.9...v1.2.10)
 
 # Release notes 1.2.9
 
 ## Issues Fixed and Dependency Updates
 
-* github.com/openziti/sdk-golang: [v1.2.8 -> v1.2.9](https://github.com/openziti/sdk-golang/compare/v1.2.8...v1.2.9)
-    * [Issue #818](https://github.com/openziti/sdk-golang/issues/818) - Full re-auth should not clear services list, as that breaks the on-change logic
-    * [Issue #817](https://github.com/openziti/sdk-golang/issues/817) - goroutines can get stuck when iterating over randomized HA controller list
+* github.com/hanzozt/sdk-golang: [v1.2.8 -> v1.2.9](https://github.com/hanzozt/sdk-golang/compare/v1.2.8...v1.2.9)
+    * [Issue #818](https://github.com/hanzozt/sdk-golang/issues/818) - Full re-auth should not clear services list, as that breaks the on-change logic
+    * [Issue #817](https://github.com/hanzozt/sdk-golang/issues/817) - goroutines can get stuck when iterating over randomized HA controller list
 
 # Release notes 1.2.8
 
 ## Issues Fixed and Dependency Updates
 
-* github.com/openziti/sdk-golang: [v1.2.7 -> v1.2.8](https://github.com/openziti/sdk-golang/compare/v1.2.7...v1.2.8)
-    * [Issue #736](https://github.com/openziti/sdk-golang/issues/736) - Migrate from github.com/mailru/easyjson
-    * [Issue #807](https://github.com/openziti/sdk-golang/issues/807) - Don't send close from rxer to avoid blocking
-    * [Issue #813](https://github.com/openziti/sdk-golang/issues/813) - SDK doesn't stop close listener when it detects that a service being hosted gets deleted
+* github.com/hanzozt/sdk-golang: [v1.2.7 -> v1.2.8](https://github.com/hanzozt/sdk-golang/compare/v1.2.7...v1.2.8)
+    * [Issue #736](https://github.com/hanzozt/sdk-golang/issues/736) - Migrate from github.com/mailru/easyjson
+    * [Issue #807](https://github.com/hanzozt/sdk-golang/issues/807) - Don't send close from rxer to avoid blocking
+    * [Issue #813](https://github.com/hanzozt/sdk-golang/issues/813) - SDK doesn't stop close listener when it detects that a service being hosted gets deleted
 
 * github.com/go-openapi/runtime: v0.28.0 -> v0.29.0
 * github.com/go-openapi/strfmt: v0.23.0 -> v0.24.0
 * github.com/michaelquigley/pfxlog: v0.6.10 -> v1.0.0
-* github.com/openziti/channel/v4: [v4.2.31 -> v4.2.37](https://github.com/openziti/channel/compare/v4.2.31...v4.2.37)
-* github.com/openziti/edge-api: [v0.26.47 -> v0.26.48](https://github.com/openziti/edge-api/compare/v0.26.47...v0.26.48)
-* github.com/openziti/foundation/v2: [v2.0.73 -> v2.0.77](https://github.com/openziti/foundation/compare/v2.0.73...v2.0.77)
-    * [Issue #455](https://github.com/openziti/foundation/issues/455) - Correctly close goroutine pool when external close is signaled
-    * [Issue #452](https://github.com/openziti/foundation/issues/452) - Goroutine pool with a min worker count of 1 can drop to 0 workers due to race condition
+* github.com/hanzozt/channel/v4: [v4.2.31 -> v4.2.37](https://github.com/hanzozt/channel/compare/v4.2.31...v4.2.37)
+* github.com/hanzozt/edge-api: [v0.26.47 -> v0.26.48](https://github.com/hanzozt/edge-api/compare/v0.26.47...v0.26.48)
+* github.com/hanzozt/foundation/v2: [v2.0.73 -> v2.0.77](https://github.com/hanzozt/foundation/compare/v2.0.73...v2.0.77)
+    * [Issue #455](https://github.com/hanzozt/foundation/issues/455) - Correctly close goroutine pool when external close is signaled
+    * [Issue #452](https://github.com/hanzozt/foundation/issues/452) - Goroutine pool with a min worker count of 1 can drop to 0 workers due to race condition
 
-* github.com/openziti/identity: [v1.0.112 -> v1.0.116](https://github.com/openziti/identity/compare/v1.0.112...v1.0.116)
-    * [Issue #68](https://github.com/openziti/identity/issues/68) - Shutdown file watcher when stopping identity watcher
+* github.com/hanzozt/identity: [v1.0.112 -> v1.0.116](https://github.com/hanzozt/identity/compare/v1.0.112...v1.0.116)
+    * [Issue #68](https://github.com/hanzozt/identity/issues/68) - Shutdown file watcher when stopping identity watcher
 
-* github.com/openziti/transport/v2: [v2.0.189 -> v2.0.194](https://github.com/openziti/transport/compare/v2.0.189...v2.0.194)
+* github.com/hanzozt/transport/v2: [v2.0.189 -> v2.0.194](https://github.com/hanzozt/transport/compare/v2.0.189...v2.0.194)
 * github.com/zitadel/oidc/v3: v3.44.0 -> v3.45.0
 * google.golang.org/protobuf: v1.36.9 -> v1.36.10
 * github.com/go-openapi/analysis: v0.23.0 -> v0.24.0
@@ -198,9 +198,9 @@ level. This release adds support for that workflow when it is available.
 
 ## Issues Fixed and Dependency Updates
 
-* github.com/openziti/sdk-golang: [v1.2.4 -> v1.2.5](https://github.com/openziti/sdk-golang/compare/v1.2.4...v1.2.5)
-    * [Issue #804](https://github.com/openziti/sdk-golang/issues/804): Simplify OIDC flow for applications
-    * [PR #797](https://github.com/openziti/sdk-golang/pull/797): Add.generic.msg.sink
+* github.com/hanzozt/sdk-golang: [v1.2.4 -> v1.2.5](https://github.com/hanzozt/sdk-golang/compare/v1.2.4...v1.2.5)
+    * [Issue #804](https://github.com/hanzozt/sdk-golang/issues/804): Simplify OIDC flow for applications
+    * [PR #797](https://github.com/hanzozt/sdk-golang/pull/797): Add.generic.msg.sink
 
 
 # Release notes 1.2.4
@@ -212,14 +212,14 @@ level. This release adds support for that workflow when it is available.
 
 ## Issues Fixed and Dependency Updates
 
-* github.com/openziti/sdk-golang: [v1.2.3 -> v1.2.4](https://github.com/openziti/sdk-golang/compare/v1.2.3...v1.2.4)
-    * [Issue #800](https://github.com/openziti/sdk-golang/issues/800) - Tidy create service session logging
+* github.com/hanzozt/sdk-golang: [v1.2.3 -> v1.2.4](https://github.com/hanzozt/sdk-golang/compare/v1.2.3...v1.2.4)
+    * [Issue #800](https://github.com/hanzozt/sdk-golang/issues/800) - Tidy create service session logging
 
-* github.com/openziti/channel/v4: [v4.2.21 -> v4.2.31](https://github.com/openziti/channel/compare/v4.2.21...v4.2.31)
-* github.com/openziti/foundation/v2: [v2.0.70 -> v2.0.73](https://github.com/openziti/foundation/compare/v2.0.70...v2.0.73)
-* github.com/openziti/identity: [v1.0.109 -> v1.0.112](https://github.com/openziti/identity/compare/v1.0.109...v1.0.112)
-* github.com/openziti/secretstream: [v0.1.38 -> v0.1.39](https://github.com/openziti/secretstream/compare/v0.1.38...v0.1.39)
-* github.com/openziti/transport/v2: [v2.0.183 -> v2.0.189](https://github.com/openziti/transport/compare/v2.0.183...v2.0.189)
+* github.com/hanzozt/channel/v4: [v4.2.21 -> v4.2.31](https://github.com/hanzozt/channel/compare/v4.2.21...v4.2.31)
+* github.com/hanzozt/foundation/v2: [v2.0.70 -> v2.0.73](https://github.com/hanzozt/foundation/compare/v2.0.70...v2.0.73)
+* github.com/hanzozt/identity: [v1.0.109 -> v1.0.112](https://github.com/hanzozt/identity/compare/v1.0.109...v1.0.112)
+* github.com/hanzozt/secretstream: [v0.1.38 -> v0.1.39](https://github.com/hanzozt/secretstream/compare/v0.1.38...v0.1.39)
+* github.com/hanzozt/transport/v2: [v2.0.183 -> v2.0.189](https://github.com/hanzozt/transport/compare/v2.0.183...v2.0.189)
 * github.com/stretchr/testify: v1.10.0 -> v1.11.1
 * golang.org/x/oauth2: v0.30.0 -> v0.31.0
 * golang.org/x/sys: v0.35.0 -> v0.36.0
@@ -229,26 +229,26 @@ level. This release adds support for that workflow when it is available.
 
 ## Issues Fixed and Dependency Updates
 
-* github.com/openziti/sdk-golang: [v1.2.2 -> v1.2.3](https://github.com/openziti/sdk-golang/compare/v1.2.2...v1.2.3)
-    * [Issue #779](https://github.com/openziti/sdk-golang/issues/779) - Remove need to EnableHA flag in Go SDK
+* github.com/hanzozt/sdk-golang: [v1.2.2 -> v1.2.3](https://github.com/hanzozt/sdk-golang/compare/v1.2.2...v1.2.3)
+    * [Issue #779](https://github.com/hanzozt/sdk-golang/issues/779) - Remove need to EnableHA flag in Go SDK
 
-* github.com/openziti/channel/v4: [v4.2.19 -> v4.2.21](https://github.com/openziti/channel/compare/v4.2.19...v4.2.21)
+* github.com/hanzozt/channel/v4: [v4.2.19 -> v4.2.21](https://github.com/hanzozt/channel/compare/v4.2.19...v4.2.21)
 
 # Release notes 1.2.2
 
 ## Issues Fixed and Dependency Updates
 
-* github.com/openziti/sdk-golang: [v1.2.1 -> v1.2.2](https://github.com/openziti/sdk-golang/compare/v1.2.1...v1.2.2)
-    * [Issue #786](https://github.com/openziti/sdk-golang/issues/786) - Slow down dials to an ER if they happen too quickly
-    * [Issue #784](https://github.com/openziti/sdk-golang/issues/784) - Drop retransmit error to debug
+* github.com/hanzozt/sdk-golang: [v1.2.1 -> v1.2.2](https://github.com/hanzozt/sdk-golang/compare/v1.2.1...v1.2.2)
+    * [Issue #786](https://github.com/hanzozt/sdk-golang/issues/786) - Slow down dials to an ER if they happen too quickly
+    * [Issue #784](https://github.com/hanzozt/sdk-golang/issues/784) - Drop retransmit error to debug
 
 * github.com/golang-jwt/jwt/v5: v5.2.3 -> v5.3.0
-* github.com/openziti/channel/v4: [v4.2.18 -> v4.2.19](https://github.com/openziti/channel/compare/v4.2.18...v4.2.19)
-    * [Issue #203](https://github.com/openziti/channel/issues/203) - Track last dial time in UnderlayConstraints
+* github.com/hanzozt/channel/v4: [v4.2.18 -> v4.2.19](https://github.com/hanzozt/channel/compare/v4.2.18...v4.2.19)
+    * [Issue #203](https://github.com/hanzozt/channel/issues/203) - Track last dial time in UnderlayConstraints
 
-* github.com/openziti/edge-api: [v0.26.46 -> v0.26.47](https://github.com/openziti/edge-api/compare/v0.26.46...v0.26.47)
-* github.com/openziti/secretstream: [v0.1.37 -> v0.1.38](https://github.com/openziti/secretstream/compare/v0.1.37...v0.1.38)
-* github.com/openziti/transport/v2: [v2.0.182 -> v2.0.183](https://github.com/openziti/transport/compare/v2.0.182...v2.0.183)
+* github.com/hanzozt/edge-api: [v0.26.46 -> v0.26.47](https://github.com/hanzozt/edge-api/compare/v0.26.46...v0.26.47)
+* github.com/hanzozt/secretstream: [v0.1.37 -> v0.1.38](https://github.com/hanzozt/secretstream/compare/v0.1.37...v0.1.38)
+* github.com/hanzozt/transport/v2: [v2.0.182 -> v2.0.183](https://github.com/hanzozt/transport/compare/v2.0.182...v2.0.183)
 * github.com/rcrowley/go-metrics: v0.0.0-20201227073835-cf1acfcdf475 -> v0.0.0-20250401214520-65e299d6c5c9
 * github.com/zitadel/oidc/v3: v3.42.0 -> v3.44.0
 * golang.org/x/sys: v0.34.0 -> v0.35.0
@@ -268,14 +268,14 @@ level. This release adds support for that workflow when it is available.
 
 ## Issues Fixed and Dependency Updates
 
-* github.com/openziti/sdk-golang: [v1.2.0 -> v1.2.1](https://github.com/openziti/sdk-golang/compare/v1.2.0...v1.2.1)
-    * [Issue #777](https://github.com/openziti/sdk-golang/issues/777) - OIDC auth token refresh doesn't fall back to re-auth if token has expired
-    * [Issue #772](https://github.com/openziti/sdk-golang/issues/772) - xgress close tweaks
-    * [Issue #769](https://github.com/openziti/sdk-golang/issues/769) - Require sdk flow control when using more than one default connection
+* github.com/hanzozt/sdk-golang: [v1.2.0 -> v1.2.1](https://github.com/hanzozt/sdk-golang/compare/v1.2.0...v1.2.1)
+    * [Issue #777](https://github.com/hanzozt/sdk-golang/issues/777) - OIDC auth token refresh doesn't fall back to re-auth if token has expired
+    * [Issue #772](https://github.com/hanzozt/sdk-golang/issues/772) - xgress close tweaks
+    * [Issue #769](https://github.com/hanzozt/sdk-golang/issues/769) - Require sdk flow control when using more than one default connection
 
-* github.com/openziti/channel/v4: [v4.2.16 -> v4.2.18](https://github.com/openziti/channel/compare/v4.2.16...v4.2.18)
-    * [Issue #201](https://github.com/openziti/channel/issues/201) - SendAndWait methods should return an error if the channel closes instead of blocking
-    * [Issue #199](https://github.com/openziti/channel/issues/199) - Reject multi-underlay connections that are the first connection for a channel, but aren't marked as such.
+* github.com/hanzozt/channel/v4: [v4.2.16 -> v4.2.18](https://github.com/hanzozt/channel/compare/v4.2.16...v4.2.18)
+    * [Issue #201](https://github.com/hanzozt/channel/issues/201) - SendAndWait methods should return an error if the channel closes instead of blocking
+    * [Issue #199](https://github.com/hanzozt/channel/issues/199) - Reject multi-underlay connections that are the first connection for a channel, but aren't marked as such.
 
 # Release notes 1.2.0
 
@@ -286,7 +286,7 @@ See the v1.1.0 release notes for more details.
 
 It has now received a substantial amount of testing including long running tests and backwards compability testing. 
 
-These features should be used with version 1.6.6 or newer of OpenZiti.
+These features should be used with version 1.6.6 or newer of Hanzo ZT.
 
 It is still considered experimental, and the feature and APIs may still change, however Go SDK
 users who are multi-plexing connections, are encouraged to try it out.
@@ -295,28 +295,28 @@ Once it has undergone sufficient soak time in a production environment, it will 
 
 ## Issues Fixed and Dependency Updates
 
-* github.com/openziti/sdk-golang: [v1.1.2 -> v1.2.0](https://github.com/openziti/sdk-golang/compare/v1.1.2...v1.2.0)
-    * [Issue #769](https://github.com/openziti/sdk-golang/issues/769) - Require sdk flow control when using more than one default connection
-    * [Issue #765](https://github.com/openziti/sdk-golang/issues/765) - Allow independent close of xgress send and receive
-    * [Issue #763](https://github.com/openziti/sdk-golang/issues/763) - Use a go-routine pool for payload ingest
-    * [Issue #761](https://github.com/openziti/sdk-golang/issues/761) - Use cmap.ConcurrentMap for message multiplexer
-    * [Issue #754](https://github.com/openziti/sdk-golang/issues/754) - panic: unaligned 64-bit atomic operation when running on 32-bit raspberry pi
-    * [Issue #757](https://github.com/openziti/sdk-golang/issues/757) - Not authenticated check fails on session create when using OIDC
+* github.com/hanzozt/sdk-golang: [v1.1.2 -> v1.2.0](https://github.com/hanzozt/sdk-golang/compare/v1.1.2...v1.2.0)
+    * [Issue #769](https://github.com/hanzozt/sdk-golang/issues/769) - Require sdk flow control when using more than one default connection
+    * [Issue #765](https://github.com/hanzozt/sdk-golang/issues/765) - Allow independent close of xgress send and receive
+    * [Issue #763](https://github.com/hanzozt/sdk-golang/issues/763) - Use a go-routine pool for payload ingest
+    * [Issue #761](https://github.com/hanzozt/sdk-golang/issues/761) - Use cmap.ConcurrentMap for message multiplexer
+    * [Issue #754](https://github.com/hanzozt/sdk-golang/issues/754) - panic: unaligned 64-bit atomic operation when running on 32-bit raspberry pi
+    * [Issue #757](https://github.com/hanzozt/sdk-golang/issues/757) - Not authenticated check fails on session create when using OIDC
 
 * github.com/golang-jwt/jwt/v5: v5.2.2 -> v5.2.3
-* github.com/openziti/channel/v4: [v4.2.0 -> v4.2.15](https://github.com/openziti/channel/compare/v4.2.0...v4.2.15)
-    * [Issue #194](https://github.com/openziti/channel/issues/194) - Add GetUnderlays and GetUnderlayCountsByType to Channel
+* github.com/hanzozt/channel/v4: [v4.2.0 -> v4.2.15](https://github.com/hanzozt/channel/compare/v4.2.0...v4.2.15)
+    * [Issue #194](https://github.com/hanzozt/channel/issues/194) - Add GetUnderlays and GetUnderlayCountsByType to Channel
 
-* github.com/openziti/edge-api: [v0.26.45 -> v0.26.46](https://github.com/openziti/edge-api/compare/v0.26.45...v0.26.46)
-    * [Issue #155](https://github.com/openziti/edge-api/issues/155) - Add network interface list to routers and identities
+* github.com/hanzozt/edge-api: [v0.26.45 -> v0.26.46](https://github.com/hanzozt/edge-api/compare/v0.26.45...v0.26.46)
+    * [Issue #155](https://github.com/hanzozt/edge-api/issues/155) - Add network interface list to routers and identities
 
-* github.com/openziti/foundation/v2: [v2.0.63 -> v2.0.70](https://github.com/openziti/foundation/compare/v2.0.63...v2.0.70)
-    * [Issue #443](https://github.com/openziti/foundation/issues/443) - Allow injecting custom method into go-routine pools, to allow identifying them in stack dumps
+* github.com/hanzozt/foundation/v2: [v2.0.63 -> v2.0.70](https://github.com/hanzozt/foundation/compare/v2.0.63...v2.0.70)
+    * [Issue #443](https://github.com/hanzozt/foundation/issues/443) - Allow injecting custom method into go-routine pools, to allow identifying them in stack dumps
 
-* github.com/openziti/identity: [v1.0.101 -> v1.0.109](https://github.com/openziti/identity/compare/v1.0.101...v1.0.109)
-* github.com/openziti/metrics: [v1.4.1 -> v1.4.2](https://github.com/openziti/metrics/compare/v1.4.1...v1.4.2)
-* github.com/openziti/secretstream: [v0.1.34 -> v0.1.37](https://github.com/openziti/secretstream/compare/v0.1.34...v0.1.37)
-* github.com/openziti/transport/v2: [v2.0.171 -> v2.0.182](https://github.com/openziti/transport/compare/v2.0.171...v2.0.182)
+* github.com/hanzozt/identity: [v1.0.101 -> v1.0.109](https://github.com/hanzozt/identity/compare/v1.0.101...v1.0.109)
+* github.com/hanzozt/metrics: [v1.4.1 -> v1.4.2](https://github.com/hanzozt/metrics/compare/v1.4.1...v1.4.2)
+* github.com/hanzozt/secretstream: [v0.1.34 -> v0.1.37](https://github.com/hanzozt/secretstream/compare/v0.1.34...v0.1.37)
+* github.com/hanzozt/transport/v2: [v2.0.171 -> v2.0.182](https://github.com/hanzozt/transport/compare/v2.0.171...v2.0.182)
 * github.com/zitadel/oidc/v3: v3.39.0 -> v3.41.0
 * golang.org/x/sys: v0.33.0 -> v0.34.0
 * golang.org/x/crypto: v0.38.0 -> v0.40.0
@@ -329,9 +329,9 @@ Once it has undergone sufficient soak time in a production environment, it will 
 
 ## Issues Fixed and Dependency Updates
 
-* github.com/openziti/sdk-golang: [v1.1.1 -> v1.1.2](https://github.com/openziti/sdk-golang/compare/v1.1.1...v1.1.2)
-    * [Issue #742](https://github.com/openziti/sdk-golang/issues/742) - Additional CtrlId and GetDestinationType for inspect support
-    * [Issue #739](https://github.com/openziti/sdk-golang/issues/739) - go-jose v2.6.3 CVE-2025-27144 resolution
+* github.com/hanzozt/sdk-golang: [v1.1.1 -> v1.1.2](https://github.com/hanzozt/sdk-golang/compare/v1.1.1...v1.1.2)
+    * [Issue #742](https://github.com/hanzozt/sdk-golang/issues/742) - Additional CtrlId and GetDestinationType for inspect support
+    * [Issue #739](https://github.com/hanzozt/sdk-golang/issues/739) - go-jose v2.6.3 CVE-2025-27144 resolution
 
 * github.com/zitadel/oidc/v3: v2.12.2 -> v3.39.0
 * github.com/go-jose/go-jose/v4: v4.0.5 (new)
@@ -353,17 +353,17 @@ server side, so if the feature is enabled, router version 1.6.2+ will be require
 
 ## Issues Fixed and Dependency Updates
 
-* github.com/openziti/sdk-golang: [v1.1.0 -> v1.1.1](https://github.com/openziti/sdk-golang/compare/v1.1.0...v1.1.1)
-    * [Issue #735](https://github.com/openziti/sdk-golang/issues/735) - Ensure Authenticate can't be called in parallel
+* github.com/hanzozt/sdk-golang: [v1.1.0 -> v1.1.1](https://github.com/hanzozt/sdk-golang/compare/v1.1.0...v1.1.1)
+    * [Issue #735](https://github.com/hanzozt/sdk-golang/issues/735) - Ensure Authenticate can't be called in parallel
 
-* github.com/openziti/channel/v4: [v4.0.6 -> v4.1.3](https://github.com/openziti/channel/compare/v4.0.6...v4.1.3)
-    * [Issue #187](https://github.com/openziti/channel/issues/187) - Allow fallback to regular channel when 'is grouped' isn't set when using multi-listener
-    * [Issue #185](https://github.com/openziti/channel/issues/185) - Add group secret for multi-underlay channels
+* github.com/hanzozt/channel/v4: [v4.0.6 -> v4.1.3](https://github.com/hanzozt/channel/compare/v4.0.6...v4.1.3)
+    * [Issue #187](https://github.com/hanzozt/channel/issues/187) - Allow fallback to regular channel when 'is grouped' isn't set when using multi-listener
+    * [Issue #185](https://github.com/hanzozt/channel/issues/185) - Add group secret for multi-underlay channels
 
-* github.com/openziti/edge-api: [v0.26.42 -> v0.26.45](https://github.com/openziti/edge-api/compare/v0.26.42...v0.26.45)
-* github.com/openziti/foundation/v2: [v2.0.59 -> v2.0.63](https://github.com/openziti/foundation/compare/v2.0.59...v2.0.63)
-* github.com/openziti/secretstream: [v0.1.32 -> v0.1.34](https://github.com/openziti/secretstream/compare/v0.1.32...v0.1.34)
-* github.com/openziti/transport/v2: [v2.0.168 -> v2.0.171](https://github.com/openziti/transport/compare/v2.0.168...v2.0.171)
+* github.com/hanzozt/edge-api: [v0.26.42 -> v0.26.45](https://github.com/hanzozt/edge-api/compare/v0.26.42...v0.26.45)
+* github.com/hanzozt/foundation/v2: [v2.0.59 -> v2.0.63](https://github.com/hanzozt/foundation/compare/v2.0.59...v2.0.63)
+* github.com/hanzozt/secretstream: [v0.1.32 -> v0.1.34](https://github.com/hanzozt/secretstream/compare/v0.1.32...v0.1.34)
+* github.com/hanzozt/transport/v2: [v2.0.168 -> v2.0.171](https://github.com/hanzozt/transport/compare/v2.0.168...v2.0.171)
 * golang.org/x/oauth2: v0.29.0 -> v0.30.0
 * golang.org/x/sys: v0.32.0 -> v0.33.0
 * golang.org/x/crypto: v0.36.0 -> v0.38.0
@@ -431,31 +431,31 @@ Note that while present, the `MaxDefaultConnections` should not be used yet.
 
 ## Issues Fixed and Dependency Updates
 
-* github.com/openziti/sdk-golang: [v1.0.2 -> v1.1.0](https://github.com/openziti/sdk-golang/compare/v1.0.2...v1.1.0)
-    * [Issue #702](https://github.com/openziti/sdk-golang/issues/702) - [Go SDK] Support xgress flow control from the SDK
+* github.com/hanzozt/sdk-golang: [v1.0.2 -> v1.1.0](https://github.com/hanzozt/sdk-golang/compare/v1.0.2...v1.1.0)
+    * [Issue #702](https://github.com/hanzozt/sdk-golang/issues/702) - [Go SDK] Support xgress flow control from the SDK
 
-* github.com/openziti/channel/v4: [v4.0.4 -> v4.0.6](https://github.com/openziti/channel/compare/v4.0.4...v4.0.6)
-    * [Issue #182](https://github.com/openziti/channel/issues/182) - MultiListener can deadlock
-    * [Issue #180](https://github.com/openziti/channel/issues/180) - Add GetUserData to Channel interface
+* github.com/hanzozt/channel/v4: [v4.0.4 -> v4.0.6](https://github.com/hanzozt/channel/compare/v4.0.4...v4.0.6)
+    * [Issue #182](https://github.com/hanzozt/channel/issues/182) - MultiListener can deadlock
+    * [Issue #180](https://github.com/hanzozt/channel/issues/180) - Add GetUserData to Channel interface
 
-* github.com/openziti/identity: [v1.0.100 -> v1.0.101](https://github.com/openziti/identity/compare/v1.0.100...v1.0.101)
-    * [Issue #64](https://github.com/openziti/identity/issues/64) - Support a way to check if a cert/serverCert can be saved
+* github.com/hanzozt/identity: [v1.0.100 -> v1.0.101](https://github.com/hanzozt/identity/compare/v1.0.100...v1.0.101)
+    * [Issue #64](https://github.com/hanzozt/identity/issues/64) - Support a way to check if a cert/serverCert can be saved
 
 
 # Release notes 1.0.2
 
 ## Issues Fixed and Dependency Updates
 
-* github.com/openziti/sdk-golang: [v1.0.1 -> v1.0.2](https://github.com/openziti/sdk-golang/compare/v1.0.1...v1.0.2)
-  * [Issue #717](https://github.com/openziti/sdk-golang/issues/717) - ER connection race condition can leak connections
-  * [Issue #689](https://github.com/openziti/sdk-golang/issues/689) - Concurrent map iteration and modification in getEdgeRouterConn causes panic
+* github.com/hanzozt/sdk-golang: [v1.0.1 -> v1.0.2](https://github.com/hanzozt/sdk-golang/compare/v1.0.1...v1.0.2)
+  * [Issue #717](https://github.com/hanzozt/sdk-golang/issues/717) - ER connection race condition can leak connections
+  * [Issue #689](https://github.com/hanzozt/sdk-golang/issues/689) - Concurrent map iteration and modification in getEdgeRouterConn causes panic
 
 # Release notes 1.0.1
 
 ## Issues Fixed and Dependency Updates
 
-* github.com/openziti/sdk-golang: [v1.0.0 -> v1.0.1](https://github.com/openziti/sdk-golang/compare/v1.0.0...v1.0.1)
-* github.com/openziti/channel/v4: [v4.0.3 -> v4.0.4](https://github.com/openziti/channel/compare/v4.0.3...v4.0.4)
+* github.com/hanzozt/sdk-golang: [v1.0.0 -> v1.0.1](https://github.com/hanzozt/sdk-golang/compare/v1.0.0...v1.0.1)
+* github.com/hanzozt/channel/v4: [v4.0.3 -> v4.0.4](https://github.com/hanzozt/channel/compare/v4.0.3...v4.0.4)
 * golang.org/x/oauth2: v0.28.0 -> v0.29.0
 * golang.org/x/sys: v0.31.0 -> v0.32.0
 
@@ -464,7 +464,7 @@ Note that while present, the `MaxDefaultConnections` should not be used yet.
 ## What's New
 
 * Multi-connection support to edge routers
-* Major version set to 1, to indicate compatibility with OpenZiti v1+
+* Major version set to 1, to indicate compatibility with Hanzo ZT v1+
 
 ## Multi-connection support to edge router
 
@@ -480,14 +480,14 @@ multiplexing multiple connections, for example proxies and tunnelers.
 
 ## Issues Fixed and Dependency Updates
 
-* github.com/openziti/sdk-golang: [v0.25.2 -> v1.0.0](https://github.com/openziti/sdk-golang/compare/v0.25.2...v1.0.0)
-    * [Issue #701](https://github.com/openziti/sdk-golang/issues/701) - Support multi-underlay channels for edge router connections
+* github.com/hanzozt/sdk-golang: [v0.25.2 -> v1.0.0](https://github.com/hanzozt/sdk-golang/compare/v0.25.2...v1.0.0)
+    * [Issue #701](https://github.com/hanzozt/sdk-golang/issues/701) - Support multi-underlay channels for edge router connections
 
-* github.com/openziti/channel/v4: [v4.0.1 -> v4.0.3](https://github.com/openziti/channel/compare/v4.0.1...v4.0.3)
-    * [Issue #176](https://github.com/openziti/channel/issues/176) - Multi-channel need a mechanism to notify the txer that the underlay has closed
+* github.com/hanzozt/channel/v4: [v4.0.1 -> v4.0.3](https://github.com/hanzozt/channel/compare/v4.0.1...v4.0.3)
+    * [Issue #176](https://github.com/hanzozt/channel/issues/176) - Multi-channel need a mechanism to notify the txer that the underlay has closed
 
-* github.com/openziti/metrics: [v1.3.0 -> v1.4.0](https://github.com/openziti/metrics/compare/v1.3.0...v1.4.0)
-* github.com/openziti/transport/v2: [v2.0.167 -> v2.0.168](https://github.com/openziti/transport/compare/v2.0.167...v2.0.168)
+* github.com/hanzozt/metrics: [v1.3.0 -> v1.4.0](https://github.com/hanzozt/metrics/compare/v1.3.0...v1.4.0)
+* github.com/hanzozt/transport/v2: [v2.0.167 -> v2.0.168](https://github.com/hanzozt/transport/compare/v2.0.167...v2.0.168)
 * golang.org/x/net: v0.37.0 -> v0.38.0
 
 # Release notes 0.25.2
@@ -499,33 +499,33 @@ multiplexing multiple connections, for example proxies and tunnelers.
 
 ## Issues Fixed and Dependency Updates
 
-* github.com/openziti/sdk-golang: [v0.25.1 -> v0.25.2](https://github.com/openziti/sdk-golang/compare/v0.25.1...v0.25.2)
-* github.com/openziti/channel/v4: [v3.0.39 -> v4.0.1](https://github.com/openziti/channel/compare/v3.0.39...v4.0.1)
-    * [Issue #172](https://github.com/openziti/channel/issues/172) - Support multi-underlay channels
+* github.com/hanzozt/sdk-golang: [v0.25.1 -> v0.25.2](https://github.com/hanzozt/sdk-golang/compare/v0.25.1...v0.25.2)
+* github.com/hanzozt/channel/v4: [v3.0.39 -> v4.0.1](https://github.com/hanzozt/channel/compare/v3.0.39...v4.0.1)
+    * [Issue #172](https://github.com/hanzozt/channel/issues/172) - Support multi-underlay channels
 
 # Release notes 0.25.0
 
 ## Go Version Update
 
 The oldest supported Go version, as per the [Go Release Policy](https://go.dev/doc/devel/release#policy) 
-is now 1.23. The OpenZiti Go SDK now requires Go v1.23.0 as its minimum version.
+is now 1.23. The Hanzo ZT Go SDK now requires Go v1.23.0 as its minimum version.
 
 ## Issues Fixed and Dependency Updates
 
-* github.com/openziti/sdk-golang: [v0.24.1 -> v0.25.0](https://github.com/openziti/sdk-golang/compare/v0.24.1...v0.25.0)
+* github.com/hanzozt/sdk-golang: [v0.24.1 -> v0.25.0](https://github.com/hanzozt/sdk-golang/compare/v0.24.1...v0.25.0)
 * github.com/go-resty/resty/v2: v2.16.4 -> v2.16.5
-* github.com/openziti/channel/v3: [v3.0.27 -> v3.0.39](https://github.com/openziti/channel/compare/v3.0.27...v3.0.39)
-    * [Issue #168](https://github.com/openziti/channel/issues/168) - Add DisconnectHandler to reconnecting channel
+* github.com/hanzozt/channel/v3: [v3.0.27 -> v3.0.39](https://github.com/hanzozt/channel/compare/v3.0.27...v3.0.39)
+    * [Issue #168](https://github.com/hanzozt/channel/issues/168) - Add DisconnectHandler to reconnecting channel
 
-* github.com/openziti/edge-api: [v0.26.38 -> v0.26.42](https://github.com/openziti/edge-api/compare/v0.26.38...v0.26.42)
-* github.com/openziti/foundation/v2: [v2.0.56 -> v2.0.59](https://github.com/openziti/foundation/compare/v2.0.56...v2.0.59)
-* github.com/openziti/identity: [v1.0.94 -> v1.0.100](https://github.com/openziti/identity/compare/v1.0.94...v1.0.100)
-* github.com/openziti/metrics: [v1.2.65 -> v1.3.0](https://github.com/openziti/metrics/compare/v1.2.65...v1.3.0)
-    * [Issue #49](https://github.com/openziti/metrics/issues/49) - Make usage registry event queue size configurable
-    * [Issue #50](https://github.com/openziti/metrics/issues/50) - Do metrics message construction in msg sender goroutine rather than usage/interval event goroutine
+* github.com/hanzozt/edge-api: [v0.26.38 -> v0.26.42](https://github.com/hanzozt/edge-api/compare/v0.26.38...v0.26.42)
+* github.com/hanzozt/foundation/v2: [v2.0.56 -> v2.0.59](https://github.com/hanzozt/foundation/compare/v2.0.56...v2.0.59)
+* github.com/hanzozt/identity: [v1.0.94 -> v1.0.100](https://github.com/hanzozt/identity/compare/v1.0.94...v1.0.100)
+* github.com/hanzozt/metrics: [v1.2.65 -> v1.3.0](https://github.com/hanzozt/metrics/compare/v1.2.65...v1.3.0)
+    * [Issue #49](https://github.com/hanzozt/metrics/issues/49) - Make usage registry event queue size configurable
+    * [Issue #50](https://github.com/hanzozt/metrics/issues/50) - Do metrics message construction in msg sender goroutine rather than usage/interval event goroutine
 
-* github.com/openziti/secretstream: [v0.1.28 -> v0.1.32](https://github.com/openziti/secretstream/compare/v0.1.28...v0.1.32)
-* github.com/openziti/transport/v2: [v2.0.160 -> v2.0.167](https://github.com/openziti/transport/compare/v2.0.160...v2.0.167)
+* github.com/hanzozt/secretstream: [v0.1.28 -> v0.1.32](https://github.com/hanzozt/secretstream/compare/v0.1.28...v0.1.32)
+* github.com/hanzozt/transport/v2: [v2.0.160 -> v2.0.167](https://github.com/hanzozt/transport/compare/v2.0.160...v2.0.167)
 * golang.org/x/oauth2: v0.25.0 -> v0.28.0
 * golang.org/x/sys: v0.29.0 -> v0.31.0
 * google.golang.org/protobuf: v1.36.3 -> v1.36.5
@@ -541,20 +541,20 @@ is now 1.23. The OpenZiti Go SDK now requires Go v1.23.0 as its minimum version.
 
 ## Issues Fixed and Dependency Updates
 
-* github.com/openziti/sdk-golang: [v0.24.0 -> v0.24.1](https://github.com/openziti/sdk-golang/compare/v0.24.0...v0.24.1)
-    * [Issue #673](https://github.com/openziti/sdk-golang/issues/673) - Add license check to GH workflow
+* github.com/hanzozt/sdk-golang: [v0.24.0 -> v0.24.1](https://github.com/hanzozt/sdk-golang/compare/v0.24.0...v0.24.1)
+    * [Issue #673](https://github.com/hanzozt/sdk-golang/issues/673) - Add license check to GH workflow
 
 # Release notes 0.24.0
 
 ## Issues Fixed and Dependency Updates
 
-* github.com/openziti/sdk-golang: [v0.23.45 -> v0.24.0](https://github.com/openziti/sdk-golang/compare/v0.23.45...v0.24.0)
-    * [Issue #663](https://github.com/openziti/sdk-golang/issues/663) - Add API to allow controlling proxying connections to controllers and routers.
+* github.com/hanzozt/sdk-golang: [v0.23.45 -> v0.24.0](https://github.com/hanzozt/sdk-golang/compare/v0.23.45...v0.24.0)
+    * [Issue #663](https://github.com/hanzozt/sdk-golang/issues/663) - Add API to allow controlling proxying connections to controllers and routers.
 
 * github.com/go-resty/resty/v2: v2.15.3 -> v2.16.4
-* github.com/openziti/channel/v3: [v3.0.26 -> v3.0.27](https://github.com/openziti/channel/compare/v3.0.26...v3.0.27)
-* github.com/openziti/edge-api: [v0.26.36 -> v0.26.38](https://github.com/openziti/edge-api/compare/v0.26.36...v0.26.38)
-* github.com/openziti/transport/v2: [v2.0.159 -> v2.0.160](https://github.com/openziti/transport/compare/v2.0.159...v2.0.160)
+* github.com/hanzozt/channel/v3: [v3.0.26 -> v3.0.27](https://github.com/hanzozt/channel/compare/v3.0.26...v3.0.27)
+* github.com/hanzozt/edge-api: [v0.26.36 -> v0.26.38](https://github.com/hanzozt/edge-api/compare/v0.26.36...v0.26.38)
+* github.com/hanzozt/transport/v2: [v2.0.159 -> v2.0.160](https://github.com/hanzozt/transport/compare/v2.0.159...v2.0.160)
 * golang.org/x/oauth2: v0.23.0 -> v0.25.0
 * google.golang.org/protobuf: v1.36.2 -> v1.36.3
 
@@ -562,21 +562,21 @@ is now 1.23. The OpenZiti Go SDK now requires Go v1.23.0 as its minimum version.
 
 ## Issues Fixed and Dependency Updates
 
-* github.com/openziti/sdk-golang: [v0.23.44 -> v0.23.45](https://github.com/openziti/sdk-golang/compare/v0.23.44...v0.23.45)
-    * [Issue #659](https://github.com/openziti/sdk-golang/issues/659) - E2E encryption can encounter ordering issues with high-volume concurrent writes
+* github.com/hanzozt/sdk-golang: [v0.23.44 -> v0.23.45](https://github.com/hanzozt/sdk-golang/compare/v0.23.44...v0.23.45)
+    * [Issue #659](https://github.com/hanzozt/sdk-golang/issues/659) - E2E encryption can encounter ordering issues with high-volume concurrent writes
 
-* github.com/openziti/channel/v3: [v3.0.4 -> v3.0.26](https://github.com/openziti/channel/compare/v3.0.4...v3.0.26)
-    * [Issue #146](https://github.com/openziti/channel/issues/146) - Transport options aren't being set in dialer
+* github.com/hanzozt/channel/v3: [v3.0.4 -> v3.0.26](https://github.com/hanzozt/channel/compare/v3.0.4...v3.0.26)
+    * [Issue #146](https://github.com/hanzozt/channel/issues/146) - Transport options aren't being set in dialer
 
-* github.com/openziti/edge-api: [v0.26.34 -> v0.26.36](https://github.com/openziti/edge-api/compare/v0.26.34...v0.26.36)
-    * [Issue #138](https://github.com/openziti/edge-api/issues/138) - management api deletes were generally not mapping 404 properly
+* github.com/hanzozt/edge-api: [v0.26.34 -> v0.26.36](https://github.com/hanzozt/edge-api/compare/v0.26.34...v0.26.36)
+    * [Issue #138](https://github.com/hanzozt/edge-api/issues/138) - management api deletes were generally not mapping 404 properly
 
-* github.com/openziti/foundation/v2: [v2.0.49 -> v2.0.56](https://github.com/openziti/foundation/compare/v2.0.49...v2.0.56)
-* github.com/openziti/identity: [v1.0.85 -> v1.0.94](https://github.com/openziti/identity/compare/v1.0.85...v1.0.94)
+* github.com/hanzozt/foundation/v2: [v2.0.49 -> v2.0.56](https://github.com/hanzozt/foundation/compare/v2.0.49...v2.0.56)
+* github.com/hanzozt/identity: [v1.0.85 -> v1.0.94](https://github.com/hanzozt/identity/compare/v1.0.85...v1.0.94)
 
-* github.com/openziti/metrics: [v1.2.58 -> v1.2.65](https://github.com/openziti/metrics/compare/v1.2.58...v1.2.65)
-* github.com/openziti/secretstream: [v0.1.25 -> v0.1.28](https://github.com/openziti/secretstream/compare/v0.1.25...v0.1.28)
-* github.com/openziti/transport/v2: [v2.0.146 -> v2.0.159](https://github.com/openziti/transport/compare/v2.0.146...v2.0.159)
+* github.com/hanzozt/metrics: [v1.2.58 -> v1.2.65](https://github.com/hanzozt/metrics/compare/v1.2.58...v1.2.65)
+* github.com/hanzozt/secretstream: [v0.1.25 -> v0.1.28](https://github.com/hanzozt/secretstream/compare/v0.1.25...v0.1.28)
+* github.com/hanzozt/transport/v2: [v2.0.146 -> v2.0.159](https://github.com/hanzozt/transport/compare/v2.0.146...v2.0.159)
 * github.com/stretchr/testify: v1.9.0 -> v1.10.0
 * golang.org/x/sys: v0.25.0 -> v0.29.0
 * google.golang.org/protobuf: v1.34.2 -> v1.36.2
@@ -590,23 +590,23 @@ is now 1.23. The OpenZiti Go SDK now requires Go v1.23.0 as its minimum version.
 
 ## Issues Fixed and Dependency Updates
 
-* github.com/openziti/sdk-golang: [v0.23.43 -> v0.23.44](https://github.com/openziti/sdk-golang/compare/v0.23.43...v0.23.44)
-* github.com/openziti/edge-api: [v0.26.32 -> v0.26.34](https://github.com/openziti/edge-api/compare/v0.26.32...v0.26.34)
+* github.com/hanzozt/sdk-golang: [v0.23.43 -> v0.23.44](https://github.com/hanzozt/sdk-golang/compare/v0.23.43...v0.23.44)
+* github.com/hanzozt/edge-api: [v0.26.32 -> v0.26.34](https://github.com/hanzozt/edge-api/compare/v0.26.32...v0.26.34)
 
 
 # Release notes 0.23.43
 
 ## Issues Fixed and Dependency Updates
 
-* github.com/openziti/sdk-golang: [v0.23.42 -> v0.23.43](https://github.com/openziti/sdk-golang/compare/v0.23.42...v0.23.43)
-    * [Issue #629](https://github.com/openziti/sdk-golang/issues/629) - JWT session refresh interprets expiration date incorrectly
+* github.com/hanzozt/sdk-golang: [v0.23.42 -> v0.23.43](https://github.com/hanzozt/sdk-golang/compare/v0.23.42...v0.23.43)
+    * [Issue #629](https://github.com/hanzozt/sdk-golang/issues/629) - JWT session refresh interprets expiration date incorrectly
 
 * github.com/go-resty/resty/v2: v2.13.1 -> v2.15.3
-* github.com/openziti/channel/v3: [v3.0.2 -> v3.0.4](https://github.com/openziti/channel/compare/v3.0.2...v3.0.4)
-    * [Issue #144](https://github.com/openziti/channel/issues/144) - Add ReadAdapter utility
+* github.com/hanzozt/channel/v3: [v3.0.2 -> v3.0.4](https://github.com/hanzozt/channel/compare/v3.0.2...v3.0.4)
+    * [Issue #144](https://github.com/hanzozt/channel/issues/144) - Add ReadAdapter utility
 
-* github.com/openziti/edge-api: [v0.26.30 -> v0.26.32](https://github.com/openziti/edge-api/compare/v0.26.30...v0.26.32)
-* github.com/openziti/secretstream: [v0.1.21 -> v0.1.25](https://github.com/openziti/secretstream/compare/v0.1.21...v0.1.25)
+* github.com/hanzozt/edge-api: [v0.26.30 -> v0.26.32](https://github.com/hanzozt/edge-api/compare/v0.26.30...v0.26.32)
+* github.com/hanzozt/secretstream: [v0.1.21 -> v0.1.25](https://github.com/hanzozt/secretstream/compare/v0.1.21...v0.1.25)
 * go.mozilla.org/pkcs7: v0.0.0-20200128120323-432b2356ecb1 -> v0.9.0
 * golang.org/x/oauth2: v0.21.0 -> v0.23.0
 * go.mongodb.org/mongo-driver: v1.16.1 -> v1.17.0
@@ -615,27 +615,27 @@ is now 1.23. The OpenZiti Go SDK now requires Go v1.23.0 as its minimum version.
 
 ## Issues Fixed and Dependency Updates
 
-* github.com/openziti/sdk-golang: [v0.23.41 -> v0.23.42](https://github.com/openziti/sdk-golang/compare/v0.23.41...v0.23.42)
-  * [Issue #625](https://github.com/openziti/sdk-golang/issues/625) - traffic optimization: implement support for receiving multi-part edge payloads
+* github.com/hanzozt/sdk-golang: [v0.23.41 -> v0.23.42](https://github.com/hanzozt/sdk-golang/compare/v0.23.41...v0.23.42)
+  * [Issue #625](https://github.com/hanzozt/sdk-golang/issues/625) - traffic optimization: implement support for receiving multi-part edge payloads
 
 # Release notes 0.23.41
 
 ## Issues Fixed and Dependency Updates
 
-* github.com/openziti/sdk-golang: [v0.23.40 -> v0.23.41](https://github.com/openziti/sdk-golang/compare/v0.23.40...v0.23.41)
-* github.com/openziti/channel/v3: [v2.0.136 -> v3.0.2](https://github.com/openziti/channel/compare/v2.0.136...v3.0.2)
-    * [Issue #138](https://github.com/openziti/channel/issues/138) - Allow custom message serialization. Add support for a 'raw' message type.
-    * [Issue #82](https://github.com/openziti/channel/issues/82) - Remove transport.Configuration from UnderlayFactory.Create
-    * [Issue #136](https://github.com/openziti/channel/issues/136) - Fix timeout on classic dialer 
-    * [Issue #134](https://github.com/openziti/channel/issues/134) - Support the dtls transport
+* github.com/hanzozt/sdk-golang: [v0.23.40 -> v0.23.41](https://github.com/hanzozt/sdk-golang/compare/v0.23.40...v0.23.41)
+* github.com/hanzozt/channel/v3: [v2.0.136 -> v3.0.2](https://github.com/hanzozt/channel/compare/v2.0.136...v3.0.2)
+    * [Issue #138](https://github.com/hanzozt/channel/issues/138) - Allow custom message serialization. Add support for a 'raw' message type.
+    * [Issue #82](https://github.com/hanzozt/channel/issues/82) - Remove transport.Configuration from UnderlayFactory.Create
+    * [Issue #136](https://github.com/hanzozt/channel/issues/136) - Fix timeout on classic dialer 
+    * [Issue #134](https://github.com/hanzozt/channel/issues/134) - Support the dtls transport
 
-* github.com/openziti/edge-api: [v0.26.23 -> v0.26.30](https://github.com/openziti/edge-api/compare/v0.26.23...v0.26.30)
-* github.com/openziti/foundation/v2: [v2.0.47 -> v2.0.49](https://github.com/openziti/foundation/compare/v2.0.47...v2.0.49)
-* github.com/openziti/identity: [v1.0.81 -> v1.0.85](https://github.com/openziti/identity/compare/v1.0.81...v1.0.85)
-* github.com/openziti/metrics: [v1.2.56 -> v1.2.58](https://github.com/openziti/metrics/compare/v1.2.56...v1.2.58)
-* github.com/openziti/transport/v2: [v2.0.138 -> v2.0.146](https://github.com/openziti/transport/compare/v2.0.138...v2.0.146)
-    * [Issue #92](https://github.com/openziti/transport/issues/92) - Implement simple traffic traffic
-    * [Issue #85](https://github.com/openziti/transport/issues/85) - Update to latest dtls library
+* github.com/hanzozt/edge-api: [v0.26.23 -> v0.26.30](https://github.com/hanzozt/edge-api/compare/v0.26.23...v0.26.30)
+* github.com/hanzozt/foundation/v2: [v2.0.47 -> v2.0.49](https://github.com/hanzozt/foundation/compare/v2.0.47...v2.0.49)
+* github.com/hanzozt/identity: [v1.0.81 -> v1.0.85](https://github.com/hanzozt/identity/compare/v1.0.81...v1.0.85)
+* github.com/hanzozt/metrics: [v1.2.56 -> v1.2.58](https://github.com/hanzozt/metrics/compare/v1.2.56...v1.2.58)
+* github.com/hanzozt/transport/v2: [v2.0.138 -> v2.0.146](https://github.com/hanzozt/transport/compare/v2.0.138...v2.0.146)
+    * [Issue #92](https://github.com/hanzozt/transport/issues/92) - Implement simple traffic traffic
+    * [Issue #85](https://github.com/hanzozt/transport/issues/85) - Update to latest dtls library
 
 * github.com/zitadel/oidc/v2: v2.12.0 -> v2.12.2
 * golang.org/x/sys: v0.22.0 -> v0.25.0
@@ -658,32 +658,32 @@ is now 1.23. The OpenZiti Go SDK now requires Go v1.23.0 as its minimum version.
 
 ## Issues Fixed and Dependency Updates
 
-* github.com/openziti/sdk-golang: [v0.23.39 -> v0.23.40](https://github.com/openziti/sdk-golang/compare/v0.23.39...v0.23.40)
-    * [Issue #601](https://github.com/openziti/sdk-golang/issues/601) - Only send config types on service list if controller version supports it
+* github.com/hanzozt/sdk-golang: [v0.23.39 -> v0.23.40](https://github.com/hanzozt/sdk-golang/compare/v0.23.39...v0.23.40)
+    * [Issue #601](https://github.com/hanzozt/sdk-golang/issues/601) - Only send config types on service list if controller version supports it
     * No Issue - Fixes a TOTP OIDC redirect
 
-* github.com/openziti/edge-api: [v0.26.21 -> v0.26.23](https://github.com/openziti/edge-api/compare/v0.26.21...v0.26.23)
-    * [Issue #120](https://github.com/openziti/edge-api/issues/120) - Add API for retrieving services referencing a config
-    * [Issue #121](https://github.com/openziti/edge-api/issues/121) - Add API for retrieving the set of attribute roles used by posture checks
+* github.com/hanzozt/edge-api: [v0.26.21 -> v0.26.23](https://github.com/hanzozt/edge-api/compare/v0.26.21...v0.26.23)
+    * [Issue #120](https://github.com/hanzozt/edge-api/issues/120) - Add API for retrieving services referencing a config
+    * [Issue #121](https://github.com/hanzozt/edge-api/issues/121) - Add API for retrieving the set of attribute roles used by posture checks
 
 # Release notes 0.23.39
 
 ## Issues Fixed and Dependency Updates
 
-* github.com/openziti/sdk-golang: [v0.23.38 -> v0.23.39](https://github.com/openziti/sdk-golang/compare/v0.23.38...v0.23.39)
-    * [Issue #596](https://github.com/openziti/sdk-golang/issues/596) - SDK should submit selected config types to auth and service list APIs
-    * [Issue #593](https://github.com/openziti/sdk-golang/issues/593) - SDK Golang OIDC Get API Session Returns Wrong Value
+* github.com/hanzozt/sdk-golang: [v0.23.38 -> v0.23.39](https://github.com/hanzozt/sdk-golang/compare/v0.23.38...v0.23.39)
+    * [Issue #596](https://github.com/hanzozt/sdk-golang/issues/596) - SDK should submit selected config types to auth and service list APIs
+    * [Issue #593](https://github.com/hanzozt/sdk-golang/issues/593) - SDK Golang OIDC Get API Session Returns Wrong Value
 
-* github.com/openziti/channel/v2: [v2.0.132 -> v2.0.136](https://github.com/openziti/channel/compare/v2.0.132...v2.0.136)
-    * [Issue #132](https://github.com/openziti/channel/issues/132) - reconnecting dialer doesn't take local binding into account when reconnecting
+* github.com/hanzozt/channel/v2: [v2.0.132 -> v2.0.136](https://github.com/hanzozt/channel/compare/v2.0.132...v2.0.136)
+    * [Issue #132](https://github.com/hanzozt/channel/issues/132) - reconnecting dialer doesn't take local binding into account when reconnecting
 
-* github.com/openziti/edge-api: [v0.26.20 -> v0.26.21](https://github.com/openziti/edge-api/compare/v0.26.20...v0.26.21)
-* github.com/openziti/foundation/v2: [v2.0.46 -> v2.0.47](https://github.com/openziti/foundation/compare/v2.0.46...v2.0.47)
-* github.com/openziti/identity: [v1.0.79 -> v1.0.81](https://github.com/openziti/identity/compare/v1.0.79...v1.0.81)
-* github.com/openziti/metrics: [v1.2.55 -> v1.2.56](https://github.com/openziti/metrics/compare/v1.2.55...v1.2.56)
-* github.com/openziti/secretstream: [v0.1.20 -> v0.1.21](https://github.com/openziti/secretstream/compare/v0.1.20...v0.1.21)
-* github.com/openziti/transport/v2: [v2.0.135 -> v2.0.138](https://github.com/openziti/transport/compare/v2.0.135...v2.0.138)
-    * [Issue #83](https://github.com/openziti/transport/issues/83) - tls.Dial should use proxy configuration if provided
+* github.com/hanzozt/edge-api: [v0.26.20 -> v0.26.21](https://github.com/hanzozt/edge-api/compare/v0.26.20...v0.26.21)
+* github.com/hanzozt/foundation/v2: [v2.0.46 -> v2.0.47](https://github.com/hanzozt/foundation/compare/v2.0.46...v2.0.47)
+* github.com/hanzozt/identity: [v1.0.79 -> v1.0.81](https://github.com/hanzozt/identity/compare/v1.0.79...v1.0.81)
+* github.com/hanzozt/metrics: [v1.2.55 -> v1.2.56](https://github.com/hanzozt/metrics/compare/v1.2.55...v1.2.56)
+* github.com/hanzozt/secretstream: [v0.1.20 -> v0.1.21](https://github.com/hanzozt/secretstream/compare/v0.1.20...v0.1.21)
+* github.com/hanzozt/transport/v2: [v2.0.135 -> v2.0.138](https://github.com/hanzozt/transport/compare/v2.0.135...v2.0.138)
+    * [Issue #83](https://github.com/hanzozt/transport/issues/83) - tls.Dial should use proxy configuration if provided
 
 * github.com/shirou/gopsutil/v3: v3.24.4 -> v3.24.5
 * golang.org/x/oauth2: v0.20.0 -> v0.21.0
@@ -701,20 +701,20 @@ is now 1.23. The OpenZiti Go SDK now requires Go v1.23.0 as its minimum version.
 
 ## Issues Fixed and Dependency Updates
 
-* github.com/openziti/sdk-golang: [v0.23.37 -> v0.23.38](https://github.com/openziti/sdk-golang/compare/v0.23.37...v0.23.38)
-    * [Issue #573](https://github.com/openziti/sdk-golang/issues/573) - api session refresh spins in a tight loop if there is no current api session
-    * [Issue #562](https://github.com/openziti/sdk-golang/issues/562) - Support sticky dials
+* github.com/hanzozt/sdk-golang: [v0.23.37 -> v0.23.38](https://github.com/hanzozt/sdk-golang/compare/v0.23.37...v0.23.38)
+    * [Issue #573](https://github.com/hanzozt/sdk-golang/issues/573) - api session refresh spins in a tight loop if there is no current api session
+    * [Issue #562](https://github.com/hanzozt/sdk-golang/issues/562) - Support sticky dials
 
-* github.com/openziti/channel/v2: [v2.0.130 -> v2.0.132](https://github.com/openziti/channel/compare/v2.0.130...v2.0.132)
-* github.com/openziti/edge-api: [v0.26.19 -> v0.26.20](https://github.com/openziti/edge-api/compare/v0.26.19...v0.26.20)
-    * [Issue #113](https://github.com/openziti/edge-api/issues/113) - RecoveryCodesEnvelope is wrong
+* github.com/hanzozt/channel/v2: [v2.0.130 -> v2.0.132](https://github.com/hanzozt/channel/compare/v2.0.130...v2.0.132)
+* github.com/hanzozt/edge-api: [v0.26.19 -> v0.26.20](https://github.com/hanzozt/edge-api/compare/v0.26.19...v0.26.20)
+    * [Issue #113](https://github.com/hanzozt/edge-api/issues/113) - RecoveryCodesEnvelope is wrong
 
-* github.com/openziti/foundation/v2: [v2.0.45 -> v2.0.46](https://github.com/openziti/foundation/compare/v2.0.45...v2.0.46)
-    * [Issue #407](https://github.com/openziti/foundation/issues/407) - Remove Branch from build info
+* github.com/hanzozt/foundation/v2: [v2.0.45 -> v2.0.46](https://github.com/hanzozt/foundation/compare/v2.0.45...v2.0.46)
+    * [Issue #407](https://github.com/hanzozt/foundation/issues/407) - Remove Branch from build info
 
-* github.com/openziti/identity: [v1.0.77 -> v1.0.79](https://github.com/openziti/identity/compare/v1.0.77...v1.0.79)
-* github.com/openziti/metrics: [v1.2.54 -> v1.2.55](https://github.com/openziti/metrics/compare/v1.2.54...v1.2.55)
-* github.com/openziti/transport/v2: [v2.0.133 -> v2.0.135](https://github.com/openziti/transport/compare/v2.0.133...v2.0.135)
+* github.com/hanzozt/identity: [v1.0.77 -> v1.0.79](https://github.com/hanzozt/identity/compare/v1.0.77...v1.0.79)
+* github.com/hanzozt/metrics: [v1.2.54 -> v1.2.55](https://github.com/hanzozt/metrics/compare/v1.2.54...v1.2.55)
+* github.com/hanzozt/transport/v2: [v2.0.133 -> v2.0.135](https://github.com/hanzozt/transport/compare/v2.0.133...v2.0.135)
 * golang.org/x/sys: v0.20.0 -> v0.21.0
 * github.com/go-logr/logr: v1.4.1 -> v1.4.2
 * go.opentelemetry.io/otel: v1.25.0 -> v1.27.0
@@ -730,11 +730,11 @@ is now 1.23. The OpenZiti Go SDK now requires Go v1.23.0 as its minimum version.
 
 ## Issues Fixed and Dependency Updates
 
-* github.com/openziti/sdk-golang: [v0.23.36 -> v0.23.37](https://github.com/openziti/sdk-golang/compare/v0.23.36...v0.23.37)
-    * [Issue #562](https://github.com/openziti/sdk-golang/issues/562) - Support sticky dials
+* github.com/hanzozt/sdk-golang: [v0.23.36 -> v0.23.37](https://github.com/hanzozt/sdk-golang/compare/v0.23.36...v0.23.37)
+    * [Issue #562](https://github.com/hanzozt/sdk-golang/issues/562) - Support sticky dials
 
-* github.com/openziti/edge-api: [v0.26.18 -> v0.26.19](https://github.com/openziti/edge-api/compare/v0.26.18...v0.26.19)
-* github.com/openziti/secretstream: [v0.1.19 -> v0.1.20](https://github.com/openziti/secretstream/compare/v0.1.19...v0.1.20)
+* github.com/hanzozt/edge-api: [v0.26.18 -> v0.26.19](https://github.com/hanzozt/edge-api/compare/v0.26.18...v0.26.19)
+* github.com/hanzozt/secretstream: [v0.1.19 -> v0.1.20](https://github.com/hanzozt/secretstream/compare/v0.1.19...v0.1.20)
 
 # Release 0.23.12
 
@@ -888,10 +888,10 @@ URL will be used.
     * `edge-apis` - A new root level package, `edge-apis` has been added which provides a thin wrapper around the
       go-swagger
       generated Edge Client and Management APIs.
-    * Usage of the `edge-apis` package is not required to use the OpenZiti Golang SDK but is exposed for those who which
+    * Usage of the `edge-apis` package is not required to use the Hanzo ZT Golang SDK but is exposed for those who which
       to.
 * API Session Certificates - API Session Certificates allow authentication mechanisms that are not inherently backed by
-  a x509 certificate to obtain ephemeral x509 certificate and interact with an OpenZiti network.
+  a x509 certificate to obtain ephemeral x509 certificate and interact with an Hanzo ZT network.
 * Event API - The GoLang SDK now supports an eventing interface that allows implementors to register listeners
 * Browser WASM Compilation support - Compiling the GO SDK to run in WASM browser environments is now supported.
 
@@ -907,7 +907,7 @@ the following impact:
 
 ## New Authentication Options
 
-It is now possible to create an OpenZiti GoLang SDK Context by using alternative authentication mechanisms such as
+It is now possible to create an Hanzo ZT GoLang SDK Context by using alternative authentication mechanisms such as
 raw private/public keys, JWTs, and Username Passwords (UPDB) in addition to the original configuration file approach.
 This capability is provided by the `edge-apis` package. To make use of these new option, configure them on
 a `ziti.Config`
@@ -931,8 +931,8 @@ ctx, err := NewContextFromFile("identity.json")
 
 ## `edge-apis`
 
-The packaged `edge-apis` can be used as a standalone way of interacting with the OpenZiti Edge Client and Management
-APIs. They core API functionality is maintained in `openziti/edge-apis` and contains the raw GoSwagger generated API
+The packaged `edge-apis` can be used as a standalone way of interacting with the Hanzo ZT Edge Client and Management
+APIs. They core API functionality is maintained in `hanzozt/edge-apis` and contains the raw GoSwagger generated API
 clients. The clients in this repository have been wrapped with a thin layer to make authentication easier.
 
 To use the GoLang Ziti SDK one does not have to use this package directly. The Golang SDK uses this package under the
@@ -978,14 +978,14 @@ resp, err := client.API.Service.ListServices(service2.NewListServicesParams(), n
 
 ## API Session Certificates
 
-OpenZiti Controllers support the creation of ephemeral, API Session scoped, x509 Certificates for fully authenticated
+Hanzo ZT Controllers support the creation of ephemeral, API Session scoped, x509 Certificates for fully authenticated
 API Sessions.
 These certificates are created automatically by the GoLang SDK when the authentication mechanism provided to the context
 is not backed by a x509 Certificate.
 
 ## Event API
 
-OpenZiti Context's returned now support an `Event()` function which exposes the following function calls:
+Hanzo ZT Context's returned now support an `Event()` function which exposes the following function calls:
 
 ```go
 // AddServiceAddedListener adds an event listener for the EventServiceAdded event and returns a function to remove

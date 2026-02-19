@@ -7,21 +7,21 @@ This example demonstrates:
 * Dialing a service and triggering message events
 
 # Requirements
-* an OpenZiti network. If you do not have one, you can use one of the [quickstarts](https://netfoundry.io/docs/openziti/learn/quickstarts/) to set one up.
-* OpenZiti CLI to create services and identities on the OpenZiti Network
+* an Hanzo ZT network. If you do not have one, you can use one of the [quickstarts](https://netfoundry.io/docs/hanzozt/learn/quickstarts/) to set one up.
+* Hanzo ZT CLI to create services and identities on the Hanzo ZT Network
 
 ## Build the examples
 Refer to the [example README](../README.md) to build the SDK examples
 
-# Setup using the OpenZiti CLI
-These steps will configure the service using the OpenZiti CLI. At the end of these steps you will have created:
+# Setup using the Hanzo ZT CLI
+These steps will configure the service using the Hanzo ZT CLI. At the end of these steps you will have created:
 * a service called `chat`
 * an identity to host (bind) the service
 * two identities to connect to (dial) the service
 * the service policies required to authorize the identities for bind and dial
 
 Steps:
-1. Log into OpenZiti. The host:port and username/password will vary depending on your network.
+1. Log into Hanzo ZT. The host:port and username/password will vary depending on your network.
 
        ziti edge login localhost:1280 -u admin -p admin
 1. Run this script to create everything you need.

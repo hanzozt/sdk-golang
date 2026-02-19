@@ -35,8 +35,8 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-resty/resty/v2"
 	"github.com/golang-jwt/jwt/v5"
-	"github.com/openziti/edge-api/rest_model"
-	"github.com/openziti/edge-api/rest_util"
+	"github.com/hanzozt/edge-api/rest_model"
+	"github.com/hanzozt/edge-api/rest_util"
 	"github.com/zitadel/oidc/v3/pkg/client/tokenexchange"
 	"github.com/zitadel/oidc/v3/pkg/oidc"
 	"golang.org/x/oauth2"
@@ -69,7 +69,7 @@ type OidcEnabledApi interface {
 }
 
 // EdgeOidcAuthConfig represents the options necessary to complete an OAuth 2.0 PKCE authentication flow against an
-// OpenZiti controller.
+// Hanzo ZT controller.
 type EdgeOidcAuthConfig struct {
 	ClientTransportPool ClientTransportPool
 	Credentials         Credentials

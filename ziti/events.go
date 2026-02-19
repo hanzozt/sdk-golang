@@ -18,8 +18,8 @@ package ziti
 
 import (
 	"github.com/kataras/go-events"
-	"github.com/openziti/edge-api/rest_model"
-	edge_apis "github.com/openziti/sdk-golang/edge-apis"
+	"github.com/hanzozt/edge-api/rest_model"
+	edge_apis "github.com/hanzozt/sdk-golang/edge-apis"
 )
 
 const (

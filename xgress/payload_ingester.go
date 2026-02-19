@@ -3,7 +3,7 @@ package xgress
 import (
 	"fmt"
 	"github.com/michaelquigley/pfxlog"
-	"github.com/openziti/foundation/v2/goroutines"
+	"github.com/hanzozt/foundation/v2/goroutines"
 	"github.com/sirupsen/logrus"
 	"runtime/debug"
 	"time"

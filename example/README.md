@@ -1,6 +1,6 @@
-# OpenZiti Go SDK Examples
+# Hanzo ZT Go SDK Examples
 
-This folder contains examples showing how to use the OpenZiti Go SDK
+This folder contains examples showing how to use the Hanzo ZT Go SDK
 
 ## Building the SDK Examples
 
@@ -53,8 +53,8 @@ Basic echo client and server built with the SDK.
 
 ### [zcat](./zcat)
 
-Netcat like application which can work over OpenZiti.
+Netcat like application which can work over Hanzo ZT.
 
 ### [zping](./zping)
 
-Client and server applications for measuring latency over an OpenZiti network.
+Client and server applications for measuring latency over an Hanzo ZT network.

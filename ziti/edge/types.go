@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/michaelquigley/pfxlog"
 	"github.com/mitchellh/mapstructure"
-	"github.com/openziti/edge-api/rest_model"
+	"github.com/hanzozt/edge-api/rest_model"
 	"github.com/pkg/errors"
 	"net"
 	"slices"

@@ -1,6 +1,6 @@
 # Overview
-This example illustrates how to send data to, and receive data from a UDP server via OpenZiti.
-You will configure an OpenZiti overlay network and run a UDP server that will respond with whatever text it was sent.
+This example illustrates how to send data to, and receive data from a UDP server via Hanzo ZT.
+You will configure an Hanzo ZT overlay network and run a UDP server that will respond with whatever text it was sent.
 The response from the server will be read written to the console.
 
 This example demonstrates a hybrid approach ZTAA --> ZTHA:
@@ -8,18 +8,18 @@ This example demonstrates a hybrid approach ZTAA --> ZTHA:
 * Binding a service using a tunneler
 
 ## Requirements
-* OpenZiti CLI to create services and identities on the OpenZiti Network
-* an OpenZiti network. If you have one you'd like to use, great. The guide is written using the 
+* Hanzo ZT CLI to create services and identities on the Hanzo ZT Network
+* an Hanzo ZT network. If you have one you'd like to use, great. The guide is written using the 
   `ziti edge quickstart` command.
 * All commands are executed relative to the `example` folder
 
 ## Build the examples
 Refer to the [example README](../README.md) to build the SDK examples
 
-## Run and Configure OpenZiti
+## Run and Configure Hanzo ZT
 The README assumes the `ziti` CLI on your path. If not, supply the full path to the `ziti` executable. This command
 will start a ziti overlay network on ports 1280/3022 for use with the rest of the README. The default values will
-also be used for username and password. The router from the quickstart is the identity which will offload the OpenZiti
+also be used for username and password. The router from the quickstart is the identity which will offload the Hanzo ZT
 traffic toward the UDP server
 
 In a new terminal run the following command:
@@ -28,7 +28,7 @@ ziti edge quickstart
 ```
 
 To configure the overlay, you will need another terminal with `ziti` on the path. Now, add a service for the UDP 
-server to be offloaded from the OpenZiti overlay as well as create the identity this example will use:
+server to be offloaded from the Hanzo ZT overlay as well as create the identity this example will use:
 ```
 svc_name="udp.relay.example"
 edge_router_name="quickstart-router"
@@ -46,7 +46,7 @@ ziti edge policy-advisor services -q
 ```
 
 ## Run the UDP Server
-In the terminal from where you configured the OpenZiti overlay start the UDP server. Make sure you're in the 
+In the terminal from where you configured the Hanzo ZT overlay start the UDP server. Make sure you're in the 
 `example` folder and run:
 ```
 ./build/udp-server
