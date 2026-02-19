@@ -23,27 +23,27 @@ These steps will configure the reflect service using the Hanzo ZT CLI. At the en
 Steps:
 1. Log into Hanzo ZT. The host:port and username/password will vary depending on your network.
 
-       ziti edge login localhost:1280 -u admin -p admin
+       zt edge login localhost:1280 -u admin -p admin
 2. Run this script to create everything you need.
 
        echo Changing to build directory
        cd $ZITI_SDK_BUILD_DIR
        
        echo Create the service
-       ziti edge create service reflectService --role-attributes reflect-service
+       zt edge create service reflectService --role-attributes reflect-service
        
        echo Create and enroll two identities
-       ziti edge create identity device reflect-client -a reflect.clients -o reflect-client.jwt
-       ziti edge create identity device reflect-server -a reflect.servers -o reflect-server.jwt
-       ziti edge enroll --jwt reflect-client.jwt
-       ziti edge enroll --jwt reflect-server.jwt
+       zt edge create identity device reflect-client -a reflect.clients -o reflect-client.jwt
+       zt edge create identity device reflect-server -a reflect.servers -o reflect-server.jwt
+       zt edge enroll --jwt reflect-client.jwt
+       zt edge enroll --jwt reflect-server.jwt
        
        echo Create service policies
-       ziti edge create service-policy reflect-client-dial Dial --identity-roles '#reflect.clients' --service-roles '#reflect-service'
-       ziti edge create service-policy reflect-client-bind Bind --identity-roles '#reflect.servers' --service-roles '#reflect-service'
+       zt edge create service-policy reflect-client-dial Dial --identity-roles '#reflect.clients' --service-roles '#reflect-service'
+       zt edge create service-policy reflect-client-bind Bind --identity-roles '#reflect.servers' --service-roles '#reflect-service'
        
        echo Run policy advisor to check
-       ziti edge policy-advisor services
+       zt edge policy-advisor services
 3. Run the server.
 
        ./reflect server -i reflect-server.json -s reflectService
@@ -65,7 +65,7 @@ INFO           responding with : you sent me: Hello Ziti
 ```shell
 $ ./reflect client -i client.json -s reflect_svc
 INFO    found service named: reflect_svc             
-WARNING no config of type ziti-tunneler-client.v1 was found 
+WARNING no config of type zt-tunneler-client.v1 was found 
 INFO    connection to edge router using api session token b97826dc-5314-44fb-9407-b6177f409b68 
 INFO    Connected to reflect_svc successfully.       
 INFO    You may now type a line to be sent to the server (press enter to send) 
@@ -80,13 +80,13 @@ Received: you sent me: Hello Ziti
 Done with the example? This script will remove everything created during setup.
 ```shell
 echo Removing service policies
-ziti edge delete service-policy reflect-client-dial
-ziti edge delete service-policy reflect-client-bind
+zt edge delete service-policy reflect-client-dial
+zt edge delete service-policy reflect-client-bind
 
 echo Removing identities
-ziti edge delete identity reflect-client
-ziti edge delete identity reflect-server
+zt edge delete identity reflect-client
+zt edge delete identity reflect-server
 
 echo Removing service
-ziti edge delete service reflectService
+zt edge delete service reflectService
 ```

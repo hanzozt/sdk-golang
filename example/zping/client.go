@@ -28,7 +28,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/hanzozt/sdk-golang/ziti"
+	"github.com/hanzozt/sdk-golang/zt"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 )
@@ -104,8 +104,8 @@ type ping_session struct {
 var clientCmd = &cobra.Command{
 	Use:   "client",
 	Short: "zping client command",
-	Long: `This command runs zping in client mode which generates ziti probe
-messages which are sent to a specified ziti endpoint running zping 
+	Long: `This command runs zping in client mode which generates zt probe
+messages which are sent to a specified zt endpoint running zping 
 in server mode`,
 	Run: func(cmd *cobra.Command, args []string) {
 		sflag, _ := cmd.Flags().GetString("service")
@@ -129,7 +129,7 @@ in server mode`,
 			os.Exit(2)
 		}
 
-		var context ziti.Context
+		var context zt.Context
 		var service string
 		var identity string
 		var seq string
@@ -144,7 +144,7 @@ in server mode`,
 		if len(sflag) > 0 {
 			service = sflag
 		} else {
-			service = "ziti-ping"
+			service = "zt-ping"
 		}
 
 		if len(iflag) == 0 {
@@ -166,13 +166,13 @@ in server mode`,
 		}
 		if len(cflag) > 0 {
 			file := cflag
-			configFile, err := ziti.NewConfigFromFile(file)
+			configFile, err := zt.NewConfigFromFile(file)
 			if err != nil {
 				logrus.WithError(err).Error("Error loading config file")
 				os.Exit(1)
 			}
 
-			context, err = ziti.NewContext(configFile)
+			context, err = zt.NewContext(configFile)
 			if err != nil {
 				panic(err)
 			}
@@ -186,12 +186,12 @@ in server mode`,
 			psession.finish()
 			os.Exit(1)
 		}()
-		dialOptions := &ziti.DialOptions{
+		dialOptions := &zt.DialOptions{
 			Identity:       identity,
 			ConnectTimeout: 1 * time.Minute,
 			//AppData:        []byte("hi there"),
 		}
-		//dial ziti service with options specified in dialOptions
+		//dial zt service with options specified in dialOptions
 		conn, err := context.DialWithOptions(service, dialOptions)
 		if err != nil {
 			logrus.WithError(err).Error("Error dialing service")
@@ -204,7 +204,7 @@ in server mode`,
 			pingData := strconv.Itoa(psession.psent) + ":" + stringData
 			//Get timestamp at ping send
 			start := time.Now()
-			//send ping message into ziti connection
+			//send ping message into zt connection
 			input := []byte(pingData)
 			if _, err := conn.Write(input); err != nil {
 				logrus.WithError(err).Error("Error Writing to Server")
@@ -213,7 +213,7 @@ in server mode`,
 				os.Exit(1)
 			}
 			buf := make([]byte, 1500)
-			//read ping response from ziti connection
+			//read ping response from zt connection
 			n, err := conn.Read(buf)
 			if err != nil {
 				logrus.WithError(err).Error("Error Reading from Server")
@@ -229,7 +229,7 @@ in server mode`,
 			seq = strings.Split(recData, ":")[0]
 			if recData == pingData {
 				//increments valid responses received
-				fmt.Printf("%+v bytes from %+v: ziti_seq=%+v time=%.3fms\n", recBytes, psession.identity, seq, ms)
+				fmt.Printf("%+v bytes from %+v: zt_seq=%+v time=%.3fms\n", recBytes, psession.identity, seq, ms)
 				psession.prec, _ = strconv.Atoi(seq)
 			}
 			time.Sleep(time.Duration(tflag) * time.Second)
@@ -244,7 +244,7 @@ in server mode`,
 
 func init() {
 	rootCmd.AddCommand(clientCmd)
-	clientCmd.Flags().StringP("service", "s", "ziti-ping", "Name of Service")
+	clientCmd.Flags().StringP("service", "s", "zt-ping", "Name of Service")
 	clientCmd.Flags().StringP("config", "c", "", "Name of config file")
 	clientCmd.Flags().StringP("identity", "i", "", "Name of remote identity")
 	clientCmd.Flags().IntP("length", "l", 100, "Length of data to send")

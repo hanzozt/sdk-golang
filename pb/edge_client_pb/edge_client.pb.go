@@ -2054,56 +2054,56 @@ func file_edge_client_proto_rawDescGZIP() []byte {
 var file_edge_client_proto_enumTypes = make([]protoimpl.EnumInfo, 5)
 var file_edge_client_proto_msgTypes = make([]protoimpl.MessageInfo, 21)
 var file_edge_client_proto_goTypes = []interface{}{
-	(ContentType)(0),                        // 0: ziti.edge_client.pb.ContentType
-	(HeaderId)(0),                           // 1: ziti.edge_client.pb.HeaderId
-	(Error)(0),                              // 2: ziti.edge_client.pb.Error
-	(PrecedenceValue)(0),                    // 3: ziti.edge_client.pb.PrecedenceValue
-	(Flag)(0),                               // 4: ziti.edge_client.pb.Flag
-	(*ServicePostureStateRequest)(nil),      // 5: ziti.edge_client.pb.ServicePostureStateRequest
-	(*ServicePostureStateResponse)(nil),     // 6: ziti.edge_client.pb.ServicePostureStateResponse
-	(*ServicePostureState)(nil),             // 7: ziti.edge_client.pb.ServicePostureState
-	(*Policy)(nil),                          // 8: ziti.edge_client.pb.Policy
-	(*PostureQuery)(nil),                    // 9: ziti.edge_client.pb.PostureQuery
-	(*PostureResponses)(nil),                // 10: ziti.edge_client.pb.PostureResponses
-	(*PostureResponse)(nil),                 // 11: ziti.edge_client.pb.PostureResponse
-	nil,                                     // 12: ziti.edge_client.pb.ServicePostureStateResponse.StatesEntry
-	nil,                                     // 13: ziti.edge_client.pb.ServicePostureState.PoliciesEntry
-	nil,                                     // 14: ziti.edge_client.pb.Policy.PostureQueriesEntry
-	(*PostureQuery_Processes)(nil),          // 15: ziti.edge_client.pb.PostureQuery.Processes
-	(*PostureQuery_Process)(nil),            // 16: ziti.edge_client.pb.PostureQuery.Process
-	(*PostureResponse_TotpToken)(nil),       // 17: ziti.edge_client.pb.PostureResponse.TotpToken
-	(*PostureResponse_Macs)(nil),            // 18: ziti.edge_client.pb.PostureResponse.Macs
-	(*PostureResponse_OperatingSystem)(nil), // 19: ziti.edge_client.pb.PostureResponse.OperatingSystem
-	(*PostureResponse_Domain)(nil),          // 20: ziti.edge_client.pb.PostureResponse.Domain
-	(*PostureResponse_Process)(nil),         // 21: ziti.edge_client.pb.PostureResponse.Process
-	(*PostureResponse_ProcessList)(nil),     // 22: ziti.edge_client.pb.PostureResponse.ProcessList
-	(*PostureResponse_Woken)(nil),           // 23: ziti.edge_client.pb.PostureResponse.Woken
-	(*PostureResponse_Unlocked)(nil),        // 24: ziti.edge_client.pb.PostureResponse.Unlocked
-	(*PostureResponse_SdkInfo)(nil),         // 25: ziti.edge_client.pb.PostureResponse.SdkInfo
+	(ContentType)(0),                        // 0: zt.edge_client.pb.ContentType
+	(HeaderId)(0),                           // 1: zt.edge_client.pb.HeaderId
+	(Error)(0),                              // 2: zt.edge_client.pb.Error
+	(PrecedenceValue)(0),                    // 3: zt.edge_client.pb.PrecedenceValue
+	(Flag)(0),                               // 4: zt.edge_client.pb.Flag
+	(*ServicePostureStateRequest)(nil),      // 5: zt.edge_client.pb.ServicePostureStateRequest
+	(*ServicePostureStateResponse)(nil),     // 6: zt.edge_client.pb.ServicePostureStateResponse
+	(*ServicePostureState)(nil),             // 7: zt.edge_client.pb.ServicePostureState
+	(*Policy)(nil),                          // 8: zt.edge_client.pb.Policy
+	(*PostureQuery)(nil),                    // 9: zt.edge_client.pb.PostureQuery
+	(*PostureResponses)(nil),                // 10: zt.edge_client.pb.PostureResponses
+	(*PostureResponse)(nil),                 // 11: zt.edge_client.pb.PostureResponse
+	nil,                                     // 12: zt.edge_client.pb.ServicePostureStateResponse.StatesEntry
+	nil,                                     // 13: zt.edge_client.pb.ServicePostureState.PoliciesEntry
+	nil,                                     // 14: zt.edge_client.pb.Policy.PostureQueriesEntry
+	(*PostureQuery_Processes)(nil),          // 15: zt.edge_client.pb.PostureQuery.Processes
+	(*PostureQuery_Process)(nil),            // 16: zt.edge_client.pb.PostureQuery.Process
+	(*PostureResponse_TotpToken)(nil),       // 17: zt.edge_client.pb.PostureResponse.TotpToken
+	(*PostureResponse_Macs)(nil),            // 18: zt.edge_client.pb.PostureResponse.Macs
+	(*PostureResponse_OperatingSystem)(nil), // 19: zt.edge_client.pb.PostureResponse.OperatingSystem
+	(*PostureResponse_Domain)(nil),          // 20: zt.edge_client.pb.PostureResponse.Domain
+	(*PostureResponse_Process)(nil),         // 21: zt.edge_client.pb.PostureResponse.Process
+	(*PostureResponse_ProcessList)(nil),     // 22: zt.edge_client.pb.PostureResponse.ProcessList
+	(*PostureResponse_Woken)(nil),           // 23: zt.edge_client.pb.PostureResponse.Woken
+	(*PostureResponse_Unlocked)(nil),        // 24: zt.edge_client.pb.PostureResponse.Unlocked
+	(*PostureResponse_SdkInfo)(nil),         // 25: zt.edge_client.pb.PostureResponse.SdkInfo
 	(*timestamppb.Timestamp)(nil),           // 26: google.protobuf.Timestamp
 }
 var file_edge_client_proto_depIdxs = []int32{
-	12, // 0: ziti.edge_client.pb.ServicePostureStateResponse.states:type_name -> ziti.edge_client.pb.ServicePostureStateResponse.StatesEntry
-	13, // 1: ziti.edge_client.pb.ServicePostureState.policies:type_name -> ziti.edge_client.pb.ServicePostureState.PoliciesEntry
-	14, // 2: ziti.edge_client.pb.Policy.postureQueries:type_name -> ziti.edge_client.pb.Policy.PostureQueriesEntry
-	26, // 3: ziti.edge_client.pb.PostureQuery.timeoutAt:type_name -> google.protobuf.Timestamp
-	15, // 4: ziti.edge_client.pb.PostureQuery.processes:type_name -> ziti.edge_client.pb.PostureQuery.Processes
-	11, // 5: ziti.edge_client.pb.PostureResponses.responses:type_name -> ziti.edge_client.pb.PostureResponse
-	18, // 6: ziti.edge_client.pb.PostureResponse.macs:type_name -> ziti.edge_client.pb.PostureResponse.Macs
-	19, // 7: ziti.edge_client.pb.PostureResponse.os:type_name -> ziti.edge_client.pb.PostureResponse.OperatingSystem
-	22, // 8: ziti.edge_client.pb.PostureResponse.processList:type_name -> ziti.edge_client.pb.PostureResponse.ProcessList
-	20, // 9: ziti.edge_client.pb.PostureResponse.domain:type_name -> ziti.edge_client.pb.PostureResponse.Domain
-	23, // 10: ziti.edge_client.pb.PostureResponse.woken:type_name -> ziti.edge_client.pb.PostureResponse.Woken
-	24, // 11: ziti.edge_client.pb.PostureResponse.unlocked:type_name -> ziti.edge_client.pb.PostureResponse.Unlocked
-	25, // 12: ziti.edge_client.pb.PostureResponse.sdkInfo:type_name -> ziti.edge_client.pb.PostureResponse.SdkInfo
-	17, // 13: ziti.edge_client.pb.PostureResponse.totpToken:type_name -> ziti.edge_client.pb.PostureResponse.TotpToken
-	7,  // 14: ziti.edge_client.pb.ServicePostureStateResponse.StatesEntry.value:type_name -> ziti.edge_client.pb.ServicePostureState
-	8,  // 15: ziti.edge_client.pb.ServicePostureState.PoliciesEntry.value:type_name -> ziti.edge_client.pb.Policy
-	9,  // 16: ziti.edge_client.pb.Policy.PostureQueriesEntry.value:type_name -> ziti.edge_client.pb.PostureQuery
-	16, // 17: ziti.edge_client.pb.PostureQuery.Processes.processes:type_name -> ziti.edge_client.pb.PostureQuery.Process
-	21, // 18: ziti.edge_client.pb.PostureResponse.ProcessList.processes:type_name -> ziti.edge_client.pb.PostureResponse.Process
-	26, // 19: ziti.edge_client.pb.PostureResponse.Woken.Time:type_name -> google.protobuf.Timestamp
-	26, // 20: ziti.edge_client.pb.PostureResponse.Unlocked.Time:type_name -> google.protobuf.Timestamp
+	12, // 0: zt.edge_client.pb.ServicePostureStateResponse.states:type_name -> zt.edge_client.pb.ServicePostureStateResponse.StatesEntry
+	13, // 1: zt.edge_client.pb.ServicePostureState.policies:type_name -> zt.edge_client.pb.ServicePostureState.PoliciesEntry
+	14, // 2: zt.edge_client.pb.Policy.postureQueries:type_name -> zt.edge_client.pb.Policy.PostureQueriesEntry
+	26, // 3: zt.edge_client.pb.PostureQuery.timeoutAt:type_name -> google.protobuf.Timestamp
+	15, // 4: zt.edge_client.pb.PostureQuery.processes:type_name -> zt.edge_client.pb.PostureQuery.Processes
+	11, // 5: zt.edge_client.pb.PostureResponses.responses:type_name -> zt.edge_client.pb.PostureResponse
+	18, // 6: zt.edge_client.pb.PostureResponse.macs:type_name -> zt.edge_client.pb.PostureResponse.Macs
+	19, // 7: zt.edge_client.pb.PostureResponse.os:type_name -> zt.edge_client.pb.PostureResponse.OperatingSystem
+	22, // 8: zt.edge_client.pb.PostureResponse.processList:type_name -> zt.edge_client.pb.PostureResponse.ProcessList
+	20, // 9: zt.edge_client.pb.PostureResponse.domain:type_name -> zt.edge_client.pb.PostureResponse.Domain
+	23, // 10: zt.edge_client.pb.PostureResponse.woken:type_name -> zt.edge_client.pb.PostureResponse.Woken
+	24, // 11: zt.edge_client.pb.PostureResponse.unlocked:type_name -> zt.edge_client.pb.PostureResponse.Unlocked
+	25, // 12: zt.edge_client.pb.PostureResponse.sdkInfo:type_name -> zt.edge_client.pb.PostureResponse.SdkInfo
+	17, // 13: zt.edge_client.pb.PostureResponse.totpToken:type_name -> zt.edge_client.pb.PostureResponse.TotpToken
+	7,  // 14: zt.edge_client.pb.ServicePostureStateResponse.StatesEntry.value:type_name -> zt.edge_client.pb.ServicePostureState
+	8,  // 15: zt.edge_client.pb.ServicePostureState.PoliciesEntry.value:type_name -> zt.edge_client.pb.Policy
+	9,  // 16: zt.edge_client.pb.Policy.PostureQueriesEntry.value:type_name -> zt.edge_client.pb.PostureQuery
+	16, // 17: zt.edge_client.pb.PostureQuery.Processes.processes:type_name -> zt.edge_client.pb.PostureQuery.Process
+	21, // 18: zt.edge_client.pb.PostureResponse.ProcessList.processes:type_name -> zt.edge_client.pb.PostureResponse.Process
+	26, // 19: zt.edge_client.pb.PostureResponse.Woken.Time:type_name -> google.protobuf.Timestamp
+	26, // 20: zt.edge_client.pb.PostureResponse.Unlocked.Time:type_name -> google.protobuf.Timestamp
 	21, // [21:21] is the sub-list for method output_type
 	21, // [21:21] is the sub-list for method input_type
 	21, // [21:21] is the sub-list for extension type_name

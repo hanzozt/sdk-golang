@@ -30,13 +30,13 @@ var cfgFile string
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "zping",
-	Short: "Latency Diagnostic tool for ziti",
-	Long: `zping replaces the function of icmp ping tool in a ziti network.
-It provides an end to end latency measurement between any two ziti identities in
-a ziti network and like icmp ping will provide the following metrics upon completion
+	Short: "Latency Diagnostic tool for zt",
+	Long: `zping replaces the function of icmp ping tool in a zt network.
+It provides an end to end latency measurement between any two zt identities in
+a zt network and like icmp ping will provide the following metrics upon completion
 of the ping session: min, max and mean latency and standard deviation as well as % loss.
-zping uses the addressable terminator function of ziti to direct ping requests to
-specific ziti identities.`,
+zping uses the addressable terminator function of zt to direct ping requests to
+specific zt identities.`,
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.

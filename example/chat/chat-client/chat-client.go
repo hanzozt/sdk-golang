@@ -18,7 +18,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/hanzozt/sdk-golang/ziti"
+	"github.com/hanzozt/sdk-golang/zt"
 	"io"
 	"os"
 )
@@ -31,7 +31,7 @@ func main() {
 	name := os.Args[1]
 
 	// Get identity config
-	cfg, err := ziti.NewConfigFromFile(os.Args[2])
+	cfg, err := zt.NewConfigFromFile(os.Args[2])
 	if err != nil {
 		panic(err)
 	}
@@ -42,7 +42,7 @@ func main() {
 		serviceName = os.Args[3]
 	}
 
-	context, err := ziti.NewContext(cfg)
+	context, err := zt.NewContext(cfg)
 
 	if err != nil {
 		panic(err)

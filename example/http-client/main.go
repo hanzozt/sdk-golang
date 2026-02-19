@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	"github.com/hanzozt/sdk-golang/ziti"
+	"github.com/hanzozt/sdk-golang/zt"
 	"io"
 	"net"
 	"net/http"
@@ -10,19 +10,19 @@ import (
 )
 
 func newZitiClient() *http.Client {
-	ziti.DefaultCollection.ForAll(func(ctx ziti.Context) {
+	zt.DefaultCollection.ForAll(func(ctx zt.Context) {
 		ctx.Authenticate()
 	})
-	zitiTransport := http.DefaultTransport.(*http.Transport).Clone() // copy default transport
-	zitiTransport.DialContext = func(ctx context.Context, network, addr string) (net.Conn, error) {
-		dialer := ziti.DefaultCollection.NewDialer()
+	ztTransport := http.DefaultTransport.(*http.Transport).Clone() // copy default transport
+	ztTransport.DialContext = func(ctx context.Context, network, addr string) (net.Conn, error) {
+		dialer := zt.DefaultCollection.NewDialer()
 		return dialer.Dial(network, addr)
 	}
-	zitiTransport.TLSClientConfig.InsecureSkipVerify = true
-	return &http.Client{Transport: zitiTransport}
+	ztTransport.TLSClientConfig.InsecureSkipVerify = true
+	return &http.Client{Transport: ztTransport}
 }
 
-// this is a clone of ../curlz but showing the use of ziti.Dialer
+// this is a clone of ../curlz but showing the use of zt.Dialer
 // identities are loaded from ZITI_IDENTITIES environment variable -- ';'-separated list of identity files
 //
 // saple usage:

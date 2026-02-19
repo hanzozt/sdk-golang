@@ -394,12 +394,12 @@ and `ListenOptions` for the dial and hosting sides respectively.
 
 ```
 t := true
-dialOptions := &ziti.DialOptions{
+dialOptions := &zt.DialOptions{
     ConnectTimeout: wf.ConnectTimeout,
     SdkFlowControl: &t,
 }
 
-listenOptions := ziti.DefaultListenOptions()
+listenOptions := zt.DefaultListenOptions()
 listenOptions.SdkFlowControl = &t
 ```
 
@@ -468,7 +468,7 @@ Note that while present, the `MaxDefaultConnections` should not be used yet.
 
 ## Multi-connection support to edge router
 
-If the `EnableSeparateControlPlaneConnection` is set to true in `ziti.Config`, 
+If the `EnableSeparateControlPlaneConnection` is set to true in `zt.Config`, 
 the SDK will attempt to use a separate connection to each ER for control messaging.
 If the router does not support this feature, then the SDK will fallback to using
 a single connection.
@@ -855,11 +855,11 @@ to connect to the Edge Router. This is useful when operating in restricted envir
 some connection methods are no allowed (i.e. tcp/tls vs ws/wss).
 
 ```go
-	cfg := &ziti.Config{
+	cfg := &zt.Config{
 		ZtAPI:       "https://localhost:1280/edge/client/v1",
 		Credentials: credentials,
 	}
-	ctx, err := ziti.NewContextWithOpts(cfg, &ziti.Options{
+	ctx, err := zt.NewContextWithOpts(cfg, &zt.Options{
 		EdgeRouterUrlFilter: func(addr string) bool {
 			return strings.HasPrefix(addr,"wss")
 		},
@@ -872,7 +872,7 @@ some connection methods are no allowed (i.e. tcp/tls vs ws/wss).
 
 ## What's New
 
-`ziti.Options` has a new field: `EdgeRouterUrlFilter func(string) bool`. This allows filtering which edge router URLS you
+`zt.Options` has a new field: `EdgeRouterUrlFilter func(string) bool`. This allows filtering which edge router URLS you
 want the SDK to try and connect to. In most cases, filtering will be done by protocol. If no filter is provided, all
 URL will be used.
 
@@ -901,26 +901,26 @@ Previously, the GoLang SDK provided a package named `config` which would collide
 contained variables or packages named config. To reduce collisions, the `config` package has been removed. This has
 the following impact:
 
-- The type `config.Config` is now `ziti.Config` for importers
-- Configuration instantiation is no long `config.New*()` but rather `ziti.NewConfig*()`
-- Context instantiation is no longer `ziti.New*()` but rather `ziti.NewContext*()`
+- The type `config.Config` is now `zt.Config` for importers
+- Configuration instantiation is no long `config.New*()` but rather `zt.NewConfig*()`
+- Context instantiation is no longer `zt.New*()` but rather `zt.NewContext*()`
 
 ## New Authentication Options
 
 It is now possible to create an Hanzo ZT GoLang SDK Context by using alternative authentication mechanisms such as
 raw private/public keys, JWTs, and Username Passwords (UPDB) in addition to the original configuration file approach.
 This capability is provided by the `edge-apis` package. To make use of these new option, configure them on
-a `ziti.Config`
+a `zt.Config`
 
 ```go
 creds := edge_apis.NewJwtCredentials(jwtToken)
 creds.CaPool = caPool
 
-cfg := &ziti.Config{
+cfg := &zt.Config{
 ZtAPI:       "https://localhost:1280/edge/client/v1",
 Credentials: creds,
 }
-ctx, err := ziti.NewContext(cfg)
+ctx, err := zt.NewContext(cfg)
 ```
 
 Previous file based implementations may still use identity files:
@@ -954,19 +954,19 @@ examples:
 
 ```go
 creds := edge_apis.NewCertCredentials([]*x509.Certificate{testIdCerts.cert}, testIdCerts.key)
-creds.CaPool = ziti.GetControllerWellKnownCaPool("https://example.com:1280")
+creds.CaPool = zt.GetControllerWellKnownCaPool("https://example.com:1280")
 ```
 
 ```go
 creds := edge_apis.New([]*x509.Certificate{testIdCerts.cert}, testIdCerts.key)
-creds.CaPool = ziti.GetControllerWellKnownCaPool("https://example.com:1280")
+creds.CaPool = zt.GetControllerWellKnownCaPool("https://example.com:1280")
 ```
 
 After a credentials instance is created, a client may be created that will authenticate and provide API access.
 
 ```go
 creds := edge_apis.New([]*x509.Certificate{testIdCerts.cert}, testIdCerts.key)
-creds.CaPool = ziti.GetControllerWellKnownCaPool("https://example.com:1280")
+creds.CaPool = zt.GetControllerWellKnownCaPool("https://example.com:1280")
 
 client := edge_apis.NewClientApiClient(clientApiUrl, nil)
 apiSession, err := client.Authenticate(creds, nil)
@@ -1065,7 +1065,7 @@ emitted.
 
 The underlying event functionality is provided by `github.com/kataras/go-events` which uses a weakly typed arguments
 for events. The `go-events` interface for event emitters is available for use and will require usage of the documented
-event names in `ziti/events.go`.
+event names in `zt/events.go`.
 
 All events, either through the strongly typed or weakly typed interface, are called synchronously. Performing operations
 that take longer than a few milliseconds is not suggested. If necessary, when your event handler is called spawn a 
@@ -1073,7 +1073,7 @@ goroutine to offload any extended processing.
 
 Synchronous Event:
 ```go
-ctx, err := ziti.NewContext(cfg)
+ctx, err := zt.NewContext(cfg)
 ctx.Events().AddServiceAddedListener(func(detail *rest_model.ServiceDetail) {
     fmt.Printf("New service %s", *detail.Name)
 })
@@ -1081,7 +1081,7 @@ ctx.Events().AddServiceAddedListener(func(detail *rest_model.ServiceDetail) {
 
 Asynchronous Event:
 ```go
-ctx, err := ziti.NewContext(cfg)
+ctx, err := zt.NewContext(cfg)
 ctx.Events().AddServiceAddedListener(func(detail *rest_model.ServiceDetail) {
     go func(){
 		fmt.Printf("New service %s", *detail.Name

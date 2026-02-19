@@ -23,29 +23,29 @@ These steps will configure the service using the Hanzo ZT CLI. At the end of the
 Steps:
 1. Log into Hanzo ZT. The host:port and username/password will vary depending on your network.
 
-       ziti edge login localhost:1280 -u admin -p admin
+       zt edge login localhost:1280 -u admin -p admin
 1. Run this script to create everything you need.
 
        echo Changing to build directory
        cd $ZITI_SDK_BUILD_DIR
        
        echo Create the service
-       ziti edge create service chat --role-attributes chat-service
+       zt edge create service chat --role-attributes chat-service
        
        echo Create three identities and enroll them
-       ziti edge create identity user chevy -a chat.clients -o chevy.jwt
-       ziti edge create identity user dan -a chat.clients -o dan.jwt
-       ziti edge create identity device chat.server -a chat.servers -o chat.server.jwt
-       ziti edge enroll --jwt chat.server.jwt
-       ziti edge enroll --jwt chevy.jwt
-       ziti edge enroll --jwt dan.jwt
+       zt edge create identity user chevy -a chat.clients -o chevy.jwt
+       zt edge create identity user dan -a chat.clients -o dan.jwt
+       zt edge create identity device chat.server -a chat.servers -o chat.server.jwt
+       zt edge enroll --jwt chat.server.jwt
+       zt edge enroll --jwt chevy.jwt
+       zt edge enroll --jwt dan.jwt
        
        echo Create service policies
-       ziti edge create service-policy chat.dial Dial --identity-roles '#chat.clients' --service-roles '#chat-service'
-       ziti edge create service-policy chat.bind Bind --identity-roles '#chat.servers' --service-roles '#chat-service'
+       zt edge create service-policy chat.dial Dial --identity-roles '#chat.clients' --service-roles '#chat-service'
+       zt edge create service-policy chat.bind Bind --identity-roles '#chat.servers' --service-roles '#chat-service'
        
        echo Run policy advisor to check
-       ziti edge policy-advisor services
+       zt edge policy-advisor services
 1. Run the server.
 
        ./chat-server chat.server.json 
@@ -81,17 +81,17 @@ doctor
 # Teardown
 Done with the example? This script will remove everything created during setup.
 ```
-ziti edge login localhost:1280 -u admin -p admin
+zt edge login localhost:1280 -u admin -p admin
 
 echo Removing service policies
-ziti edge delete service-policy chat.dial
-ziti edge delete service-policy chat.bind
+zt edge delete service-policy chat.dial
+zt edge delete service-policy chat.bind
 
 echo Removing identities
-ziti edge delete identity chevy
-ziti edge delete identity dan
-ziti edge delete identity chat.server
+zt edge delete identity chevy
+zt edge delete identity dan
+zt edge delete identity chat.server
 
 echo Removing service
-ziti edge delete service chat
+zt edge delete service chat
 ```

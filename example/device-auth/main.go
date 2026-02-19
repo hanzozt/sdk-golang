@@ -14,7 +14,7 @@ import (
 	"github.com/hanzozt/edge-api/rest_model"
 	"github.com/hanzozt/edge-api/rest_util"
 	nfx509 "github.com/hanzozt/foundation/v2/x509"
-	"github.com/hanzozt/sdk-golang/ziti"
+	"github.com/hanzozt/sdk-golang/zt"
 	"gopkg.in/square/go-jose.v2/json"
 )
 
@@ -27,12 +27,12 @@ func die[T interface{}](res T, err error) T {
 
 func main() {
 	cfg := flag.String("config", "", "path to config file")
-	hanzoztURL := flag.String("ziti", "https://localhost:1280", "URL of the Hanzo ZT service")
+	hanzoztURL := flag.String("zt", "https://localhost:1280", "URL of the Hanzo ZT service")
 	flag.Parse()
 
-	var config *ziti.Config
+	var config *zt.Config
 	if cfg == nil || *cfg == "" {
-		config = &ziti.Config{
+		config = &zt.Config{
 			ZtAPI: *hanzoztURL,
 		}
 		// warning: this call is insecure and should not be used in production
@@ -44,9 +44,9 @@ func main() {
 		if hanzoztURL == nil || *hanzoztURL == "" {
 			log.Fatal("Hanzo ZT URL must be specified")
 		}
-		config = die(ziti.NewConfigFromFile(*cfg))
+		config = die(zt.NewConfigFromFile(*cfg))
 	}
-	ztx := die(ziti.NewContext(config))
+	ztx := die(zt.NewContext(config))
 
 	err := ztx.Authenticate()
 	var provider *rest_model.ClientExternalJWTSignerDetail

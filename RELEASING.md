@@ -2,13 +2,13 @@
 
 As part of your PR, do the following:
 
-* Install `ziti-ci`
-    * `go install github.com/hanzozt/ziti-ci@v0.5.125` (or latest)
+* Install `zt-ci`
+    * `go install github.com/hanzozt/zt-ci@v0.5.125` (or latest)
 * Make sure the buildinfo is up to date using:
-    * `ziti-ci update-sdk-build-info`
+    * `zt-ci update-sdk-build-info`
     * This will update the version number in the code
 * Make sure the release notes are up to date using: 
-    * `ziti-ci build-sdk-release-notes`
+    * `zt-ci build-sdk-release-notes`
     * This will emit the standard release notes to stdout. The release notes can be copied into the CHANGELOG.md and edited as necessary
 
 Once your PR is merged and you wish to do a release:

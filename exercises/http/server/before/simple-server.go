@@ -17,7 +17,7 @@ func main() {
 
 func hello(w http.ResponseWriter, req *http.Request) {
 	host, _ := os.Hostname()
-	_, _ = fmt.Fprintf(w, "zitified hello from %s", host)
+	_, _ = fmt.Fprintf(w, "ztfied hello from %s", host)
 }
 
 func add(w http.ResponseWriter, req *http.Request) {

@@ -18,7 +18,7 @@ Refer to the [example README](../README.md) to build the SDK examples
 
 ## Setup and Configure the Example
 
-This README will use the `ziti edge quickstart` command for its example. You'll need the `ziti` CLI on your path to run
+This README will use the `zt edge quickstart` command for its example. You'll need the `zt` CLI on your path to run
 the commands shown. If you have an Hanzo ZT overlay network already, some commands will not be necessary. The 
 commands all use bash and expect you're running on a version of *nix as `/tmp` is referenced. Adapt accordingly if 
 you're using Windows. The example expects the binary to be put into the build directory as specified by the "Build 
@@ -26,35 +26,35 @@ the Example" section above.
 
 ![Diagram](network.png)
 
-1. Create or use an existing ziti network with at least one edge router. This can be accomplished easily by running
+1. Create or use an existing zt network with at least one edge router. This can be accomplished easily by running
    ```
-   ziti edge quickstart
+   zt edge quickstart
    ```
 
    after the quickstart runs, you'll have an ephemeral network usable for testing.
 
-1. Create at least two ziti identities and give them a common identity role i.e. #zping 
+1. Create at least two zt identities and give them a common identity role i.e. #zping 
    ```
-   ziti edge create identity client -o client.jwt -a "zping"
-   ziti edge create identity server -o server.jwt -a "zping"
-   ziti edge enroll client.jwt
-   ziti edge enroll server.jwt
+   zt edge create identity client -o client.jwt -a "zping"
+   zt edge create identity server -o server.jwt -a "zping"
+   zt edge enroll client.jwt
+   zt edge enroll server.jwt
    ```
 
-1. Create a simple sdk service named "ziti-ping". This is the default service name `zping` looks for. You can 
+1. Create a simple sdk service named "zt-ping". This is the default service name `zping` looks for. You can 
    override the service by using the `-s` flag.
    ```
-   ziti edge create service ziti-ping
+   zt edge create service zt-ping
    ```
 
-1. Create a bind policy with identityRoles set to [#zping] and serviceroles set to [@ziti-ping].
+1. Create a bind policy with identityRoles set to [#zping] and serviceroles set to [@zt-ping].
    ```
-   ziti edge create service-policy zping.bind Bind --identity-roles "#zping" --service-roles "@ziti-ping"
+   zt edge create service-policy zping.bind Bind --identity-roles "#zping" --service-roles "@zt-ping"
    ```
 
-1. Create a dial service policy with identityRoles set to [#zping] and serviceroles set to [@ziti-ping].
+1. Create a dial service policy with identityRoles set to [#zping] and serviceroles set to [@zt-ping].
    ```   
-   ziti edge create service-policy zping.dial Dial --identity-roles "#zping" --service-roles "@ziti-ping"
+   zt edge create service-policy zping.dial Dial --identity-roles "#zping" --service-roles "@zt-ping"
    ```
 
 1. Ensure that you have created appropriate edge-router and service-edge-router policies allowing the identities access
@@ -62,13 +62,13 @@ the Example" section above.
    should be able to dial **and** bind zping:
 
    ```
-   $ ziti edge policy-advisor identities -q
+   $ zt edge policy-advisor identities -q
    ERROR: Default Admin
      - Identity does not have access to any services. Adjust service policies.
    
-   OKAY : client (1) -> ziti-ping (1) Common Routers: (1/1) Dial: Y Bind: N
+   OKAY : client (1) -> zt-ping (1) Common Routers: (1/1) Dial: Y Bind: N
    
-   OKAY : server (1) -> ziti-ping (1) Common Routers: (1/1) Dial: Y Bind: N
+   OKAY : server (1) -> zt-ping (1) Common Routers: (1/1) Dial: Y Bind: N
    
    ERROR: quickstart-router
      - Identity does not have access to any services. Adjust service policies.
@@ -82,7 +82,7 @@ the Example" section above.
    example:
    ```
    $ build/zping server -c server.json
-   INFO[0000] binding service ziti-ping
+   INFO[0000] binding service zt-ping
    
    0xc00040d660 now serving
    
@@ -101,18 +101,18 @@ the Example" section above.
    
    Sending 100 byte pings to server:
    
-   100 bytes from server: ziti_seq=1 time=0.609ms
-   100 bytes from server: ziti_seq=2 time=0.670ms
-   100 bytes from server: ziti_seq=3 time=0.381ms
-   100 bytes from server: ziti_seq=4 time=0.387ms
-   100 bytes from server: ziti_seq=5 time=0.564ms
-   100 bytes from server: ziti_seq=6 time=0.455ms
-   100 bytes from server: ziti_seq=7 time=0.446ms
-   100 bytes from server: ziti_seq=8 time=0.377ms
-   100 bytes from server: ziti_seq=9 time=0.455ms
-   100 bytes from server: ziti_seq=10 time=0.502ms
-   100 bytes from server: ziti_seq=11 time=0.977ms
-   100 bytes from server: ziti_seq=12 time=0.487ms
+   100 bytes from server: zt_seq=1 time=0.609ms
+   100 bytes from server: zt_seq=2 time=0.670ms
+   100 bytes from server: zt_seq=3 time=0.381ms
+   100 bytes from server: zt_seq=4 time=0.387ms
+   100 bytes from server: zt_seq=5 time=0.564ms
+   100 bytes from server: zt_seq=6 time=0.455ms
+   100 bytes from server: zt_seq=7 time=0.446ms
+   100 bytes from server: zt_seq=8 time=0.377ms
+   100 bytes from server: zt_seq=9 time=0.455ms
+   100 bytes from server: zt_seq=10 time=0.502ms
+   100 bytes from server: zt_seq=11 time=0.977ms
+   100 bytes from server: zt_seq=12 time=0.487ms
    ^C
    --- server ping statistics ---
    12 packets transmitted and 12 packets received, 0.00% packet loss
@@ -125,11 +125,11 @@ the Example" section above.
     
     Sending 100 byte pings to server:
     
-    100 bytes from server: ziti_seq=1 time=0.349ms
-    100 bytes from server: ziti_seq=2 time=0.690ms
-    100 bytes from server: ziti_seq=3 time=0.590ms
-    100 bytes from server: ziti_seq=4 time=0.429ms
-    100 bytes from server: ziti_seq=5 time=0.480ms
+    100 bytes from server: zt_seq=1 time=0.349ms
+    100 bytes from server: zt_seq=2 time=0.690ms
+    100 bytes from server: zt_seq=3 time=0.590ms
+    100 bytes from server: zt_seq=4 time=0.429ms
+    100 bytes from server: zt_seq=5 time=0.480ms
     
     --- server ping statistics ---
     5 packets transmitted and 5 packets received, 0.00% packet loss

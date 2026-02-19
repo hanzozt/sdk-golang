@@ -20,8 +20,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/michaelquigley/pfxlog"
-	"github.com/hanzozt/sdk-golang/ziti"
-	"github.com/hanzozt/sdk-golang/ziti/enroll"
+	"github.com/hanzozt/sdk-golang/zt"
+	"github.com/hanzozt/sdk-golang/zt/enroll"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 	"io/ioutil"
@@ -32,7 +32,7 @@ import (
 )
 
 func processEnrollment(jwtpath, outpath string) error {
-	var keyAlg ziti.KeyAlgVar = "RSA"
+	var keyAlg zt.KeyAlgVar = "RSA"
 	var keyPath, certPath, idname, caOverride string
 
 	if strings.TrimSpace(outpath) == "" {

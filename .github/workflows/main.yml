@@ -23,7 +23,7 @@ jobs:
           go-version: stable
 
       - name: Install Ziti CI
-        uses: hanzozt/ziti-ci@v1
+        uses: hanzozt/zt-ci@v1
 
       - name: Build and Test
         run: |
@@ -31,4 +31,4 @@ jobs:
           go test -C example ./...
           go install ./...
           ./license-check.sh
-          $(go env GOPATH)/bin/ziti-ci verify-version $($(go env GOPATH)/bin/sdk-version)
+          $(go env GOPATH)/bin/zt-ci verify-version $($(go env GOPATH)/bin/sdk-version)

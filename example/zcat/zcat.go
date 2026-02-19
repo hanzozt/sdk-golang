@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"github.com/michaelquigley/pfxlog"
 	"github.com/hanzozt/foundation/v2/info"
-	"github.com/hanzozt/sdk-golang/ziti"
+	"github.com/hanzozt/sdk-golang/zt"
 	"github.com/hanzozt/transport/v2"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
@@ -85,7 +85,7 @@ func runFunc(_ *cobra.Command, args []string) {
 	service := args[0]
 
 	// Get identity config
-	cfg, err := ziti.NewConfigFromFile(identityFile)
+	cfg, err := zt.NewConfigFromFile(identityFile)
 	if err != nil {
 		panic(err)
 	}
@@ -107,14 +107,14 @@ func runFunc(_ *cobra.Command, args []string) {
 		}
 	}
 
-	context, err := ziti.NewContext(cfg)
+	context, err := zt.NewContext(cfg)
 
 	if err != nil {
 		panic(err)
 	}
 
 	for {
-		opts := &ziti.DialOptions{
+		opts := &zt.DialOptions{
 			ConnectTimeout: 5 * time.Second,
 		}
 		if len(args) >= 2 {

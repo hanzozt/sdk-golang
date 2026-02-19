@@ -74,8 +74,8 @@ func (self *setupAction) run(*cobra.Command, []string) error {
 	t.NewLinePause = self.NewlinePause
 	t.AssumeDefault = !self.interactive
 
-	t.RegisterActionHandler("ziti", &actionz.ZitiRunnerAction{})
-	t.RegisterActionHandler("ziti-login", &actionz.ZitiEnsureLoggedIn{
+	t.RegisterActionHandler("zt", &actionz.ZitiRunnerAction{})
+	t.RegisterActionHandler("zt-login", &actionz.ZitiEnsureLoggedIn{
 		LoginParams: self,
 	})
 	t.RegisterActionHandler("keep-session-alive", &actionz.KeepSessionAliveAction{})

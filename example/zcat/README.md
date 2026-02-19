@@ -17,7 +17,7 @@ This example demonstrates:
 ## Build the examples
 Refer to the [example README](../README.md) to build the SDK examples
 
-## Part 1 Setup: zcat to a non-zitified endpoint
+## Part 1 Setup: zcat to a non-ztfied endpoint
 These steps will configure the service using the Hanzo ZT CLI. At the end of these steps you will have created:
 * a service called `zcat`
 * an identity to dial the service
@@ -27,31 +27,31 @@ These steps will configure the service using the Hanzo ZT CLI. At the end of the
 Steps:
 1. Log into Hanzo ZT. The host:port and username/password will vary depending on your network.
 
-       ziti edge login localhost:1280 -u admin -p admin
+       zt edge login localhost:1280 -u admin -p admin
 1. Give your edge router an attribute to be used in this example
 
-       ziti edge list edge-routers
-       ziti edge update identity <name-of-edge-router> -a 'zcat.servers'
+       zt edge list edge-routers
+       zt edge update identity <name-of-edge-router> -a 'zcat.servers'
 1. Run this script to create everything you need.
 
        cd <repo-root-dir>/example/build
 
        echo Create the service config
-       ziti edge create config zcat.hostv1 host.v1 '{"protocol":"tcp", "address":"localhost","port":'1234'}'
+       zt edge create config zcat.hostv1 host.v1 '{"protocol":"tcp", "address":"localhost","port":'1234'}'
 
        echo Create the service
-       ziti edge create service zcat --role-attributes zcat-service --configs "zcat.hostv1"
+       zt edge create service zcat --role-attributes zcat-service --configs "zcat.hostv1"
        
        echo Create an identity for the client side to dial with
-       ziti edge create identity device zcat-client -a zcat.clients -o zcat-client.jwt
-       ziti edge enroll --jwt zcat-client.jwt
+       zt edge create identity device zcat-client -a zcat.clients -o zcat-client.jwt
+       zt edge enroll --jwt zcat-client.jwt
        
        echo Create service policies
-       ziti edge create service-policy zcat.dial Dial --identity-roles '#zcat.clients' --service-roles '#zcat-service'
-       ziti edge create service-policy zcat.bind Bind --identity-roles '#zcat.servers' --service-roles '#zcat-service'
+       zt edge create service-policy zcat.dial Dial --identity-roles '#zcat.clients' --service-roles '#zcat-service'
+       zt edge create service-policy zcat.bind Bind --identity-roles '#zcat.servers' --service-roles '#zcat-service'
        
        echo Run policy advisor to check
-       ziti edge policy-advisor services
+       zt edge policy-advisor services
 1. Run a netcat listener (-l creates a listener and -k keeps the listener running when connections are closed). The 
    netcat listener should be run on the device hosting your edge router.
 
@@ -78,22 +78,22 @@ hello
 ### Teardown Part 1
 Done with the example? This script will remove everything created during setup for part 1.
 ```shell
-ziti edge login localhost:1280 -u admin -p admin
+zt edge login localhost:1280 -u admin -p admin
 
 echo Removing service policies
-ziti edge delete service-policy zcat.dial
-ziti edge delete service-policy zcat.bind
+zt edge delete service-policy zcat.dial
+zt edge delete service-policy zcat.bind
 
 echo Removing service config
-ziti edge delete config zcat.hostv1
+zt edge delete config zcat.hostv1
 
 echo Removing identities
-ziti edge delete identity zcat-client
+zt edge delete identity zcat-client
 
 echo Removing service
-ziti edge delete service zcat
+zt edge delete service zcat
 ```
-## Part 2 Setup: zcat to a zitified endpoint
+## Part 2 Setup: zcat to a ztfied endpoint
 These steps will configure the service using the Hanzo ZT CLI. At the end of these steps you will have created:
 * a service called `zcat.addressable`
 * two identities, one to dial the service and one to bind to the service
@@ -103,32 +103,32 @@ These steps will configure the service using the Hanzo ZT CLI. At the end of the
 Steps:
 1. Log into Hanzo ZT. The host:port and username/password will vary depending on your network.
 
-       ziti edge login localhost:1280 -u admin -p admin
+       zt edge login localhost:1280 -u admin -p admin
 1. If you didn't perform "Part 1" of this exercise, give your edge router an attribute to be used in this example
 
-       ziti edge list edge-routers
-       ziti edge update identity <name-of-edge-router> -a 'zcat.servers'
+       zt edge list edge-routers
+       zt edge update identity <name-of-edge-router> -a 'zcat.servers'
 1. Run this script to create everything you need.
 
        cd <repo-root-dir>/example/build
 
        echo Create the service config
-       ziti edge create config zcat.hostv1.addressable host.v1 '{"protocol":"tcp", "address":"localhost","port":'1234', "listenOptions": {"bindUsingEdgeIdentity":true}}'
+       zt edge create config zcat.hostv1.addressable host.v1 '{"protocol":"tcp", "address":"localhost","port":'1234', "listenOptions": {"bindUsingEdgeIdentity":true}}'
 
        echo Create the service
-       ziti edge create service zcat.addressable --role-attributes zcat-addressable --configs "zcat.hostv1.addressable"
+       zt edge create service zcat.addressable --role-attributes zcat-addressable --configs "zcat.hostv1.addressable"
        
        echo Create two identities, one for the server side, one for the client side
-       ziti edge create identity device zcat-client -a zcat.clients -o zcat-client.jwt
-       ziti edge enroll --jwt zcat-client.jwt
-       ziti edge create identity user example.user -a zcat.servers -o example.user.jwt
+       zt edge create identity device zcat-client -a zcat.clients -o zcat-client.jwt
+       zt edge enroll --jwt zcat-client.jwt
+       zt edge create identity user example.user -a zcat.servers -o example.user.jwt
        
        echo Create service policies
-       ziti edge create service-policy zcat.addressable.dial Dial --service-roles "#zcat-addressable" --identity-roles "#zcat.clients"
-       ziti edge create service-policy zcat.addressable.bind Bind --service-roles "#zcat-addressable" --identity-roles "#zcat.servers"
+       zt edge create service-policy zcat.addressable.dial Dial --service-roles "#zcat-addressable" --identity-roles "#zcat.clients"
+       zt edge create service-policy zcat.addressable.bind Bind --service-roles "#zcat-addressable" --identity-roles "#zcat.servers"
        
        echo Run policy advisor to check
-       ziti edge policy-advisor services
+       zt edge policy-advisor services
 1. Enroll the example.user identity in your local tunneler
    1. Refer to [enrolling documentation](https://netfoundry.io/docs/hanzozt/learn/core-concepts/identities/enrolling/) for details
 
@@ -174,18 +174,18 @@ user not being bound to the service, the message failed to send since there was 
 Done with the example? This script will remove everything created during setup for part 2.
 You will have to manually remove the identity from your Ziti Desktop Edge application.
 ```shell
-ziti edge login localhost:1280 -u admin -p admin
+zt edge login localhost:1280 -u admin -p admin
 
 echo Removing service policies
-ziti edge delete service-policy zcat.addressable.dial
-ziti edge delete service-policy zcat.addressable.bind
+zt edge delete service-policy zcat.addressable.dial
+zt edge delete service-policy zcat.addressable.bind
 
 echo Removing service config
-ziti edge delete config zcat.hostv1.addressable
+zt edge delete config zcat.hostv1.addressable
 
 echo Removing identity
-ziti edge delete identity zcat-client
+zt edge delete identity zcat-client
 
 echo Removing service
-ziti edge delete service zcat.addressable
+zt edge delete service zcat.addressable
 ```

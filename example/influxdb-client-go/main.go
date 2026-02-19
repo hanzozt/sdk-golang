@@ -5,7 +5,7 @@ import (
 	"flag"
 	"fmt"
 	influxdb2 "github.com/influxdata/influxdb-client-go/v2"
-	"github.com/hanzozt/sdk-golang/ziti"
+	"github.com/hanzozt/sdk-golang/zt"
 	"github.com/sirupsen/logrus"
 	"net"
 	"net/http"
@@ -18,7 +18,7 @@ type ZitiDoer struct {
 	httpClient *http.Client
 }
 type ZitiDialContext struct {
-	context     ziti.Context
+	context     zt.Context
 	serviceName string
 }
 
@@ -26,22 +26,22 @@ func (dc *ZitiDialContext) Dial(_ context.Context, _ string, _ string) (net.Conn
 	return dc.context.Dial(dc.serviceName)
 }
 func NewZitiDoer(cfgFile string) *ZitiDoer {
-	zitiCfg, err := ziti.NewConfigFromFile(cfgFile)
+	ztCfg, err := zt.NewConfigFromFile(cfgFile)
 	if err != nil {
-		logrus.Errorf("failed to load ziti configuration file: %v", err)
+		logrus.Errorf("failed to load zt configuration file: %v", err)
 	}
-	ctx, err := ziti.NewContext(zitiCfg)
+	ctx, err := zt.NewContext(ztCfg)
 
 	if err != nil {
 		panic(err)
 	}
 
-	zitiDialContext := ZitiDialContext{context: ctx, serviceName: svcName}
-	zitiTransport := http.DefaultTransport.(*http.Transport).Clone() // copy default transport
-	zitiTransport.DialContext = zitiDialContext.Dial
+	ztDialContext := ZitiDialContext{context: ctx, serviceName: svcName}
+	ztTransport := http.DefaultTransport.(*http.Transport).Clone() // copy default transport
+	ztTransport.DialContext = ztDialContext.Dial
 	doer := &ZitiDoer{}
 	doer.httpClient = &http.Client{
-		Transport: zitiTransport,
+		Transport: ztTransport,
 	}
 	return doer
 }
@@ -57,13 +57,13 @@ func main() {
 	flag.Parse()
 
 	//create a new "Doer" - in this case it is a simple struct which implements "Do"
-	zitiDoer := NewZitiDoer(identityFile)
+	ztDoer := NewZitiDoer(identityFile)
 
 	token := fmt.Sprintf("%s:%s", userName, password)
 	// Create a new client using an InfluxDB server base URL and an authentication token
 	// For authentication token supply a string in the form: "username:password" as a token. Set empty value for an unauthenticated server
 	opts := influxdb2.DefaultOptions()
-	opts.HTTPOptions().SetHTTPDoer(zitiDoer)
+	opts.HTTPOptions().SetHTTPDoer(ztDoer)
 	client := influxdb2.NewClientWithOptions("http://influx-no-ssl:8086", token, opts)
 
 	// Get the blocking write client

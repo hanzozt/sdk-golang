@@ -10,39 +10,39 @@ This example demonstrates a hybrid approach ZTAA --> ZTHA:
 ## Requirements
 * Hanzo ZT CLI to create services and identities on the Hanzo ZT Network
 * an Hanzo ZT network. If you have one you'd like to use, great. The guide is written using the 
-  `ziti edge quickstart` command.
+  `zt edge quickstart` command.
 * All commands are executed relative to the `example` folder
 
 ## Build the examples
 Refer to the [example README](../README.md) to build the SDK examples
 
 ## Run and Configure Hanzo ZT
-The README assumes the `ziti` CLI on your path. If not, supply the full path to the `ziti` executable. This command
-will start a ziti overlay network on ports 1280/3022 for use with the rest of the README. The default values will
+The README assumes the `zt` CLI on your path. If not, supply the full path to the `zt` executable. This command
+will start a zt overlay network on ports 1280/3022 for use with the rest of the README. The default values will
 also be used for username and password. The router from the quickstart is the identity which will offload the Hanzo ZT
 traffic toward the UDP server
 
 In a new terminal run the following command:
 ```
-ziti edge quickstart
+zt edge quickstart
 ```
 
-To configure the overlay, you will need another terminal with `ziti` on the path. Now, add a service for the UDP 
+To configure the overlay, you will need another terminal with `zt` on the path. Now, add a service for the UDP 
 server to be offloaded from the Hanzo ZT overlay as well as create the identity this example will use:
 ```
 svc_name="udp.relay.example"
 edge_router_name="quickstart-router"
-ziti edge login localhost:1280 -u admin -p admin -y
-ziti edge create config ${svc_name}.hostv1 host.v1 '{"protocol":"udp", "address":"127.0.0.1","port":10001}'
-ziti edge create service ${svc_name} --configs "${svc_name}.hostv1"
-ziti edge create service-policy ${svc_name}.dial Dial --identity-roles "#${svc_name}.dialers" --service-roles "@${svc_name}"
-ziti edge create service-policy ${svc_name}.bind Bind --identity-roles "#${svc_name}.binders" --service-roles "@${svc_name}"
+zt edge login localhost:1280 -u admin -p admin -y
+zt edge create config ${svc_name}.hostv1 host.v1 '{"protocol":"udp", "address":"127.0.0.1","port":10001}'
+zt edge create service ${svc_name} --configs "${svc_name}.hostv1"
+zt edge create service-policy ${svc_name}.dial Dial --identity-roles "#${svc_name}.dialers" --service-roles "@${svc_name}"
+zt edge create service-policy ${svc_name}.bind Bind --identity-roles "#${svc_name}.binders" --service-roles "@${svc_name}"
 
-ziti edge create identity ${svc_name}.client -a ${svc_name}.dialers -o ${svc_name}.client.jwt
-ziti edge enroll --jwt ${svc_name}.client.jwt
+zt edge create identity ${svc_name}.client -a ${svc_name}.dialers -o ${svc_name}.client.jwt
+zt edge enroll --jwt ${svc_name}.client.jwt
 
-ziti edge update identity ${edge_router_name} -a "${svc_name}.binders"
-ziti edge policy-advisor services -q
+zt edge update identity ${edge_router_name} -a "${svc_name}.binders"
+zt edge policy-advisor services -q
 ```
 
 ## Run the UDP Server
@@ -62,12 +62,12 @@ Listening on :10001
 Make sure the router (or identity) hosting the service establishes a terminator. Issue the following command and verify
 a terminator is listed as shown:
 ```
-ziti edge list terminators 'service.name="udp.relay.example"'
+zt edge list terminators 'service.name="udp.relay.example"'
 ```
 
 example output:
 ```
-$ ziti edge list terminators 'service.name="udp.relay.example"'
+$ zt edge list terminators 'service.name="udp.relay.example"'
 ╭───────────────────────┬───────────────────┬───────────────────┬─────────┬───────────────────────┬──────────┬──────┬────────────┬──────────────╮
 │ ID                    │ SERVICE           │ ROUTER            │ BINDING │ ADDRESS               │ IDENTITY │ COST │ PRECEDENCE │ DYNAMIC COST │
 ├───────────────────────┼───────────────────┼───────────────────┼─────────┼───────────────────────┼──────────┼──────┼────────────┼──────────────┤

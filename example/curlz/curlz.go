@@ -19,7 +19,7 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/hanzozt/sdk-golang/ziti"
+	"github.com/hanzozt/sdk-golang/zt"
 	"io"
 	"net"
 	"net/http"
@@ -28,7 +28,7 @@ import (
 )
 
 type ZitiDialContext struct {
-	context ziti.Context
+	context zt.Context
 }
 
 func (dc *ZitiDialContext) Dial(_ context.Context, _ string, addr string) (net.Conn, error) {
@@ -38,23 +38,23 @@ func (dc *ZitiDialContext) Dial(_ context.Context, _ string, addr string) (net.C
 
 func newZitiClient() *http.Client {
 	// Get identity config
-	cfg, err := ziti.NewConfigFromFile(os.Args[2])
+	cfg, err := zt.NewConfigFromFile(os.Args[2])
 	if err != nil {
 		panic(err)
 	}
 
-	ctx, err := ziti.NewContext(cfg)
+	ctx, err := zt.NewContext(cfg)
 
 	if err != nil {
 		panic(err)
 	}
 
-	zitiDialContext := ZitiDialContext{context: ctx}
+	ztDialContext := ZitiDialContext{context: ctx}
 
-	zitiTransport := http.DefaultTransport.(*http.Transport).Clone() // copy default transport
-	zitiTransport.DialContext = zitiDialContext.Dial
-	zitiTransport.TLSClientConfig.InsecureSkipVerify = true
-	return &http.Client{Transport: zitiTransport}
+	ztTransport := http.DefaultTransport.(*http.Transport).Clone() // copy default transport
+	ztTransport.DialContext = ztDialContext.Dial
+	ztTransport.TLSClientConfig.InsecureSkipVerify = true
+	return &http.Client{Transport: ztTransport}
 }
 
 func main() {

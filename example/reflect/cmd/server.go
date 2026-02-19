@@ -3,14 +3,14 @@ package cmd
 import (
 	"bufio"
 	"fmt"
-	"github.com/hanzozt/sdk-golang/ziti"
+	"github.com/hanzozt/sdk-golang/zt"
 	"net"
 	"os"
 	"strings"
 )
 
-func Server(zitiCfg *ziti.Config, serviceName string) {
-	ctx, err := ziti.NewContext(zitiCfg)
+func Server(ztCfg *zt.Config, serviceName string) {
+	ctx, err := zt.NewContext(ztCfg)
 
 	if err != nil {
 		panic(err)

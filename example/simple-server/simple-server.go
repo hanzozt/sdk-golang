@@ -19,7 +19,7 @@ package main
 import (
 	"fmt"
 	"github.com/michaelquigley/pfxlog"
-	"github.com/hanzozt/sdk-golang/ziti"
+	"github.com/hanzozt/sdk-golang/zt"
 	"github.com/sirupsen/logrus"
 	"net"
 	"net/http"
@@ -54,18 +54,18 @@ func httpServer(listenAddr string) {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("listening for non-ziti requests on %v\n", listenAddr)
+	fmt.Printf("listening for non-zt requests on %v\n", listenAddr)
 	serve(listener, "plain-internet")
 }
 
-func zitifiedServer() {
-	options := ziti.ListenOptions{
+func ztfiedServer() {
+	options := zt.ListenOptions{
 		ConnectTimeout: 5 * time.Minute,
 		MaxConnections: 3,
 	}
 
 	// Get identity config
-	cfg, err := ziti.NewConfigFromFile(os.Args[1])
+	cfg, err := zt.NewConfigFromFile(os.Args[1])
 	if err != nil {
 		panic(err)
 	}
@@ -79,7 +79,7 @@ func zitifiedServer() {
 		fmt.Printf("Using the default service [%v]", serviceName)
 	}
 
-	ctx, err := ziti.NewContext(cfg)
+	ctx, err := zt.NewContext(cfg)
 
 	if err != nil {
 		panic(err)
@@ -92,7 +92,7 @@ func zitifiedServer() {
 	}
 
 	fmt.Printf("listening for requests for Ziti service %v\n", serviceName)
-	serve(listener, "ziti")
+	serve(listener, "zt")
 }
 
 func main() {
@@ -101,7 +101,7 @@ func main() {
 		pfxlog.Logger().Debugf("debug enabled")
 	}
 
-	// Startup zitified server and plain http server
-	go zitifiedServer()
+	// Startup ztfied server and plain http server
+	go ztfiedServer()
 	httpServer("localhost:8080")
 }

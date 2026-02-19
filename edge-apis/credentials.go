@@ -12,8 +12,8 @@ import (
 	"github.com/michaelquigley/pfxlog"
 	"github.com/hanzozt/edge-api/rest_model"
 	"github.com/hanzozt/identity"
-	"github.com/hanzozt/sdk-golang/ziti/edge/network"
-	"github.com/hanzozt/sdk-golang/ziti/sdkinfo"
+	"github.com/hanzozt/sdk-golang/zt/edge/network"
+	"github.com/hanzozt/sdk-golang/zt/sdkinfo"
 )
 
 type AuthMethod string

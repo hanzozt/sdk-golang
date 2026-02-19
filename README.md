@@ -25,7 +25,7 @@ This SDK does the following:
 - [Important Packages](#important-packages)
 - [Writing Your Own Endpoint Client](#writing-your-own-endpoint-client)
   - [Load/Create A Configuration](#loadcreate-a-configuration)
-  - [Create A Ziti Context](#create-a-ziti-context)
+  - [Create A Ziti Context](#create-a-zt-context)
   - [Dial/Bind A Service](#dialbind-a-service)
   - [Creating & Enrolling an Identity](#creating--enrolling-an-identity)
   - [Allowing Dial/Bind Access to a Service](#allowing-dialbind-access-to-a-service)
@@ -36,7 +36,7 @@ This SDK does the following:
 This repository has a number of different folders, however below are the most important ones for a new developer
 to be aware of.
 
-- [`ziti`](ziti) - the main SDK package that will be included in your project
+- [`zt`](zt) - the main SDK package that will be included in your project
 - [`edge-apis`](edge-apis) - provides low-level abstractions for authenticating and accessing
   the [Ziti Edge Client and Management APIs]((https://hanzozt.dev/docs/reference/developer/api))
 - [`example`](example) - various example applications that illustrate different uses of the SDK. Each example contains its own
@@ -79,16 +79,16 @@ To test a client endpoint you will need the following outside your normal Golang
 The steps for writing any endpoint client are:
 
 1. [Load/Create a configuration](#loadcreate-a-configuration)
-2. [Create a instance](#create-a-ziti-context)
+2. [Create a instance](#create-a-zt-context)
 3. [Dial/Bind a service](#dialbind-a-service)
 
 The above links provide the steps in more detail, but here is the most basic setup to dial a service with most error 
 handling removed for brevity:
 
 ```golang
-	cfg, _ := ziti.NewConfigFromFile("client.json")
+	cfg, _ := zt.NewConfigFromFile("client.json")
 	
-	context, _ := ziti.NewContext(cfg)
+	context, _ := zt.NewContext(cfg)
 	
 	conn, _ := context.Dial(serviceName)
 	
@@ -99,19 +99,19 @@ handling removed for brevity:
 
 ### Load/Create A Configuration
 
-Configuration can be done through a file or through code that creates a [`Config`](ziti/config.go) instance. Loading
+Configuration can be done through a file or through code that creates a [`Config`](zt/config.go) instance. Loading
 through a file support x509 authentication only while creating custom `Config` instances allows for all authentication
 methods (x509, Username/Password, JWT, etc.).
 
 The easiest way to create a configuration is by using
-the [`ziti edge enroll`](https://hanzozt.dev/docs/learn/core-concepts/identities/enrolling) capabilities that will
+the [`zt edge enroll`](https://hanzozt.dev/docs/learn/core-concepts/identities/enrolling) capabilities that will
 generate an identity file that provides the location of the Hanzo ZT controller, the configuration types the client is
 interested in, and the x509 certificate and private key to use.
 
 #### Example: File Configuration
 
 ```golang
-cfg, err := ziti.NewConfigFromFile("client.json")
+cfg, err := zt.NewConfigFromFile("client.json")
 if err != nil {
     _, _ = fmt.Fprintf(os.Stderr, "failed to read configuration: %v", err)
     os.Exit(1)
@@ -122,7 +122,7 @@ if err != nil {
 ```golang
 // Note that GetControllerWellKnownCaPool() does not verify the authenticity of the controller, it is assumed
 // this is handled in some other way.
-caPool, err := ziti.GetControllerWellKnownCaPool("https://localhost:1280")
+caPool, err := zt.GetControllerWellKnownCaPool("https://localhost:1280")
 
 if err != nil {
     panic(err)
@@ -131,21 +131,21 @@ if err != nil {
 credentials := edge_apis.NewUpdbCredentials("Joe Admin", "20984hgn2q048ngq20-3gn")
 credentials.CaPool = caPool
 
-cfg := &ziti.Config{
+cfg := &zt.Config{
     ZtAPI:       "https://localhost:1280/edge/client/v1",
     Credentials: credentials,
 }
-ctx, err := ziti.NewContext(cfg)
+ctx, err := zt.NewContext(cfg)
 ```
 
 ### Create A Ziti Context
 
-A [`Context`](ziti/contexts.go) instances represent a specific identity connected to a Ziti Controller. The instance,
+A [`Context`](zt/contexts.go) instances represent a specific identity connected to a Ziti Controller. The instance,
 once configured, will handle authentication, re-authentication, posture state submission, and provides interfaces
 to dial/bind services.
 
 ```golang
-context, err := ziti.NewContext(cfg)
+context, err := zt.NewContext(cfg)
 
 if err != nil {
     _, _ = fmt.Fprintf(os.Stderr, "failed to create context: %v", err)
@@ -155,7 +155,7 @@ if err != nil {
 
 ### Dial/Bind A Service
 
-The main activity performed with a [`Context`](ziti/contexts.go) is to dial or bind a service. In order for a dial or
+The main activity performed with a [`Context`](zt/contexts.go) is to dial or bind a service. In order for a dial or
 bind to be successful, the following must be true:
 
 1. The identity must have the proper dial or bind service policy to the service via [Service Policies](https://hanzozt.dev/docs/learn/core-concepts/security/authorization/policies/overview#service-policies)
@@ -172,15 +172,15 @@ dial/bind targets on all Edge Routers.
 #### Example: "All" Edge Router and Service Edge Router Policies
 
 ```
-> ziti edge create service-edge-router-policy serp-all --edge-router-roles "#all" --service-roles "#all"
-> ziti edge create edge-router-policy erp-all --edge-router-roles "#all" --identity-roles "#all"
+> zt edge create service-edge-router-policy serp-all --edge-router-roles "#all" --service-roles "#all"
+> zt edge create edge-router-policy erp-all --edge-router-roles "#all" --identity-roles "#all"
 ```
 
 #### Example: Dial and Bind Policies For a Service
 
 ```
-> ziti edge create service-policy  testDial Dial --identity-roles "@myTestClient" --service-roles "@myChat"
-> ziti edge create service-policy  testBind Bind --identity-roles "@myTestServer" --service-roles "@myChat"
+> zt edge create service-policy  testDial Dial --identity-roles "@myTestClient" --service-roles "@myChat"
+> zt edge create service-policy  testBind Bind --identity-roles "@myTestServer" --service-roles "@myChat"
 ```
 
 _Note: While policies can be created targeting specific users, services, or routers, using `#attribute` style assignments
@@ -245,12 +245,12 @@ func handleConn(conn net.Conn){
 For more detail on how to create and enroll identities see the
 [identities](https://hanzozt.dev/docs/learn/core-concepts/identities/overview) section in the Hanzo ZT documentation.
 
-1. Login to the controller `ziti edge login https://ctrl-api/edge/client/v1 -u <username> -p <password>`
-2. Create a new identity `ziti edge create identity device myTestClient -o client.enroll.jwt`
-3. Enroll the identity `ziti edge enroll client.enroll.jwt -o client.json`
+1. Login to the controller `zt edge login https://ctrl-api/edge/client/v1 -u <username> -p <password>`
+2. Create a new identity `zt edge create identity device myTestClient -o client.enroll.jwt`
+3. Enroll the identity `zt edge enroll client.enroll.jwt -o client.json`
 
 The output file, `client.json` in this file, is used as that target in the SDK call 
-`ziti.NewConfigFromFile("client.json")` to create a configuration.
+`zt.NewConfigFromFile("client.json")` to create a configuration.
 
 
 ### Allowing Dial/Bind Access to a Service
@@ -259,12 +259,12 @@ For more detail on policies see the
 [policies](https://hanzozt.dev/docs/learn/core-concepts/security/authorization/policies/overview) section in the
 Hanzo ZT documentation.
 
-1. Login if not already logged in `ziti edge login https://ctrl-api/edge/client/v1 -u <username> -p <password>`
-2. Create a new service ` ziti edge create service myChat`
+1. Login if not already logged in `zt edge login https://ctrl-api/edge/client/v1 -u <username> -p <password>`
+2. Create a new service ` zt edge create service myChat`
 3. Allow the service to be accessed by the `myTestClient` through any Edge Router and the service `myChat` through any
    Edge Router
-    1. `ziti edge create service-policy testPolicy Dial --identity-roles "@myTestClient" --service-roles "@myChat"`
-    2. `ziti edge create service-edge-router-policy chatOverAll --edge-router-roles "#all" --service-roles "@myChat"`
+    1. `zt edge create service-policy testPolicy Dial --identity-roles "@myTestClient" --service-roles "@myChat"`
+    2. `zt edge create service-edge-router-policy chatOverAll --edge-router-roles "#all" --service-roles "@myChat"`
 
 _Note: While policies can be created targeting specific users, services, or routers, using `#attribute` style assignments
 allows you to grant access based on groupings. (See [Roles and Role Attributes](https://hanzozt.dev/docs/learn/core-concepts/security/authorization/policies/overview#roles-and-role-attributes))_
@@ -283,7 +283,7 @@ apiUrl, _ = url.Parse("https://localhost:1280/edge/management/v1")
 
 // Note that GetControllerWellKnownCaPool() does not verify the authenticity of the controller, it is assumed
 // this is handled in some other way.
-caPool, err := ziti.GetControllerWellKnownCaPool("https://localhost:1280")
+caPool, err := zt.GetControllerWellKnownCaPool("https://localhost:1280")
 
 if err != nil {
 panic(err)
@@ -313,7 +313,7 @@ apiUrl, _ = url.Parse("https://localhost:1280/edge/client/v1")
 
 // Note that GetControllerWellKnownCaPool() does not verify the authenticity of the controller, it is assumed
 // this is handled in some other way.
-caPool, err := ziti.GetControllerWellKnownCaPool("https://localhost:1280")
+caPool, err := zt.GetControllerWellKnownCaPool("https://localhost:1280")
 
 if err != nil {
 panic(err)

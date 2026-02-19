@@ -19,7 +19,7 @@ package main
 import (
 	"fmt"
 	"github.com/michaelquigley/pfxlog"
-	"github.com/hanzozt/sdk-golang/ziti"
+	"github.com/hanzozt/sdk-golang/zt"
 	"github.com/sirupsen/logrus"
 	"net"
 	"os"
@@ -122,7 +122,7 @@ func main() {
 	}
 
 	// Get identity config
-	cfg, err := ziti.NewConfigFromFile(os.Args[1])
+	cfg, err := zt.NewConfigFromFile(os.Args[1])
 	if err != nil {
 		panic(err)
 	}
@@ -133,12 +133,12 @@ func main() {
 		serviceName = os.Args[2]
 	}
 
-	options := ziti.ListenOptions{
+	options := zt.ListenOptions{
 		ConnectTimeout: 5 * time.Minute,
 		MaxConnections: 3,
 	}
 	logger.Infof("binding service %v\n", serviceName)
-	ctx, err := ziti.NewContext(cfg)
+	ctx, err := zt.NewContext(cfg)
 
 	if err != nil {
 		panic(err)

@@ -25,7 +25,7 @@ the service and can dial other clients.
 When each client starts up, it first becomes a service hosting, using the following code:
 
 ```
-options := ziti.ListenOptions{
+options := zt.ListenOptions{
     ConnectTimeout:        5 * time.Minute,
     MaxConnections:        3,
     BindUsingEdgeIdentity: true,
@@ -44,7 +44,7 @@ routers, creating a terminator on each one. This removes the routers as a single
 On the dialing side, the instance id to connect to can be provided in the `DialOptions`.
 
 ```
-dialOptions := &ziti.DialOptions{
+dialOptions := &zt.DialOptions{
     Identity:       identity,
     ConnectTimeout: 1 * time.Minute,
     AppData:        []byte("hi there"),

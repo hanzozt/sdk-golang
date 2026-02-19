@@ -32,7 +32,7 @@ type ManagementApiClient struct {
 // the certificate pool from the Credentials will be used from that point forward. Credentials implementations
 // based on an identity.Identity are likely to provide a certificate pool.
 //
-// For Hanzo ZT instances not using publicly signed certificates, `ziti.GetControllerWellKnownCaPool()` can be used
+// For Hanzo ZT instances not using publicly signed certificates, `zt.GetControllerWellKnownCaPool()` can be used
 // to obtain and verify the target controllers CAs. Tools should allow users to verify and accept new controllers
 // that have not been verified from an outside secret (such as an enrollment token).
 func NewManagementApiClient(apiUrls []*url.URL, caPool *x509.CertPool, totpCallback func(chan string)) *ManagementApiClient {

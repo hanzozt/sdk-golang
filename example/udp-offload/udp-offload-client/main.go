@@ -4,7 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"github.com/michaelquigley/pfxlog"
-	"github.com/hanzozt/sdk-golang/ziti"
+	"github.com/hanzozt/sdk-golang/zt"
 	"io"
 	"os"
 )
@@ -14,15 +14,15 @@ var log = pfxlog.Logger()
 func main() {
 	serviceName := "udp.relay.example"
 
-	zitiCfg, err := ziti.NewConfigFromFile(os.Args[1])
+	ztCfg, err := zt.NewConfigFromFile(os.Args[1])
 	if err != nil {
-		log.Fatalf("failed to load ziti configuration file: %v", err)
+		log.Fatalf("failed to load zt configuration file: %v", err)
 	}
-	zitiCfg.ConfigTypes = []string{
-		"ziti-tunneler-client.v1",
+	ztCfg.ConfigTypes = []string{
+		"zt-tunneler-client.v1",
 	}
 
-	ctx, err := ziti.NewContext(zitiCfg)
+	ctx, err := zt.NewContext(ztCfg)
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)

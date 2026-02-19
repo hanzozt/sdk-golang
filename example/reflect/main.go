@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/michaelquigley/pfxlog"
 	"github.com/hanzozt/sdk-golang/example/reflect/cmd"
-	"github.com/hanzozt/sdk-golang/ziti"
+	"github.com/hanzozt/sdk-golang/zt"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 )
@@ -54,14 +54,14 @@ func main() {
 	_ = rootCmd.Execute()
 }
 
-func getConfig() (zitiCfg *ziti.Config) {
+func getConfig() (ztCfg *zt.Config) {
 	identityJson := rootCmd.Flag("identity").Value.String()
-	zitiCfg, err := ziti.NewConfigFromFile(identityJson)
+	ztCfg, err := zt.NewConfigFromFile(identityJson)
 	if err != nil {
-		log.Fatalf("failed to load ziti configuration file: %v", err)
+		log.Fatalf("failed to load zt configuration file: %v", err)
 	}
-	zitiCfg.ConfigTypes = []string{
-		"ziti-tunneler-client.v1",
+	ztCfg.ConfigTypes = []string{
+		"zt-tunneler-client.v1",
 	}
-	return zitiCfg
+	return ztCfg
 }

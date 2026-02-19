@@ -13,6 +13,6 @@ server is also listening on port 8090.
 
 With Ziti you can eliminate the need for listening ports, the need for firewall holes in you deployments entirely. 
 This is what the same example looks like using Ziti. Notice no inbound firewall ports needed on either side. No 
-listening port at all in the zitified example, just a Ziti service which is "bound" to the server identity
+listening port at all in the ztfied example, just a Ziti service which is "bound" to the server identity
 
-![image](./simple-zitified-example.png)
+![image](./simple-ztfied-example.png)

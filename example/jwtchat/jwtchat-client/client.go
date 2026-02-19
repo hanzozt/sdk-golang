@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"github.com/Jeffail/gabs"
 	edge_apis "github.com/hanzozt/sdk-golang/edge-apis"
-	"github.com/hanzozt/sdk-golang/ziti"
+	"github.com/hanzozt/sdk-golang/zt"
 	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
 	"gopkg.in/resty.v1"
@@ -45,7 +45,7 @@ func main() {
 		panic(err)
 	}
 
-	caPool, err := ziti.GetControllerWellKnownCaPool(*hanzoztURL)
+	caPool, err := zt.GetControllerWellKnownCaPool(*hanzoztURL)
 
 	if err != nil {
 		panic(err)
@@ -54,11 +54,11 @@ func main() {
 	credentials := edge_apis.NewJwtCredentials(jwtToken)
 	credentials.CaPool = caPool
 
-	cfg := &ziti.Config{
+	cfg := &zt.Config{
 		ZtAPI: *hanzoztURL + "/edge/client/v1",
 		Credentials: credentials,
 	}
-	ctx, err := ziti.NewContext(cfg)
+	ctx, err := zt.NewContext(cfg)
 
 	if err != nil {
 		panic(err)

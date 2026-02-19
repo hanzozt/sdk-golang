@@ -7,15 +7,15 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/hanzozt/sdk-golang/ziti"
-	"github.com/hanzozt/sdk-golang/ziti/edge"
+	"github.com/hanzozt/sdk-golang/zt"
+	"github.com/hanzozt/sdk-golang/zt/edge"
 	cmap "github.com/orcaman/concurrent-map/v2"
 )
 
 // NewHttpClient returns a http.Client that can be used exactly as any other http.Client but will route requests
 // over a Ziti network using the host name as the Ziti service name. Supplying a tlsConfig is possible to connect
 // to HTTPS services, but for it to be successful, the Ziti service name MUST be in the servers URI SANs.
-func NewHttpClient(ctx ziti.Context, tlsConfig *tls.Config) *http.Client {
+func NewHttpClient(ctx zt.Context, tlsConfig *tls.Config) *http.Client {
 	return &http.Client{
 		Transport: NewZitiTransport(ctx, tlsConfig),
 	}
@@ -25,25 +25,25 @@ func NewHttpClient(ctx ziti.Context, tlsConfig *tls.Config) *http.Client {
 type ZitiTransport struct {
 	http.Transport
 	connByAddr cmap.ConcurrentMap[string, edge.Conn]
-	Context    ziti.Context
+	Context    zt.Context
 	TlsConfig  *tls.Config
 }
 
 // NewZitiTransport returns a new http.Transport that routes HTTP requests and response over a
 // Ziti network.
-func NewZitiTransport(ctx ziti.Context, clientTlsConfig *tls.Config) *ZitiTransport {
-	zitiTransport := &ZitiTransport{
+func NewZitiTransport(ctx zt.Context, clientTlsConfig *tls.Config) *ZitiTransport {
+	ztTransport := &ZitiTransport{
 		connByAddr: cmap.New[edge.Conn](),
 		TlsConfig:  clientTlsConfig,
 		Context:    ctx,
 	}
 
-	zitiTransport.Transport = http.Transport{
-		DialContext:    zitiTransport.DialContext,
-		DialTLSContext: zitiTransport.DialTLSContext,
+	ztTransport.Transport = http.Transport{
+		DialContext:    ztTransport.DialContext,
+		DialTLSContext: ztTransport.DialTLSContext,
 	}
 
-	return zitiTransport
+	return ztTransport
 }
 
 // urlToServiceName removes ports from host names that internal standard GoLang capabilities may have added.

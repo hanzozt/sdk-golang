@@ -19,8 +19,8 @@ package main
 import (
 	"fmt"
 	"github.com/michaelquigley/pfxlog"
-	"github.com/hanzozt/sdk-golang/ziti"
-	"github.com/hanzozt/sdk-golang/ziti/edge"
+	"github.com/hanzozt/sdk-golang/zt"
+	"github.com/hanzozt/sdk-golang/zt/edge"
 	"github.com/sirupsen/logrus"
 	"net"
 	"os"
@@ -49,8 +49,8 @@ func handlePing(conn net.Conn) {
 var serverCmd = &cobra.Command{
 	Use:   "server",
 	Short: "zping server command",
-	Long: `This command runs zping in server mode which responds to ziti probe
-	messages which are sent to it's associated ziti identity by zping clients`,
+	Long: `This command runs zping in server mode which responds to zt probe
+	messages which are sent to it's associated zt identity by zping clients`,
 	Run: func(cmd *cobra.Command, args []string) {
 		sflag, _ := cmd.Flags().GetString("service")
 		cflag, _ := cmd.Flags().GetString("config")
@@ -58,10 +58,10 @@ var serverCmd = &cobra.Command{
 		if len(sflag) > 0 {
 			service = sflag
 		} else {
-			service = "ziti-ping"
+			service = "zt-ping"
 		}
 		logger := pfxlog.Logger()
-		options := ziti.ListenOptions{
+		options := zt.ListenOptions{
 			ConnectTimeout:        10 * time.Second,
 			MaxConnections:        3,
 			BindUsingEdgeIdentity: true,
@@ -70,12 +70,12 @@ var serverCmd = &cobra.Command{
 		var listener edge.Listener
 		if len(cflag) > 0 {
 			file := cflag
-			configFile, err := ziti.NewConfigFromFile(file)
+			configFile, err := zt.NewConfigFromFile(file)
 			if err != nil {
 				logrus.WithError(err).Error("Error loading config file")
 				os.Exit(1)
 			}
-			context, err := ziti.NewContext(configFile)
+			context, err := zt.NewContext(configFile)
 
 			if err != nil {
 				panic(err)
@@ -111,6 +111,6 @@ var serverCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(serverCmd)
-	serverCmd.Flags().StringP("service", "s", "ziti-ping", "Name of Service")
+	serverCmd.Flags().StringP("service", "s", "zt-ping", "Name of Service")
 	serverCmd.Flags().StringP("config", "c", "", "Name of config file")
 }

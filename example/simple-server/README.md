@@ -25,29 +25,29 @@ These steps will configure the service using the Hanzo ZT CLI. At the end of the
 Steps:
 1. Log into Hanzo ZT. The host:port and username/password will vary depending on your network.
 
-       ziti edge login localhost:1280 -u admin -p admin
+       zt edge login localhost:1280 -u admin -p admin
 1. Run this script to create everything you need.
 
        cd <repo-root-dir>/example/build
 
        echo Create the service configs
-       ziti edge create config simple.hostv1 host.v1 '{"protocol":"tcp", "address":"localhost","port":'8080'}'
-       ziti edge create config simple.interceptv1 intercept.v1 '{"protocols":["tcp"],"addresses":["simpleService.ziti"], "portRanges":[{"low":'8080', "high":'8080'}]}'
+       zt edge create config simple.hostv1 host.v1 '{"protocol":"tcp", "address":"localhost","port":'8080'}'
+       zt edge create config simple.interceptv1 intercept.v1 '{"protocols":["tcp"],"addresses":["simpleService.zt"], "portRanges":[{"low":'8080', "high":'8080'}]}'
 
        echo Create the service
-       ziti edge create service simpleService --configs "simple.hostv1,simple.interceptv1" --role-attributes simple-service
+       zt edge create service simpleService --configs "simple.hostv1,simple.interceptv1" --role-attributes simple-service
        
        echo Create two identities and enroll the server
-       ziti edge create identity user simple-client -a simpleserver.clients -o simple-client.jwt
-       ziti edge create identity device simple-server -a simpleserver.servers -o simple-server.jwt
-       ziti edge enroll --jwt simple-server.jwt
+       zt edge create identity user simple-client -a simpleserver.clients -o simple-client.jwt
+       zt edge create identity device simple-server -a simpleserver.servers -o simple-server.jwt
+       zt edge enroll --jwt simple-server.jwt
        
        echo Create service policies
-       ziti edge create service-policy simple-client-dial Dial --identity-roles '#simpleserver.clients' --service-roles '#simple-service'
-       ziti edge create service-policy simple-client-bind Bind --identity-roles '#simpleserver.servers' --service-roles '#simple-service'
+       zt edge create service-policy simple-client-dial Dial --identity-roles '#simpleserver.clients' --service-roles '#simple-service'
+       zt edge create service-policy simple-client-bind Bind --identity-roles '#simpleserver.servers' --service-roles '#simple-service'
        
        echo Run policy advisor to check
-       ziti edge policy-advisor services
+       zt edge policy-advisor services
 1. Run the server.
 
        ./simple-server simple-server.json simpleService
@@ -56,7 +56,7 @@ Steps:
    1. Refer to [enrolling documentation](https://netfoundry.io/docs/hanzozt/learn/core-concepts/identities/enrolling/) for details
 
 1. Issue cURL commands to see the server side responses in action. There are two servers spun up by the `simple-server` 
-   binary. One server is a simple HTTP server which is running on the local machine. The second server is a zitified 
+   binary. One server is a simple HTTP server which is running on the local machine. The second server is a ztfied 
    HTTP server, this server should be accessible from the device running ZDE where you enrolled the `simple-client` 
    identity.
 
@@ -64,45 +64,45 @@ Steps:
        curl http://localhost:8080?name=client
        
        # curl to the server listening on the overlay:
-       curl http://simpleService.ziti:8080?name=client
+       curl http://simpleService.zt:8080?name=client
 
 ### Example output
 The following is the output you'll see from the server and client side after running the previous commands.
 **Server**
 ```
 $ ./simple-server simple-server.json simpleService
-listening for non-ziti requests on localhost:8080
+listening for non-zt requests on localhost:8080
 listening for requests for Ziti service simpleService
 Saying hello to client, coming in from plain-internet
-Saying hello to client, coming in from ziti
+Saying hello to client, coming in from zt
 ```
 **Client**
 ```
 $ curl http://localhost:8080?name=client
 Hello, client, from plain-internet
 
-$ curl http://simpleService.ziti:8080?name=client
-Hello, client, from ziti
+$ curl http://simpleService.zt:8080?name=client
+Hello, client, from zt
 ```
 
 ## Teardown
 Done with the example? This script will remove everything created during setup.
 You will have to manually remove the identity from your Ziti Desktop Edge application.
 ```
-ziti edge login localhost:1280 -u admin -p admin
+zt edge login localhost:1280 -u admin -p admin
 
 echo Removing service policies
-ziti edge delete service-policy simple-client-dial
-ziti edge delete service-policy simple-client-bind
+zt edge delete service-policy simple-client-dial
+zt edge delete service-policy simple-client-bind
 
 echo Removing service configs
-ziti edge delete config simple.hostv1
-ziti edge delete config simple.interceptv1
+zt edge delete config simple.hostv1
+zt edge delete config simple.interceptv1
 
 echo Removing identities
-ziti edge delete identity simple-client
-ziti edge delete identity simple-server
+zt edge delete identity simple-client
+zt edge delete identity simple-server
 
 echo Removing service
-ziti edge delete service simpleService
+zt edge delete service simpleService
 ```

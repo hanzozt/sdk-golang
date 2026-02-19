@@ -21,8 +21,8 @@ import (
 	"errors"
 	"fmt"
 	"github.com/michaelquigley/pfxlog"
-	"github.com/hanzozt/sdk-golang/ziti"
-	"github.com/hanzozt/sdk-golang/ziti/edge"
+	"github.com/hanzozt/sdk-golang/zt"
+	"github.com/hanzozt/sdk-golang/zt/edge"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 	"io"
@@ -71,7 +71,7 @@ type chatConfig struct {
 
 type chatPeerToPeer struct {
 	cfg         chatConfig
-	context     ziti.Context
+	context     zt.Context
 	identity    string
 	listener    edge.Listener
 	eventC      chan event
@@ -125,7 +125,7 @@ func (event *userInputEvent) handle(app *chatPeerToPeer) {
 			app.disconnectCurrent()
 		}
 		fmt.Printf("connecting to %v...\n", identity)
-		dialOptions := &ziti.DialOptions{
+		dialOptions := &zt.DialOptions{
 			Identity:       identity,
 			ConnectTimeout: 1 * time.Minute,
 			AppData:        []byte("hi there"),
@@ -176,11 +176,11 @@ func (self *chatPeerToPeer) run(*cobra.Command, []string) {
 	if self.cfg.configFile == "" {
 		panic("a config file is required")
 	} else {
-		cfg, err := ziti.NewConfigFromFile(self.cfg.configFile)
+		cfg, err := zt.NewConfigFromFile(self.cfg.configFile)
 		if err != nil {
 			panic(err)
 		}
-		self.context, err = ziti.NewContext(cfg)
+		self.context, err = zt.NewContext(cfg)
 
 		if err != nil {
 			panic(err)
@@ -189,7 +189,7 @@ func (self *chatPeerToPeer) run(*cobra.Command, []string) {
 
 	logger.Infof("registering to service %v\n", self.cfg.service)
 
-	options := ziti.ListenOptions{
+	options := zt.ListenOptions{
 		ConnectTimeout:        5 * time.Minute,
 		MaxConnections:        3,
 		BindUsingEdgeIdentity: true,
