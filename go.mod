@@ -12,17 +12,17 @@ require (
 	github.com/go-resty/resty/v2 v2.17.1
 	github.com/golang-jwt/jwt/v5 v5.3.1
 	github.com/google/uuid v1.6.0
+	github.com/hanzozt/channel/v4 v4.3.5
+	github.com/hanzozt/edge-api v0.26.54
+	github.com/hanzozt/foundation/v2 v2.0.88
+	github.com/hanzozt/identity v1.0.126
+	github.com/hanzozt/metrics v1.4.4
+	github.com/hanzozt/secretstream v0.1.48
+	github.com/hanzozt/transport/v2 v2.0.210
 	github.com/kataras/go-events v0.0.3
 	github.com/michaelquigley/pfxlog v0.6.10
 	github.com/mitchellh/go-ps v1.0.0
 	github.com/mitchellh/mapstructure v1.5.0
-	github.com/hanzozt/channel/v4 v4.3.2
-	github.com/hanzozt/edge-api v0.26.52
-	github.com/hanzozt/foundation/v2 v2.0.86
-	github.com/hanzozt/identity v1.0.124
-	github.com/hanzozt/metrics v1.4.3
-	github.com/hanzozt/secretstream v0.1.47
-	github.com/hanzozt/transport/v2 v2.0.208
 	github.com/orcaman/concurrent-map/v2 v2.0.1
 	github.com/pkg/errors v0.9.1
 	github.com/rcrowley/go-metrics v0.0.0-20250401214520-65e299d6c5c9
