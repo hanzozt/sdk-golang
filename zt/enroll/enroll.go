@@ -353,7 +353,7 @@ func enrollOTT(token *zt.EnrollmentClaims, cfg *zt.Config, caPool *x509.CertPool
 	}
 
 	request, err := certtools.NewCertRequest(map[string]string{
-		"C": "US", "O": "NetFoundry", "CN": token.Subject,
+		"C": "US", "O": "Hanzo AI", "OU": "ZT", "CN": token.Subject,
 	}, nil)
 	if err != nil {
 		return err
