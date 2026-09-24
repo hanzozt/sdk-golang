@@ -2191,13 +2191,22 @@ func (mgr *listenerManager) notify(eventType ListenEventType) {
 func (mgr *listenerManager) run() {
 	log := pfxlog.Logger().WithField("service", stringz.OrEmpty(mgr.service.Name))
 
-	start := time.Now()
-	// need to either establish a session, or fail if we can't create one
+	// binding takes a session: keep trying until one is made, access is
+	// denied, or the listener or context is closed
 	for mgr.session == nil {
-		if err := mgr.createSessionWithBackoff(); err != nil {
-			if time.Since(start) > mgr.options.ConnectTimeout {
-				log.WithError(err).Error("timed out trying to create session to bind service")
+		err := mgr.createSessionWithBackoff()
+		if IsServiceAccessDeniedError(err) {
+			mgr.listener.CloseWithError(err)
+		}
+		if mgr.listener.IsClosed() {
+			return
+		}
+		if err != nil {
+			select {
+			case <-mgr.context.closeNotify:
+				mgr.listener.CloseWithError(errors.New("context closed"))
 				return
+			case <-time.After(time.Second):
 			}
 		}
 	}
@@ -2452,6 +2461,13 @@ func (mgr *listenerManager) refreshSession() {
 	log = log.WithField("sessionId", stringz.OrEmpty(mgr.session.ID)).WithField("erCount", len(mgr.session.EdgeRouters))
 	log.Debug("starting session refresh")
 	session, err := mgr.context.refreshSession(mgr.session)
+
+	if transient(err) {
+		// the session in hand still binds; creating one would block this loop,
+		// and with it every re-bind, until the controller answers
+		log.WithError(err).Warn("controller did not answer bind session refresh, keeping session")
+		return
+	}
 
 	if err != nil {
 		var detailSessionNotFound = &rest_session.DetailSessionNotFound{}

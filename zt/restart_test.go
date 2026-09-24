@@ -9,16 +9,22 @@ import (
 	"net/http/httptest"
 	"net/url"
 	"strings"
+	"sync"
 	"sync/atomic"
 	"testing"
 	"time"
 
 	"github.com/go-openapi/runtime"
+	"github.com/hanzozt/channel/v4"
+	"github.com/hanzozt/channel/v4/latency"
 	"github.com/hanzozt/edge-api/rest_client_api_client/service"
 	"github.com/hanzozt/edge-api/rest_model"
 	"github.com/hanzozt/identity"
 	"github.com/hanzozt/metrics"
 	edgeapis "github.com/hanzozt/sdk-golang/edge-apis"
+	"github.com/hanzozt/sdk-golang/zt/edge"
+	"github.com/hanzozt/transport/v2"
+	"github.com/hanzozt/transport/v2/tcp"
 	"github.com/stretchr/testify/require"
 )
 
@@ -175,4 +181,138 @@ func TestTransient(t *testing.T) {
 	} {
 		require.Equal(t, c.want, transient(c.err), name)
 	}
+}
+
+// router is an edge router that accepts binds and can be restarted on its port.
+type router struct {
+	t     *testing.T
+	addr  transport.Address
+	url   string
+	binds chan struct{}
+
+	sync.Mutex
+	ln  channel.UnderlayListener
+	chs []channel.Channel
+}
+
+func newRouter(t *testing.T) *router {
+	transport.AddAddressParser(tcp.AddressParser{})
+
+	probe, err := net.Listen("tcp", "127.0.0.1:0")
+	require.NoError(t, err)
+	url := "tcp:" + probe.Addr().String()
+	require.NoError(t, probe.Close())
+
+	addr, err := transport.ParseAddress(url)
+	require.NoError(t, err)
+
+	r := &router{t: t, addr: addr, url: url, binds: make(chan struct{}, 16)}
+	r.start()
+	t.Cleanup(r.stop)
+	return r
+}
+
+func (r *router) start() {
+	ln := channel.NewClassicListener(&identity.TokenId{Token: "router"}, r.addr, channel.ListenerConfig{
+		ConnectOptions: channel.DefaultConnectOptions(),
+	})
+	require.NoError(r.t, ln.Listen())
+
+	r.Lock()
+	r.ln = ln
+	r.Unlock()
+
+	go func() {
+		for {
+			ch, err := channel.NewChannel("router", ln, channel.BindHandlerF(r.bind), channel.DefaultOptions())
+			if err != nil {
+				return
+			}
+			r.Lock()
+			r.chs = append(r.chs, ch)
+			r.Unlock()
+		}
+	}()
+}
+
+func (r *router) bind(b channel.Binding) error {
+	b.AddTypedReceiveHandler(&latency.LatencyHandler{})
+	b.AddReceiveHandlerF(edge.ContentTypeBind, func(m *channel.Message, ch channel.Channel) {
+		connId, _ := m.GetUint32Header(edge.ConnIdHeader)
+		reply := edge.NewStateConnectedMsg(connId)
+		reply.ReplyTo(m)
+		if err := ch.Send(reply); err == nil {
+			r.binds <- struct{}{}
+		}
+	})
+	return nil
+}
+
+// stop closes every channel and the port, as a router going down does.
+func (r *router) stop() {
+	r.Lock()
+	defer r.Unlock()
+	if r.ln != nil {
+		_ = r.ln.Close()
+		r.ln = nil
+	}
+	for _, ch := range r.chs {
+		_ = ch.Close()
+	}
+	r.chs = nil
+}
+
+func (r *router) awaitBind(t *testing.T, within time.Duration, why string) {
+	t.Helper()
+	select {
+	case <-r.binds:
+	case <-time.After(within):
+		t.Fatalf("no bind within %v: %s", within, why)
+	}
+}
+
+// A service bound while the controller answers 502 binds once it answers,
+// however long that takes — it does not give up and leave a listener that never binds.
+func TestListenerBindsOnceControllerAnswers(t *testing.T) {
+	r := newRouter(t)
+	c := newCtrl(t, r.url)
+	c.down.Store(true)
+	ctx := newHost(t, c, nil)
+
+	listener, err := ctx.ListenWithOptions(restartSvc, &ListenOptions{ConnectTimeout: time.Second})
+	require.NoError(t, err)
+
+	time.Sleep(3 * time.Second)
+	c.down.Store(false)
+
+	r.awaitBind(t, 10*time.Second, "controller answered, listener never bound")
+	require.False(t, listener.(interface{ IsClosed() bool }).IsClosed())
+}
+
+// A hosted service re-binds as soon as its router is back, while the
+// controller is still answering 502 — the session it holds is still good.
+func TestListenerRebindsWhileControllerDown(t *testing.T) {
+	if testing.Short() {
+		t.Skip("waits out the 30s session refresh floor")
+	}
+	r := newRouter(t)
+	c := newCtrl(t, r.url)
+	ctx := newHost(t, c, nil)
+
+	listener, err := ctx.ListenWithOptions(restartSvc, &ListenOptions{ConnectTimeout: 20 * time.Second})
+	require.NoError(t, err)
+	r.awaitBind(t, 5*time.Second, "first bind")
+
+	// A session refresh is skipped within 30s of the last one; the restart
+	// being modeled comes long after the bind.
+	time.Sleep(31 * time.Second)
+
+	c.down.Store(true)
+	r.stop()
+	time.Sleep(2 * time.Second)
+	r.start()
+
+	r.awaitBind(t, 5*time.Second, "router back, listener did not re-bind")
+	require.False(t, listener.(interface{ IsClosed() bool }).IsClosed())
+	require.Positive(t, c.failed.Load(), "the controller outage was never seen")
 }
