@@ -923,6 +923,31 @@ func (context *ContextImpl) runRefreshes() {
 	sessionRefreshTick := time.NewTicker(sessionRefreshInterval)
 	defer sessionRefreshTick.Stop()
 
+	// a service refresh the controller did not answer is retried with capped
+	// exponential backoff and jitter, not a whole interval later
+	svcRetry := backoff.NewExponentialBackOff()
+	svcRetry.InitialInterval = time.Second
+	svcRetry.MaxInterval = svcRefreshInterval / 2 // jittered, still sooner than the next tick
+	svcRetry.MaxElapsedTime = 0
+	svcRetry.Reset()
+	var svcRetryC <-chan time.Time
+
+	refreshServices := func() {
+		svcRetryC = nil
+		err := context.refreshServices(false, false)
+		if err == nil {
+			svcRetry.Reset()
+			return
+		}
+		if !transient(err) {
+			log.WithError(err).Error("failed to load service updates")
+			return
+		}
+		wait := svcRetry.NextBackOff()
+		log.WithError(err).Errorf("failed to load service updates, retrying in %v", wait)
+		svcRetryC = time.After(wait)
+	}
+
 	refreshAt := time.Now().Add(30 * time.Second)
 
 	if currentApiSession := context.CtrlClt.GetCurrentApiSession(); currentApiSession != nil && currentApiSession.GetExpiresAt() != nil {
@@ -966,9 +991,11 @@ func (context *ContextImpl) runRefreshes() {
 
 		case <-svcRefreshTick.C:
 			log.Debug("refreshing services")
-			if err := context.refreshServices(false, false); err != nil {
-				log.WithError(err).Error("failed to load service updates")
-			}
+			refreshServices()
+
+		case <-svcRetryC:
+			log.Debug("retrying service refresh")
+			refreshServices()
 
 		case <-sessionRefreshTick.C:
 			log.Debug("refreshing sessions")
@@ -1909,6 +1936,18 @@ func (context *ContextImpl) isNotFoundApiError(err error) bool {
 		return apiFormattedErr.APIError != nil && apiFormattedErr.Code == errorz.NotFoundCode
 	}
 	return false
+}
+
+// transient reports whether err is the controller failing to answer — a 5xx
+// from it or a proxy in front of it, or no response at all — rather than an
+// answer a retry would only repeat.
+func transient(err error) bool {
+	var answer interface{ IsServerError() bool }
+	if errors.As(err, &answer) {
+		return answer.IsServerError()
+	}
+	var netErr net.Error
+	return errors.As(err, &netErr)
 }
 
 func (context *ContextImpl) isUnauthorizedApiError(err error) bool {
