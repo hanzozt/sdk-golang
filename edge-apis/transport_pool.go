@@ -256,13 +256,12 @@ func (c *ClientTransportPoolRandom) AnyTransport() *ApiClientTransport {
 var _ runtime.ClientTransport = (*ClientTransportPoolRandom)(nil)
 var _ ClientTransportPool = (*ClientTransportPoolRandom)(nil)
 
-var opError = &net.OpError{}
-
 // errorIndicatesControllerSwap determines whether an error suggests the need to
 // switch to a different controller endpoint.
 func errorIndicatesControllerSwap(err error) bool {
 	pfxlog.Logger().WithError(err).Debugf("checking for network errror on type (%T) and its wrapped errors", err)
 
+	var opError *net.OpError
 	if errors.As(err, &opError) {
 		pfxlog.Logger().Debug("detected net.OpError")
 		return true
